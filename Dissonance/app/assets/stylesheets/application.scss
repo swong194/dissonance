@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+
+ /*font-family: 'Open Sans', sans-serif;
+ font-family: 'Source Sans Pro', sans-serif;
+ font-family: 'Ubuntu', sans-serif;*/
+
+ // $blurple = #7289DA;
+ // $white = #FFFFFF;
+ // $greyple = #99AAB5;
+ // $lightdark = #2C2F33;
+ // $dark = #23272A;
+
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
+
+body{user-select: none;}

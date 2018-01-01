@@ -1,0 +1,183 @@
+.background-0{
+  background-image: url('https://images6.alphacoders.com/725/725558.jpg');
+}
+.background-1{
+  background-image: url('https://na.leagueoflegends.com/sites/default/files/upload/art/wp_alistar_vs_olaf_1920x1080.jpg');
+}
+.background-2{
+  background-image: url('http://i.imgur.com/XhQwwva.png');
+}
+.background-3{
+  background-image: url('http://goldwallpapers.com/uploads/posts/mario-kart-64-wallpaper/mario_kart_64_wallpaper_022.jpg');
+}
+.background-4{
+  background-image: url('https://images7.alphacoders.com/381/381065.jpg');
+}
+.background-5{
+  background-image: url('https://wallpaperscraft.com/image/call_of_duty_black_ops_2_art_zombie_106412_2048x1152.jpg');
+}
+.background-6{
+  background-image: url('https://hdwallsource.com/img/2014/6/zelda-wallpaper-5133-5255-hd-wallpapers.jpg');
+}
+
+.logo-responsive{
+  display:none;
+  width: 300px;
+  left: 50%;
+  margin-left: -150px;
+  img{
+    width: 100%;
+  }
+}
+
+#session-form{
+  background-color: #7289DA;
+  height: 100vh;
+  color: white;
+  font-family: 'Ubuntu', sans-serif;
+  &[class^='background-']{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-size: cover;
+    animation-name: load;
+    animation-duration: 1s;
+    transition: background-image .75s;
+  }
+  main{
+    align-items: center;
+    display:flex;
+    height:100%;
+    justify-content: center;
+    line-height: 16px;
+    form{
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+      padding: 30px;
+      width: 340px;
+      height: 334px;
+      background-color: rgba(40,43,48,.9);
+      display:flex;
+      flex-direction: column;
+      justify-content: space-between;
+      label{
+        color: #99AAB5;
+        font-size: .75rem;
+        font-weight: bolder;
+      }
+      input{
+        margin: 0;
+        padding: 0;
+      }
+    }
+    &>div{
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+      padding: 30px;
+      width: 168px;
+      height: 334px;
+      background: hsla(0,0%,100%,.9);
+    }
+  }
+}
+#brand{
+  width: 100%;
+  height: 100%;
+  img{
+    margin: 15px 0;
+    width: 100%;
+    min-width: 168px;
+  }
+}
+#session-form{
+  h1{
+    font-size: 1.25rem;
+    text-align: center;
+    margin: 0;
+  }
+  input[type='text'], input[type='password']{
+    background-color: transparent;
+    border-bottom: 1px solid grey;
+    padding: 10px 0;
+    font-size: 1.15rem;
+  }
+  input[type='text']:focus, input[type='password']:focus{
+    border-bottom: 1px solid white;
+  }
+  input[type='submit']{
+    color: white;
+    background: #7289DA;
+    padding: 20px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background .25s;
+    &:hover{
+      background: #667ac4;
+    }
+  }
+  a{
+    font-size: .75rem;
+    padding: 7px 0;
+    &:hover{
+      border-bottom: 2px solid white;
+    }
+  }
+  span{
+    color: #99AAB5;
+    font-size: .75rem;
+  }
+}
+
+.errors{
+  display: block;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  span{
+    color:rgba(250,30,30,1) !important;
+    font-size: .9rem !important;
+    margin: 0 5px;
+    text-shadow: 1px 1px 2px black;
+  }
+}
+
+.logo-line{
+  border-top: 3px solid lightgrey;
+  width: 40px;
+  margin: 0 auto;
+}
+
+@keyframes load {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@media(max-width: 628px){
+  .logo-responsive{
+    display:block;
+    position:absolute;
+  }
+  #session-form{
+    background: #1e2124;
+    height: 100vh;
+    min-height: 800px;
+    overflow: hidden;
+    main{
+      form{
+        background-color:#1e2124;
+        width: 100vw;
+        padding: 0 10px;
+        margin-top: -150px;
+      }
+    }
+  }
+  #brand{
+    display:none;
+  }
+  .errors{
+    left: 0;
+    display:flex;
+    flex-direction:column;
+  }
+}
