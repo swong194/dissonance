@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, withRouter } from 'react-router-dom';
-import ServerIndexItems from './server_index_items';
+// import ServerIndexItems from './server_index_items';
 
-class Server extends React.Component {
+class ServerIndex extends React.Component {
   constructor(props){
     super(props);
     this.handleLogout = this.handleLogout.bind(this);
@@ -19,7 +19,7 @@ class Server extends React.Component {
     return (
       <main>
         <Link to='/servers/@me'>Friends</Link>
-        <ServerIndex />
+        <ServerIndexItems />
         // <Route exact path='/servers/@me' component={FriendsContainer} />
         // <Route path='/servers/@me/textChannelId' component={DirectMessageContainer} />
         // <Route path='/servers/serverId/textChannels/textChannelId' component={ChannelContainer}/>
@@ -32,4 +32,4 @@ class Server extends React.Component {
   }
 }
 
-export default withRouter(Server);
+export default withRouter(ServerIndex);

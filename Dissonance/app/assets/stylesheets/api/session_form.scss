@@ -119,14 +119,18 @@
     font-size: 1rem;
     border-radius: 5px;
     cursor: pointer;
-    transition: background .25s;
     &:hover{
       background: #667ac4;
     }
   }
-  a{
+  a, button{
     font-size: .75rem;
     padding: 7px 0;
+    display: inline-block;
+    height: 100%;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    background: transparent;
     &:hover{
       border-bottom: 2px solid white;
     }
@@ -138,15 +142,16 @@
 }
 
 .errors{
-  display: block;
+  display: flex;
+  flex-direction: column;
   position: absolute;
-  bottom: 5px;
-  right: 5px;
+  bottom: 0;
+  left: 0;
   span{
     color:rgba(250,30,30,1) !important;
-    font-size: .9rem !important;
+    font-size: .7rem !important;
     margin: 0 5px;
-    text-shadow: 1px 1px 2px black;
+    text-shadow: 1px 1px 1px black;
   }
 }
 
@@ -169,13 +174,13 @@
   #session-form{
     background: #1e2124;
     height: 100vh;
-    min-height: 800px;
-    overflow: hidden;
+    min-height: 850px;
     main{
       form{
-        background-color:#1e2124;
+        background: transparent;
         width: 100vw;
         padding: 0 10px;
+        padding-bottom: 40px;
         margin-top: -150px;
       }
     }
@@ -184,8 +189,6 @@
     display:none;
   }
   .errors{
-    left: 0;
-    display:flex;
-    flex-direction:column;
+    padding: 0 10px;
   }
 }
