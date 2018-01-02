@@ -19,7 +19,7 @@ class ServerIndex extends React.Component {
     return (
       <main>
         <Link to='/servers/@me'>Friends</Link>
-        <ServerIndexItems />
+        // <ServerIndexItems />
         // <Route exact path='/servers/@me' component={FriendsContainer} />
         // <Route path='/servers/@me/textChannelId' component={DirectMessageContainer} />
         // <Route path='/servers/serverId/textChannels/textChannelId' component={ChannelContainer}/>

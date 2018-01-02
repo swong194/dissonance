@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Server from './server';
+import ServerIndex from './server_index';
 import { logoutUser } from '../../actions/session_actions';
 
 const mapStateToProps = state => {
@@ -15,4 +15,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Server);
+export default connect(mapStateToProps, mapDispatchToProps)(ServerIndex);
