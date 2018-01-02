@@ -1,5 +1,6 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
+import ServerIndexItems from './server_index_items';
 
 class Server extends React.Component {
   constructor(props){
@@ -17,6 +18,11 @@ class Server extends React.Component {
   render(){
     return (
       <div>
+        <ServerIndex />
+        <Link to='/serverse/@me'>Friends</Link>
+        // <Route exact path='/servers/@me' component={FriendsContainer} />
+        // <Route path='/servers/@me/textChannelId' component={DirectMessageContainer} />
+        // <Route path='/servers/serverId/textChannels/textChannelId' component={ChannelContainer}/>
         Hello {this.props.currentUser.username}, we are under construction
         <button onClick={this.handleLogout}>Log Out</button>
       </div>

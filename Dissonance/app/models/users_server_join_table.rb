@@ -1,0 +1,2 @@
+class UsersServerJoinTable < ApplicationRecord
+end
