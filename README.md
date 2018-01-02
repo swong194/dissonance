@@ -1,2 +1,5 @@
-# dissonance
-discord clone - app academy
+# README
+
+Dissonance a Discord Clone in progress
+
+-By Sunny Wong
