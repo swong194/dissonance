@@ -8,7 +8,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     formType,
     errors: state.session.errors,
-    number: Math.floor(Math.random()*7)
+    number: Math.floor(Math.random()*9)
   };
 };
 
