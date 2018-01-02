@@ -17,15 +17,17 @@ class Server extends React.Component {
 
   render(){
     return (
-      <div>
+      <main>
+        <Link to='/servers/@me'>Friends</Link>
         <ServerIndex />
-        <Link to='/serverse/@me'>Friends</Link>
         // <Route exact path='/servers/@me' component={FriendsContainer} />
         // <Route path='/servers/@me/textChannelId' component={DirectMessageContainer} />
         // <Route path='/servers/serverId/textChannels/textChannelId' component={ChannelContainer}/>
         Hello {this.props.currentUser.username}, we are under construction
+        <div >
+        </div>
         <button onClick={this.handleLogout}>Log Out</button>
-      </div>
+      </main>
     );
   }
 }
