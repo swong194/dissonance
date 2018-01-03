@@ -8,15 +8,19 @@ import {
   updateServer,
   deleteServer } from '../../actions/server_actions';
 import { serverArray } from '../../util/selectors_util';
+import { dispatchModal } from '../../actions/ui_actions';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   let servers = [];
+  if(ownProps.match.params.serverId){
+    activeServer = ownProps.match.params.serverId;
+  }
   if(state.entities.servers !== []){
     servers = serverArray(state);
   }
   return {
     currentUser: state.session.currentUser,
-    servers
+    servers,
   };
 };
 
@@ -27,7 +31,8 @@ const mapDispatchToProps = dispatch => {
     joinServer: name => dispatch(joinServer(name)),
     createServer: server => dispatch(createServer(server)),
     updateServer: server => dispatch(updateServer(server)),
-    deleteServer: id => dispatch(deleteServer(id))
+    deleteServer: id => dispatch(deleteServer(id)),
+    dispatchModal: modalType => dispatch(dispatchModal(modalType))
   };
 };
 
