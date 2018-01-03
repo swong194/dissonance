@@ -4,6 +4,7 @@ class Server < ApplicationRecord
 
   has_many :server_memberships,
   foreign_key: :server_id,
+  dependent: :destroy,
   class_name: 'ServerMembership'
 
   has_many :users,

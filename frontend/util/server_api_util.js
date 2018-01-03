@@ -32,6 +32,6 @@ export const joinServer = name => {
   return $.ajax({
     method: 'post',
     url: 'api/servers/join',
-    data: { name }
+    data: name
   });
 };

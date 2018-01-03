@@ -1,5 +1,1 @@
-@servers do |server|
-  json.set! server.id do
-    json.partial! 'api/servers/server', server: server
-  end
-end
+json.array! @servers, :id, :name, :owner_id, :direct_message
