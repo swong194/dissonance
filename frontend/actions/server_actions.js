@@ -35,7 +35,7 @@ export const receiveErrors = errors => {
 
 export const fetchServers = () => dispatch => {
   return ServerAPIUtil.fetchServers().then(
-    servers => (dispatch(receiveServers(servers.responseJSON))),
+    servers => (dispatch(receiveServers(servers))),
     errors => (dispatch(receiverErrors(errors.responseJSON)))
   );
 };

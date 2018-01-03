@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import ServersReducer from './servers/server_reducer';
+import ServersReducer from './servers/servers_reducer';
 
 
 export default combineReducers({
-  server: ServersReducer
+  servers: ServersReducer
 });
