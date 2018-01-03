@@ -8,6 +8,12 @@ import * as ServerAPIUtil from './util/server_api_util';
 document.addEventListener('DOMContentLoaded', () => {
   window.ServerAPIUtil = ServerAPIUtil;
   const root = document.getElementById('root');
-  const store = configureStore();
+  let store;
+  if(window.currentUser){
+    const preLoadedState = { session: { currentUser: window.currentUser } };
+    store = configureStore(preLoadedState);
+  } else {
+    store = configureStore();
+  }
   ReactDOM.render(<Root store={store}/>, root);
 });
