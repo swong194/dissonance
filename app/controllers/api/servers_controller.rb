@@ -1,5 +1,6 @@
 class Api::ServersController < ApplicationController
   before_action :ensure_login
+  
   def index
     @servers = current_user.servers
     render :index

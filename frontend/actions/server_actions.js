@@ -2,7 +2,7 @@ import * as ServerAPIUtil from '../util/server_api_util';
 
 export const RECEIVE_SERVERS = 'RECEIVE_SERVERS';
 export const RECEIVE_SERVER = 'RECIEVE_SERVER';
-export const RECEIVE_SERVER_ERRORS = 'RECEIVE_SERVER_ERRORS';
+export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const REMOVE_SERVER = 'REMOVE_SERVER';
 
 export const receiveServers = servers => {
@@ -28,14 +28,14 @@ export const removeServer = id => {
 
 export const receiveErrors = errors => {
   return {
-    type: RECEIVE_SERVER_ERRORS,
+    type: RECEIVE_ERRORS,
     errors
   };
 };
 
 export const fetchServers = () => dispatch => {
   return ServerAPIUtil.fetchServers().then(
-    servers => (dispatch(receiveServers(servers))),
+    servers => (dispatch(receiveServers(servers.responseJSON))),
     errors => (dispatch(receiverErrors(errors.responseJSON)))
   );
 };

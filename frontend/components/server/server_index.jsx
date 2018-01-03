@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, withRouter } from 'react-router-dom';
+import { Route, withRouter, Link} from 'react-router-dom';
 // import ServerIndexItems from './server_index_items';
 
 class ServerIndex extends React.Component {
@@ -16,13 +16,13 @@ class ServerIndex extends React.Component {
   }
 
   render(){
+    // <Link to='/servers/@me'>Friends</Link>
+    // <ServerIndexItems />
+    // <Route exact path='/servers/@me' component={FriendsContainer} />
+    // <Route path='/servers/@me/textChannelId' component={DirectMessageContainer} />
+    // <Route path='/servers/serverId/textChannels/textChannelId' component={ChannelContainer}/>
     return (
       <main>
-        <Link to='/servers/@me'>Friends</Link>
-        // <ServerIndexItems />
-        // <Route exact path='/servers/@me' component={FriendsContainer} />
-        // <Route path='/servers/@me/textChannelId' component={DirectMessageContainer} />
-        // <Route path='/servers/serverId/textChannels/textChannelId' component={ChannelContainer}/>
         Hello {this.props.currentUser.username}, we are under construction
         <div >
         </div>
