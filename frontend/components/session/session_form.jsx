@@ -44,8 +44,8 @@ class SessionForm extends React.Component {
         </div>
         <main>
         <div id='brand'>
-          <img src='/assets/logo_for_white' alt='logo'/>
-          <img src='/assets/dissonance_for_white' alt='dissonance logo'/>
+          <img src={window.staticImages.logo_for_white} alt='logo'/>
+          <img src={window.staticImages.dissonance_for_white} alt='dissonance logo'/>
           <div className='logo-line'></div>
         </div>
         <form onSubmit={this.handleSubmit}>

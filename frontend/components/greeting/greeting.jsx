@@ -1,6 +1,5 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
-// import logo from '../../logos/for_black_logo.png';
 
 class Greeting extends React.Component{
   render(){
@@ -10,13 +9,13 @@ class Greeting extends React.Component{
           <div id='greeting-nav'>
             <div>
             <div>
-              <img src='/assets/for_black_logo' alt='dissonance logo'/>
+              <img src={window.staticImages.for_black_logo} alt='dissonance logo'/>
             </div>
             <div>
-              <a href='#'>
+              <a href='https://www.linkedin.com/in/sunny-gy-wong/' target='_blank'>
                 <i className="fa fa-linkedin-square" aria-hidden="true"/>
               </a>
-              <a href='#'>
+              <a href='https://github.com/swong194' target='_blank'>
                 <i className="fa fa-github-square" aria-hidden="true"/>
               </a>
               <Link className='session' to='/login'>Login</Link>

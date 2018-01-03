@@ -3,5 +3,13 @@
   window.currentUser = <%= render("api/users/user.json.jbuilder",
     user: current_user).html_safe %>
   <% end %>
+
+  window.staticImages = {
+    for_black_logo: '<%= asset_url('for_black_logo.png') %>',
+    logo_for_white: '<%= asset_url('logo_for_white.png') %>' ,
+    dissonance_for_white: '<%= asset_url('dissonance_for_white.png') %>'
+  }
+
 </script>
+
 <main id='root'></main>
