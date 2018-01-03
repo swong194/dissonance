@@ -1,4 +1,4 @@
-import { RECEIVE_MODAL } from '../actions/ui_actions';
+import { RECEIVE_MODAL, REMOVE_MODAL } from '../actions/ui_actions';
 
 const oldState = { serverFormModal: false };
 
@@ -12,3 +12,5 @@ const UiReducer = (state = oldState, action) => {
       return state;
   }
 };
+
+export default UiReducer;

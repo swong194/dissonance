@@ -9,11 +9,16 @@ class ServerIndex extends React.Component {
     super(props);
     this.state = {update:'', serverModalOpen: false};
     this.handleLogout = this.handleLogout.bind(this);
-    this.handleServerForm = this.handleServerForm.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
-  handleServerForm(){
-    
+  openModal(){
+    this.props.dispatchModal('serverFormModal');
+  }
+
+  closeModal(){
+    this.props.dispatchModal(null);
   }
 
   componentDidMount(){
@@ -44,9 +49,9 @@ class ServerIndex extends React.Component {
         <div className='server-line'></div>
           <div className='server-list'>
             {servers}
-            <div className='server-form-button' onClick={this.handleServerForm}>
+            <button className='server-form-button' onClick={this.openModal}>
               <p>+</p>
-            </div>
+          </button>
             <div className='end-list-line'></div>
           </div>
         </div>
@@ -54,8 +59,10 @@ class ServerIndex extends React.Component {
           <button onClick={this.handleLogout}>Log Out</button>
         </div>
         <Route path='/servers/:serverId' component={ServerShow} />
-        {/* <Modal isOpen={this.props.serverModalOpen}>
-        </Modal> */}
+        <Modal style='serverFormModal' isOpen={this.props.serverFormModal}>
+          <button onClick={this.closeModal}>CLOSE MODAL</button>
+          <h1>Hello from modal</h1>
+        </Modal>
       </main>
     );
   }

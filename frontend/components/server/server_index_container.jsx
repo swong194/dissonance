@@ -12,15 +12,14 @@ import { dispatchModal } from '../../actions/ui_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let servers = [];
-  if(ownProps.match.params.serverId){
-    activeServer = ownProps.match.params.serverId;
-  }
   if(state.entities.servers !== []){
     servers = serverArray(state);
   }
+
   return {
     currentUser: state.session.currentUser,
     servers,
+    serverFormModal: state.ui.serverFormModal
   };
 };
 
