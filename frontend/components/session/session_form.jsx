@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 class SessionForm extends React.Component {
   constructor(props){
@@ -7,6 +7,7 @@ class SessionForm extends React.Component {
     this.state = {username: '', password: ''};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleGuest = this.handleGuest.bind(this);
+    this.handleRedirect = this.handleRedirect.bind(this);
   }
 
   handleSubmit(e){
@@ -19,6 +20,10 @@ class SessionForm extends React.Component {
   handleGuest(e){
     e.preventDefault();
     this.props.guestLogin({username: 'demo', password: 'password'});
+  }
+
+  handleRedirect(){
+    this.props.removeErrors();
   }
 
   update(type){
@@ -69,7 +74,8 @@ class SessionForm extends React.Component {
             {errors}
           </div>
           <div>
-            <span>{otherMessage}</span> <Link to={otherText}>{otherTextLink}</Link><span> or login as </span> <button onClick={this.handleGuest}>Guest</button>
+            <span>{otherMessage}</span> <Link onClick={this.handleRedirect}
+              to={otherText}>{otherTextLink}</Link><span> or login as </span> <button onClick={this.handleGuest}>Guest</button>
           </div>
         </form>
       </main>
@@ -78,4 +84,4 @@ class SessionForm extends React.Component {
   }
 }
 
-export default SessionForm;
+export default withRouter(SessionForm);

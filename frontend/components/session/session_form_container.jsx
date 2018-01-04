@@ -5,10 +5,13 @@ import { createUser, loginUser } from '../../actions/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const formType = ownProps.match.path === '/login' ? 'login' : 'signup';
+  const otherPath = ownProps.match.path === '/login' ? '/signup' : '/login';
+
   return {
     formType,
     errors: state.session.errors,
-    number: Math.floor(Math.random()*9)
+    number: Math.floor(Math.random()*9),
+    otherPath: otherPath
   };
 };
 
@@ -16,7 +19,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   const action = ownProps.match.path === '/login' ? loginUser : createUser;
   return {
     action: user => dispatch(action(user)),
-    guestLogin: guest=> dispatch(loginUser(guest))
+    guestLogin: guest=> dispatch(loginUser(guest)),
+    removeErrors: () => dispatch({type: 'REMOVE_ERRORS'})
   };
 };
 
