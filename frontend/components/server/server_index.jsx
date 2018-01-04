@@ -40,17 +40,7 @@ class ServerIndex extends React.Component {
     };
   }
 
-  // handleLogout(e){
-  //   e.preventDefault();
-  //   this.props.logoutUser().then(() => {
-  //     this.props.history.push('/');
-  //   });
-  // }
-
   render(){
-    // <Route exact path='/servers/@me' component={FriendsContainer} />
-    // <Route path='/servers/@me/textChannelId' component={DirectMessageContainer} />
-    // <Route path='/servers/serverId/textChannels/textChannelId' component={ChannelContainer}/>
     const servers = this.props.servers.map(server => (
       <ServerIndexItem key={server.id} server={server} activeServer={this.props.activeServer}/>
     ));
@@ -76,11 +66,9 @@ class ServerIndex extends React.Component {
             <div className='text-channel-list'>
 
             </div>
+            <Route path ='/servers' component={SessionDetailContainer}/>
           </div>
-          <Route path ='/servers' component={SessionDetailContainer}/>
         </div>
-
-        // <Route path='/servers/:serverId' component={ServerShow} />
 
         <Modal style={{overlay:{ backgroundColor: 'rgba(0,0,0,.8)'} } } ariaHideApp={false} className={ { base:'serverFormModal' } } isOpen={this.props.serverFormModalOpen}>
 
