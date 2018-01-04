@@ -3,12 +3,12 @@ import { Route, withRouter, NavLink} from 'react-router-dom';
 import ServerIndexItem from './server_index_item';
 import Modal from 'react-modal';
 import ServerShow from './server_show';
+import SessionDetailContainer from '../session/session_detail_container';
 
 class ServerIndex extends React.Component {
   constructor(props){
     super(props);
     this.state = {update:'', createServerName: '', joinServerName: ''};
-    this.handleLogout = this.handleLogout.bind(this);
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.handleServerFormSubmit = this.handleServerFormSubmit.bind(this);
@@ -40,12 +40,12 @@ class ServerIndex extends React.Component {
     };
   }
 
-  handleLogout(e){
-    e.preventDefault();
-    this.props.logoutUser().then(() => {
-      this.props.history.push('/');
-    });
-  }
+  // handleLogout(e){
+  //   e.preventDefault();
+  //   this.props.logoutUser().then(() => {
+  //     this.props.history.push('/');
+  //   });
+  // }
 
   render(){
     // <Route exact path='/servers/@me' component={FriendsContainer} />
@@ -72,9 +72,15 @@ class ServerIndex extends React.Component {
         </div>
 
         <div className='secondary-container'>
-          <button onClick={this.handleLogout}>Log Out</button>
+          <div className='secondary-nav'>
+            <div className='text-channel-list'>
+
+            </div>
+          </div>
+          <Route path ='/servers' component={SessionDetailContainer}/>
         </div>
-        <Route path='/servers/:serverId' component={ServerShow} />
+
+        // <Route path='/servers/:serverId' component={ServerShow} />
 
         <Modal style={{overlay:{ backgroundColor: 'rgba(0,0,0,.8)'} } } ariaHideApp={false} className={ { base:'serverFormModal' } } isOpen={this.props.serverFormModalOpen}>
 
