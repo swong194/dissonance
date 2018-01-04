@@ -15,6 +15,7 @@ c = User.create!(username: 'demo3', password: 'password')
 
 s1 = Server.create!(name: 'demo_server_1', owner_id: a.id)
 s2 = Server.create!(name: 'demo_server_2', owner_id: b.id)
+s3 = Server.create!(name: 'join_me', owner_id: c.id)
 
 ServerMembership.create!(user_id: a.id, server_id: s1.id)
 ServerMembership.create!(user_id: b.id, server_id: s1.id)
