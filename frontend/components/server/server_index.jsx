@@ -60,8 +60,7 @@ class ServerIndex extends React.Component {
         <div className='nav'>
           <div className='server-list'>
             <div className='server-item'>
-              <NavLink className='me' activeClassName='active-server' to='/servers/@me'>
-              </NavLink>
+              <NavLink className='me' activeClassName='active-server' to='/servers/@me'></NavLink>
             </div>
             <div className='server-line'></div>
             {servers}
@@ -86,6 +85,7 @@ class ServerIndex extends React.Component {
 
             <div className='serverForm-container'>
               <form className='createForm' onSubmit={()=>this.handleServerFormSubmit('create')}>
+                <h1>Create</h1>
                 <p>{`Create a new server and invite your friends. It's free`}</p>
                 <label htmlFor='createServer'>SERVER NAME</label>
                 <input placeholder='Enter Server Name' id='createServer' onChange={this.handleChange('createServerName')}
@@ -98,6 +98,7 @@ class ServerIndex extends React.Component {
               <div className='serverFormModal-or'><p>or</p></div>
 
               <form className='joinForm' onSubmit={()=>this.handleServerFormSubmit('join')}>
+                <h1>Join</h1>
                 <p>Enter the Server you want to join.</p>
                 <label htmlFor='joinServer'>SERVER NAME</label>
                 <input placeholder='Enter Server Name' id='joinServer' onChange={this.handleChange('joinServerName')}

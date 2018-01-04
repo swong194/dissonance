@@ -116,7 +116,7 @@
 }
 
 .me{
-  background: asset-url('@me.svg');
+  background-image: asset-url('@me.svg');
   background-size: 35px 35px;
   background-position: center;
   background-repeat: no-repeat;
