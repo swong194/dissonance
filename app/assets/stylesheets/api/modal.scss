@@ -1,0 +1,136 @@
+.serverFormModal{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  animation: modal-grow .25s;
+  &>button{
+    position: absolute;
+    top: 0; right: 0;
+    color: white;
+    background-color: transparent;
+    font-family:arial;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 20px;
+  }
+}
+
+.serverFormModal-container{
+  display:flex;
+  border-radius: 5px;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  width: 512px;
+  height: 400px;
+  background-image: asset-url('/assets/panda-kun.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: arial;
+  &>h1{
+    color: #7188db;
+  }
+}
+
+.serverForm-container{
+  height: 400px;
+  padding-bottom: 30px;
+  margin: 0 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  &>form{
+    height: 100%;
+    width: 40%;
+    margin: 0 5px;
+    background-color: rgba(255,255,255,.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #99aab5;
+    label{
+      color: #87909c;
+      font-size: 14px;
+    }
+    input{
+      padding: 5px;
+      font-family: sans-serif;
+      font-size: 15px;
+      text-align: center;
+      border-bottom: 1px solid #f0f0f0;
+      &:focus{
+        border-bottom: 1px solid #7289da;
+      }
+      &::-webkit-input-placeholder{
+        text-align: center;
+        color: #dadddf;
+      }
+    }
+    p{
+      text-align: center;
+      font-size: 16px;
+      color: #9cadb7;
+      height: 60px;
+      margin: 0;
+    }
+  }
+}
+
+.serverFormModal-or{
+  position:absolute;
+  background: white;
+  border-right: 1px solid #99aab5;
+  border-left: 1px solid #99aab5;
+  color: #99aab5;
+  font-family: arial;
+  font-size: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+}
+
+.blue, .green{
+  color: white;
+  transition: background-color .5s;
+}
+
+.blue{
+  background-color: #7188db;
+  &:hover{
+    background-color: #6276b7;
+  }
+}
+
+.green{
+  background-color: #3ca373;
+  &:hover{
+    background-color: #2a7b57;
+  }
+}
+
+.serverFormModal-button{
+  padding: 14px 20px;
+  width: 100%;
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+@keyframes modal-grow{
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}

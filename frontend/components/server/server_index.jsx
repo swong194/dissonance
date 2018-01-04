@@ -7,14 +7,15 @@ import ServerShow from './server_show';
 class ServerIndex extends React.Component {
   constructor(props){
     super(props);
-    this.state = {update:'', serverModalOpen: false};
+    this.state = {update:'', createServerName: '', joinServerName: ''};
     this.handleLogout = this.handleLogout.bind(this);
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.handleServerFormSubmit = this.handleServerFormSubmit.bind(this);
   }
 
   openModal(){
-    this.props.dispatchModal('serverFormModal');
+    this.props.dispatchModal('serverFormModalOpen');
   }
 
   closeModal(){
@@ -23,6 +24,20 @@ class ServerIndex extends React.Component {
 
   componentDidMount(){
     this.props.fetchServers();
+  }
+
+  handleServerFormSubmit(type){
+    if(type === 'join'){
+      this.props.joinServer(this.state.joinServerName);
+    } else {
+      this.props.createServer(this.state.createServerName);
+    }
+  }
+
+  handleChange(type){
+    return (e) => {
+      this.setState({[type]: e.target.value});
+    };
   }
 
   handleLogout(e){
@@ -59,10 +74,40 @@ class ServerIndex extends React.Component {
           <button onClick={this.handleLogout}>Log Out</button>
         </div>
         <Route path='/servers/:serverId' component={ServerShow} />
-        <Modal style='serverFormModal' isOpen={this.props.serverFormModal}>
-          <button onClick={this.closeModal}>CLOSE MODAL</button>
-          <h1>Hello from modal</h1>
+
+        <Modal style={{overlay:{ backgroundColor: 'rgba(0,0,0,.8)'} } } ariaHideApp={false} className={ { base:'serverFormModal' } } isOpen={this.props.serverFormModalOpen}>
+
+          <button onClick={this.closeModal}>X</button>
+
+          <main className='serverFormModal-container'>
+            <h1>OH, ANOTHER SERVER HUH?</h1>
+
+            <div className='serverForm-container'>
+              <form className='createForm'>
+                <p>{`Create a new server and invite your friends. It's free`}</p>
+                <label for='createServer'>SERVER NAME</label>
+                <input placeholder='Enter Server Name' id='createServer' onChange={this.handleChange('createServerName')}
+                  value={this.props.createServerName}></input>
+                <button className='serverFormModal-button blue'>
+                  Create Server
+                </button>
+              </form>
+
+              <div className='serverFormModal-or'><p>or</p></div>
+
+              <form className='joinForm'>
+                <p>Enter the Server you want to join.</p>
+                <label for='joinServer'>SERVER NAME</label>
+                <input placeholder='Enter Server Name' id='joinServer' onChange={this.handleChange('joinServerNane')}
+                  value={this.props.joinServerName}></input>
+                <button className='serverFormModal-button green'>
+                Join Server
+              </button>
+              </form>
+            </div>
+          </main>
         </Modal>
+
       </main>
     );
   }

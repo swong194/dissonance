@@ -1,6 +1,6 @@
 import { RECEIVE_MODAL, REMOVE_MODAL } from '../actions/ui_actions';
 
-const oldState = { serverFormModal: false };
+const oldState = { serverFormModalOpen: false };
 
 const UiReducer = (state = oldState, action) => {
   switch (action.type) {
