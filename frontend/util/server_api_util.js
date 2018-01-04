@@ -5,11 +5,11 @@ export const fetchServers = () => {
   });
 };
 
-export const createServer = server => {
+export const createServer = name => {
   return $.ajax({
     method: 'post',
     url: 'api/servers',
-    data: { server }
+    data: { name }
   });
 };
 
@@ -20,11 +20,11 @@ export const deleteServer = id => {
   });
 };
 
-export const updateServer = server => {
+export const updateServer = name => {
   return $.ajax({
     method: 'patch',
     url: `api/severs/${server.id}`,
-    data: { server }
+    data: { name }
   });
 };
 
@@ -32,6 +32,6 @@ export const joinServer = name => {
   return $.ajax({
     method: 'post',
     url: 'api/servers/join',
-    data: name
+    data: { name }
   });
 };

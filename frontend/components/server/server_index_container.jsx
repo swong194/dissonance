@@ -11,14 +11,9 @@ import { serverArray } from '../../util/selectors_util';
 import { dispatchModal } from '../../actions/ui_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  let servers = [];
-  if(state.entities.servers !== []){
-    servers = serverArray(state);
-  }
-
   return {
     currentUser: state.session.currentUser,
-    servers,
+    servers: serverArray(state),
     serverFormModalOpen: state.ui.serverFormModalOpen
   };
 };

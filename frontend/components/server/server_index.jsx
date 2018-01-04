@@ -56,20 +56,23 @@ class ServerIndex extends React.Component {
     ));
     return (
       <main id='main-container'>
+
         <div className='nav'>
-          <div className='server-item'>
-            <NavLink activeClassName='active-server' to='/servers/@me'>
-              <p>Me</p>
-            </NavLink></div>
-        <div className='server-line'></div>
           <div className='server-list'>
+            <div className='server-item'>
+              <NavLink activeClassName='active-server' to='/servers/@me'>
+                <p>Me</p>
+              </NavLink>
+            </div>
+            <div className='server-line'></div>
             {servers}
             <button className='server-form-button' onClick={this.openModal}>
               <p>+</p>
-          </button>
+            </button>
             <div className='end-list-line'></div>
           </div>
         </div>
+
         <div className='secondary-container'>
           <button onClick={this.handleLogout}>Log Out</button>
         </div>
@@ -83,9 +86,9 @@ class ServerIndex extends React.Component {
             <h1>OH, ANOTHER SERVER HUH?</h1>
 
             <div className='serverForm-container'>
-              <form className='createForm'>
+              <form className='createForm' onSubmit={()=>this.handleServerFormSubmit('create')}>
                 <p>{`Create a new server and invite your friends. It's free`}</p>
-                <label for='createServer'>SERVER NAME</label>
+                <label htmlFor='createServer'>SERVER NAME</label>
                 <input placeholder='Enter Server Name' id='createServer' onChange={this.handleChange('createServerName')}
                   value={this.props.createServerName}></input>
                 <button className='serverFormModal-button blue'>
@@ -95,10 +98,10 @@ class ServerIndex extends React.Component {
 
               <div className='serverFormModal-or'><p>or</p></div>
 
-              <form className='joinForm'>
+              <form className='joinForm' onSubmit={()=>this.handleServerFormSubmit('join')}>
                 <p>Enter the Server you want to join.</p>
-                <label for='joinServer'>SERVER NAME</label>
-                <input placeholder='Enter Server Name' id='joinServer' onChange={this.handleChange('joinServerNane')}
+                <label htmlFor='joinServer'>SERVER NAME</label>
+                <input placeholder='Enter Server Name' id='joinServer' onChange={this.handleChange('joinServerName')}
                   value={this.props.joinServerName}></input>
                 <button className='serverFormModal-button green'>
                 Join Server

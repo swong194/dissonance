@@ -1,14 +1,13 @@
 class Api::ServersController < ApplicationController
   before_action :ensure_login
-  
+
   def index
     @servers = current_user.servers
     render :index
   end
 
   def create
-    debugger
-    @server = Server.new(name: params[:server][:name], owner_id: current_user.id)
+    @server = Server.new(name: params[:name], owner_id: current_user.id)
     if @server.save
       join_server(current_user, @server)
       render :show
@@ -28,8 +27,7 @@ class Api::ServersController < ApplicationController
 
   def join
     @server = Server.find_by(name: params[:name])
-    debugger
-    if !(current_user.servers.include?(@server) || @server)
+    if !current_user.servers.include?(@server) && @server
       join_server(current_user, @server)
       render :show
     elsif !@server
