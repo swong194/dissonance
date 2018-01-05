@@ -7,6 +7,8 @@
 .secondary-nav{
   display: flex;
   width: 100%;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .session-detail{
@@ -18,6 +20,7 @@
   align-items: center;
   height: 52px;
   width: 100%;
+  margin: 0 auto;
   font-family: sans-serif;
   &>button{
     font-size: 16px;

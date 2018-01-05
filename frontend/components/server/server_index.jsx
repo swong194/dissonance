@@ -4,6 +4,10 @@ import ServerIndexItem from './server_index_item';
 import Modal from 'react-modal';
 import ServerShow from './server_show';
 import SessionDetailContainer from '../session/session_detail_container';
+import ServerUsersIndexContainer from './server_users_index_container';
+import TextChannelContainer from '../textchannel/text_channel_container';
+import TextChannelList from '../textChannel/text_channel_list';
+
 
 class ServerIndex extends React.Component {
   constructor(props){
@@ -63,10 +67,22 @@ class ServerIndex extends React.Component {
 
         <div className='secondary-container'>
           <div className='secondary-nav'>
+            <Route path='/servers/:serverId' component={ServerShow} />
             <div className='text-channel-list'>
-
+              <Route path='/servers/:serverId/textChannel/:textChannelId' component={TextChannelList} />
             </div>
             <Route path ='/servers' component={SessionDetailContainer}/>
+          </div>
+        </div>
+
+        <div className='third-container'>
+          <div className='third-nav'>
+            I am the nav
+          </div>
+          <div className='channel-components'>
+            <Route path='/servers/:serverId/textChannel/:textChannelId'
+              component={TextChannelContainer}/>
+            <Route path='/servers/:serverId' component={ServerUsersIndexContainer}/>
           </div>
         </div>
 

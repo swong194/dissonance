@@ -1,0 +1,36 @@
+.third-container{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.third-nav{
+  background-color: #36393f;
+  width: 100%;
+  box-shadow: 0 1px 0 rgba(0,0,0,.2),
+  0 2px 0 rgba(0,0,0,.06);
+}
+
+.channel-components{
+  display:flex;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.server-user-index-container{
+  height: 100%;
+  background-color: #2f3136;
+}
+
+.textchannel-container{
+  height:100%;
+  width: 100%;
+  background-color: #36393e;
+  display: flex;
+}
+
+.textchannel-form-container{
+  align-self: flex-end;
+}
