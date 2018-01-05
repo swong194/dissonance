@@ -36,14 +36,14 @@ export const receiveErrors = errors => {
 export const fetchServers = () => dispatch => {
   return ServerAPIUtil.fetchServers().then(
     servers => (dispatch(receiveServers(servers))),
-    errors => (dispatch(receiverErrors(errors.responseJSON)))
+    errors => (dispatch(receiveErrors(errors.responseJSON)))
   );
 };
 
 export const createServer = server => dispatch => {
   return ServerAPIUtil.createServer(server).then(
     server => (dispatch(receiveServer(server))),
-    errors => (dispatch(receiverErrors(errors.responseJSON)))
+    errors => (dispatch(receiveErrors(errors.responseJSON)))
   );
 };
 
@@ -51,20 +51,20 @@ export const createServer = server => dispatch => {
 export const deleteServer = id => dispatch => {
   return ServerAPIUtil.deleteServer(id).then(
     () => (dispatch(removeServer(id))),
-    errors => (dispatch(receiverErrors(errors.responseJSON)))
+    errors => (dispatch(receiveErrors(errors.responseJSON)))
   );
 };
 
-export const updateServer = server => dispatch => {
-  return ServerAPIUtil.updateServer(server).then(
+export const updateServer = (name, id) => dispatch => {
+  return ServerAPIUtil.updateServer(name, id).then(
     server => (dispatch(receiveServer(server))),
-    errors => (dispatch(receiverErrors(errors.responseJSON)))
+    errors => (dispatch(receiveErrors(errors.responseJSON)))
   );
 };
 
 export const joinServer = name => dispatch => {
   return ServerAPIUtil.joinServer(name).then(
     server => (dispatch(receiveServer(server))),
-    errors => (dispatch(receiverErrors(errors.responseJSON)))
+    errors => (dispatch(receiveErrors(errors.responseJSON)))
   );
 };

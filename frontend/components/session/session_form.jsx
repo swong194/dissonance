@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
+import Typed from 'typed.js';
 
 class SessionForm extends React.Component {
   constructor(props){
@@ -19,7 +20,18 @@ class SessionForm extends React.Component {
 
   handleGuest(e){
     e.preventDefault();
-    this.props.guestLogin({username: 'demo', password: 'password'});
+
+    if(this.props.match.path === '/signup'){
+      this.props.history.push('/login');
+    }
+
+    const guestName = new Typed ('#username-input', { strings: ['demo'], typeSpeed: 100 });
+    const guestPassword = new Typed('#password-input', { strings: ['password'], typeSpeed: 100 });
+    this.props.guestLogin({ username: 'demo', password: 'password' });
+
+    this.setState({
+
+    });
   }
 
   handleRedirect(){
