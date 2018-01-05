@@ -6,7 +6,7 @@ import ServerShowContainer from './server_show_container';
 import SessionDetailContainer from '../session/session_detail_container';
 import ServerUsersIndexContainer from './server_users_index_container';
 import TextChannelContainer from '../textchannel/text_channel_container';
-import TextChannelList from '../textChannel/text_channel_list';
+import TextChannelList from '../textchannel/text_channel_list';
 
 
 class ServerIndex extends React.Component {
