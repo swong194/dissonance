@@ -5,6 +5,13 @@ export const fetchServers = () => {
   });
 };
 
+export const fetchServer = id => {
+  return $.ajax({
+    method: 'get',
+    url: `api/servers/${id}`
+  });
+};
+
 export const createServer = name => {
   return $.ajax({
     method: 'post',
@@ -20,10 +27,10 @@ export const deleteServer = id => {
   });
 };
 
-export const updateServer = name => {
+export const updateServer = (name, serverId) => {
   return $.ajax({
     method: 'patch',
-    url: `api/severs/${server.id}`,
+    url: `api/servers/${serverId}`,
     data: { name }
   });
 };

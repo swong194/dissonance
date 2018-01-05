@@ -46,6 +46,15 @@ class Api::ServersController < ApplicationController
     end
   end
 
+  def show
+    @server = Server.find(params[:id])
+    if @server
+      render :show
+    else
+      render json: ['Could not find server'], status: 404
+    end
+  end
+
   private
   def server_params
     params.require(:server).permit(:name)

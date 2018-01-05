@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, withRouter, NavLink} from 'react-router-dom';
 import ServerIndexItem from './server_index_item';
 import Modal from 'react-modal';
-import ServerShow from './server_show';
+import ServerShowContainer from './server_show_container';
 import SessionDetailContainer from '../session/session_detail_container';
 import ServerUsersIndexContainer from './server_users_index_container';
 import TextChannelContainer from '../textchannel/text_channel_container';
@@ -67,7 +67,7 @@ class ServerIndex extends React.Component {
 
         <div className='secondary-container'>
           <div className='secondary-nav'>
-            <Route path='/servers/:serverId' component={ServerShow} />
+            <Route path='/servers/:serverId' component={ServerShowContainer} />
             <div className='text-channel-list'>
               <Route path='/servers/:serverId/textChannel/:textChannelId' component={TextChannelList} />
             </div>
