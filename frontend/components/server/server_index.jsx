@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, withRouter, NavLink} from 'react-router-dom';
+import { Switch, Route, withRouter, NavLink} from 'react-router-dom';
 import ServerIndexItem from './server_index_item';
 import Modal from 'react-modal';
 import ServerShowContainer from './server_show_container';
@@ -7,6 +7,10 @@ import SessionDetailContainer from '../session/session_detail_container';
 import ServerUsersIndexContainer from './server_users_index_container';
 import TextChannelContainer from '../textchannel/text_channel_container';
 import TextChannelList from '../textchannel/text_channel_list';
+import FriendIndexContainer from './friends_index_container';
+import DirectMessageIndexContainer from './direct_message_index_container';
+import DirectMessageShowContainer from './direct_message_show_container';
+import SearchUsersContainer from './search_users_container.jsx';
 
 
 class ServerIndex extends React.Component {
@@ -79,9 +83,15 @@ class ServerIndex extends React.Component {
 
         <div className='secondary-container'>
           <div className='secondary-nav'>
-            <Route path='/servers/:serverId' component={ServerShowContainer} />
+            <Switch>
+              <Route path='/servers/@me' component={SearchUsersContainer} />
+              <Route path='/servers/:serverId' component={ServerShowContainer} />
+            </Switch>
             <div className='text-channel-list'>
-              <Route path='/servers/:serverId/textChannel/:textChannelId' component={TextChannelList} />
+              <Switch>
+                <Route path='/servers/@me' component={DirectMessageIndexContainer} />
+                <Route path='/servers/:serverId/textChannel/:textChannelId' component={TextChannelList} />
+              </Switch>
             </div>
             <Route path ='/servers' component={SessionDetailContainer}/>
           </div>
@@ -91,11 +101,11 @@ class ServerIndex extends React.Component {
           <div className='third-nav'>
             I am the nav
           </div>
-          <div className='channel-components'>
-            <Route path='/servers/:serverId/textChannel/:textChannelId'
-              component={TextChannelContainer}/>
+          <Switch>
+            <Route exact path='/servers/@me' component={FriendIndexContainer} />
+            <Route exact path='/servers/@me/:textChannelId' component={DirectMessageShowContainer} />
             <Route path='/servers/:serverId' component={ServerUsersIndexContainer}/>
-          </div>
+          </Switch>
         </div>
 
         <Modal style={{overlay:{ backgroundColor: 'rgba(0,0,0,.8)'} } } ariaHideApp={false} className={ { base:'serverFormModal' } } isOpen={this.props.serverFormModalOpen}>
