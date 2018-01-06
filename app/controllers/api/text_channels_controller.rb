@@ -1,7 +1,6 @@
 class Api::TextChannelsController < ApplicationController
   def index
-    @server = Server.find(params[:server_id])
-    @text_channels = @server.text_channels
+    @text_channels = current_user.text_channels
     render :index
   end
 
@@ -11,8 +10,10 @@ class Api::TextChannelsController < ApplicationController
   end
 
   def destroy
+    debugger
     @text_channel = TextChannel.find(params[:id])
-    if @text_channel && @text_channel.owner_id === current_user.id
+    debugger
+    if @text_channel && @text_channel.owner.id === current_user.id
       @text_channel.destroy
       render :show
     else
@@ -21,8 +22,10 @@ class Api::TextChannelsController < ApplicationController
   end
 
   def update
+    debugger
     @text_channel = TextChannel.find(params[:id])
-    if @text_channel && @text_channel.owner_id === current_user.id && @text_channel.update(params[:name])
+    debugger
+    if @text_channel && @text_channel.owner.id === current_user.id && @text_channel.update(name: params[:name])
       render :show
     else
       render json: ["Could not update Text Channel"], status: 422
@@ -30,12 +33,21 @@ class Api::TextChannelsController < ApplicationController
   end
 
   def create
-    @text_channel = TextChannel.new(name: params[:name] server_id: params[:server_id])
+    @text_channel = TextChannel.new(
+      name: text_channel_params[:name],
+      server_id: text_channel_params[:id]
+    )
     if @text_channel.save
       render :show
     else
       render json: @text_channel.errors.full_messages, status: 422
     end
+  end
+
+  private
+
+  def text_channel_params
+    params.require(:text_channel).permit(:name, :server_id)
   end
 
 end

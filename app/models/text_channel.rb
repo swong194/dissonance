@@ -8,6 +8,10 @@ class TextChannel < ApplicationRecord
   dependent: :destroy
 
   belongs_to :server,
-  class_namy: 'Server',
+  class_name: 'Server',
   foreign_key: :server_id
+
+  has_one :owner,
+  through: :server,
+  source: :owner
 end

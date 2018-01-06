@@ -2,11 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
-
-import * as ServerAPIUtil from './util/server_api_util';
+import * as textapi from './util/text_channel_api_util';
 
 document.addEventListener('DOMContentLoaded', () => {
-  window.ServerAPIUtil = ServerAPIUtil;
+  window.textapi = textapi;
   const root = document.getElementById('root');
   let store;
   if(window.currentUser){
