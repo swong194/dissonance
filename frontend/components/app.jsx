@@ -19,7 +19,7 @@ const App = () => {
         <AuthRoute path='/login' component={SessionFormContainer} />
         <AuthRoute path='/signup' component={SessionFormContainer} />
         <ProtectedRoute path='/servers' component={ServerIndexContainer} />
-        <AuthRoute exact path='/' component={GreetingContainer}/>
+        <Route exact path='/' component={GreetingContainer}/>
       </Switch>
     </div>
   );
