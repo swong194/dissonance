@@ -18,10 +18,10 @@ class Api::ServersController < ApplicationController
 
   def destroy
     @server = Server.find(params[:id])
-    if @server.destroy
+    if @server.owner_id == current_user.id && @server.destroy
       render :show
     else
-      render json: ['Could not remove server'], status: 400
+      render json: ['You do not own this server'], status: 422
     end
   end
 
@@ -39,7 +39,7 @@ class Api::ServersController < ApplicationController
 
   def update
     @server = Server.find(params[:id])
-    if @server.update(name: params[:name])
+    if @server.owner_id == current_user.id && @server.update(name: params[:name])
       render :show
     else
       render json: @server.errors.full_messages, status: 422
