@@ -1,13 +1,21 @@
 import { connect } from 'react-redux';
 import ServerUsersIndex from './server_users_index';
-const mapStateToProps = state => {
-  return {};
+import { withRouter } from 'react-router-dom';
+import { fetchServerUsers } from '../../actions/server_actions';
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    serverId: ownProps.match.params.serverId,
+    users: state.entities.users
+  };
 };
 
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    fetchServerUsers: id => dispatch(fetchServerUsers(id))
+  };
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(ServerUsersIndex);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ServerUsersIndex));

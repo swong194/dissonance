@@ -48,9 +48,21 @@ class ServerIndex extends React.Component {
     const servers = this.props.servers.map(server => (
       <ServerIndexItem key={server.id} server={server} activeServer={this.props.activeServer}/>
     ));
+
+    const errorClass = this.props.errors.length ? 'main-server-errors' : 'non-active-error';
+
+    if(this.props.errors.length){
+
+    }
+    const errors = this.props.errors.map(error => (
+      <span>{error}</span>
+    ));
+
     return (
       <main id='main-container'>
-
+        <div className={errorClass}>
+          {errors}
+        </div>
         <div className='nav'>
           <div className='server-list'>
             <div className='server-item'>

@@ -6,5 +6,6 @@ Rails.application.routes.draw do
     resource :session, only:[:create, :destroy]
     resources :servers, only: [:create, :index, :destroy, :update, :show]
     post 'servers/join', to: 'servers#join'
+    get 'servers/:id/users', to: 'servers#users'
   end
 end

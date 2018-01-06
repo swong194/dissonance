@@ -4,9 +4,8 @@ import { logoutUser } from '../../actions/session_actions';
 import {
   fetchServers,
   joinServer,
-  createServer,
-  updateServer,
-  deleteServer } from '../../actions/server_actions';
+  createServer
+  } from '../../actions/server_actions';
 import { serverArray } from '../../util/selectors_util';
 import { dispatchModal } from '../../actions/ui_actions';
 
@@ -14,7 +13,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     currentUser: state.session.currentUser,
     servers: serverArray(state),
-    serverFormModalOpen: state.ui.serverFormModalOpen
+    serverFormModalOpen: state.ui.serverFormModalOpen,
+    errors: state.session.errors
   };
 };
 
@@ -24,8 +24,6 @@ const mapDispatchToProps = dispatch => {
     fetchServers: () => dispatch(fetchServers()),
     joinServer: name => dispatch(joinServer(name)),
     createServer: server => dispatch(createServer(server)),
-    updateServer: server => dispatch(updateServer(server)),
-    deleteServer: id => dispatch(deleteServer(id)),
     dispatchModal: modalType => dispatch(dispatchModal(modalType))
   };
 };

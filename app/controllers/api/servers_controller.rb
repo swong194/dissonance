@@ -55,6 +55,16 @@ class Api::ServersController < ApplicationController
     end
   end
 
+  def users
+    @server = Server.find(params[:id])
+    if @server
+      @users = @server.users
+      render 'api/users/index'
+    else
+      render json: ['Error in obtaining server users'], status: 422
+    end
+  end
+
   private
   def server_params
     params.require(:server).permit(:name)
