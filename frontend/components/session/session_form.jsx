@@ -25,13 +25,15 @@ class SessionForm extends React.Component {
       this.props.history.push('/login');
     }
 
-    const guestName = new Typed ('#username-input', { strings: ['demo'], typeSpeed: 100 });
-    const guestPassword = new Typed('#password-input', { strings: ['password'], typeSpeed: 100 });
-    this.props.guestLogin({ username: 'demo', password: 'password' });
-
-    this.setState({
-
-    });
+    setTimeout(()=> {
+      new Typed ('#username-input', { strings: ['demo'], typeSpeed: 125 });
+    },0);
+    setTimeout(()=> {
+      new Typed ('#password-input', { strings: ['password'], typeSpeed: 125 });
+    },1200);
+    setTimeout(()=>{
+      this.props.guestLogin({ username: 'demo', password: 'password' });
+    },2600);
   }
 
   handleRedirect(){
