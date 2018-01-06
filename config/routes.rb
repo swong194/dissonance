@@ -7,5 +7,7 @@ Rails.application.routes.draw do
     resources :servers, only: [:create, :index, :destroy, :update, :show]
     post 'servers/join', to: 'servers#join'
     get 'servers/:id/users', to: 'servers#users'
+    resources :text_channels, only: [:create, :index, :destroy, :update, :show]
+    resources :messages, only: [:create, :index]
   end
 end
