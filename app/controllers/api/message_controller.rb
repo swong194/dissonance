@@ -15,8 +15,4 @@ class Api::MessageController < ApplicationController
     end
 
   end
-
-  def message_params
-    params.require(:message).permit(:body)
-  end
 end
