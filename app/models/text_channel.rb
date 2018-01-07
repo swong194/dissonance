@@ -1,6 +1,6 @@
 class TextChannel < ApplicationRecord
   validates :name, :server_id, presence: true
-  validates :name, length: { in: 3..20 }, uniqueness: true
+  validates :name, length: { in: 3..20 }
 
   has_many :messages,
   class_name: 'Message',

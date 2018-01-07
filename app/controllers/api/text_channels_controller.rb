@@ -29,10 +29,9 @@ class Api::TextChannelsController < ApplicationController
   end
 
   def create
-    @text_channel = TextChannel.new(
-      name: text_channel_params[:name],
-      server_id: text_channel_params[:id]
-    )
+    debugger
+    @text_channel = TextChannel.new(text_channel_params)
+    debugger
     if @text_channel.save
       render :show
     else

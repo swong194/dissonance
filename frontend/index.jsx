@@ -2,10 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
-import * as textapi from './util/text_channel_api_util';
+import * as textactions from './actions/text_channel_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
-  window.textapi = textapi;
   const root = document.getElementById('root');
   let store;
   if(window.currentUser){
@@ -14,5 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     store = configureStore();
   }
+
+  window.dispatch = store.dispatch;
+  window.textactions = textactions;
+
   ReactDOM.render(<Root store={store}/>, root);
 });
