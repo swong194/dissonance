@@ -1,6 +1,7 @@
 class Api::TextChannelsController < ApplicationController
   def index
-    @text_channels = current_user.text_channels
+    @server = Server.find(params[:serverId])
+    @text_channels = @server.text_channels
     render :index
   end
 

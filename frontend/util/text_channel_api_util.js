@@ -1,7 +1,8 @@
-export const fetchTextChannels = () => {
+export const fetchTextChannels = serverId => {
   return $.ajax({
     method: 'get',
-    url: 'api/text_channels'
+    url: 'api/text_channels',
+    data: { serverId }
   });
 };
 

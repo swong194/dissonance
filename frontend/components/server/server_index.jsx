@@ -6,7 +6,7 @@ import ServerShowContainer from './server_show_container';
 import SessionDetailContainer from '../session/session_detail_container';
 import ServerUsersIndexContainer from './server_users_index_container';
 import TextChannelContainer from '../textchannel/text_channel_container';
-import TextChannelList from '../textchannel/text_channel_list';
+import TextChannelListContainer from '../textchannel/text_channel_list_container';
 import FriendIndexContainer from './friends_index_container';
 import DirectMessageIndexContainer from './direct_message_index_container';
 import DirectMessageShowContainer from './direct_message_show_container';
@@ -90,7 +90,7 @@ class ServerIndex extends React.Component {
             <div className='text-channel-list'>
               <Switch>
                 <Route path='/servers/@me' component={DirectMessageIndexContainer} />
-                <Route path='/servers/:serverId/textChannel/:textChannelId' component={TextChannelList} />
+                <Route path='/servers/:serverId/textChannel' component={TextChannelListContainer} />
               </Switch>
             </div>
             <Route path ='/servers' component={SessionDetailContainer}/>
