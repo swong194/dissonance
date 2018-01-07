@@ -10,9 +10,7 @@ class Api::TextChannelsController < ApplicationController
   end
 
   def destroy
-    debugger
     @text_channel = TextChannel.find(params[:id])
-    debugger
     if @text_channel && @text_channel.owner.id === current_user.id
       @text_channel.destroy
       render :show
@@ -22,9 +20,7 @@ class Api::TextChannelsController < ApplicationController
   end
 
   def update
-    debugger
     @text_channel = TextChannel.find(params[:id])
-    debugger
     if @text_channel && @text_channel.owner.id === current_user.id && @text_channel.update(name: params[:name])
       render :show
     else
