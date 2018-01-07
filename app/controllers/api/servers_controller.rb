@@ -9,6 +9,7 @@ class Api::ServersController < ApplicationController
   def create
     @server = Server.new(name: params[:name], owner_id: current_user.id)
     if @server.save
+      @text_channel = TextChannel.create(name:'general', server_id: @server.id)
       join_server(current_user, @server)
       render :show
     else

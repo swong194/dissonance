@@ -14,8 +14,5 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
   }
 
-  window.dispatch = store.dispatch;
-  window.textactions = textactions;
-
   ReactDOM.render(<Root store={store}/>, root);
 });
