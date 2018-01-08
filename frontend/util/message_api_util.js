@@ -6,7 +6,7 @@ export const fetchMessages = id =>{
   });
 };
 
-export const createMessages = message => {
+export const createMessage = message => {
   return $.ajax({
     method:'post',
     url: 'api/messages',

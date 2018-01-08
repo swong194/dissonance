@@ -3,14 +3,24 @@ import React from 'react';
 class TextChannelForm extends React.Component{
   constructor(props){
     super(props);
-    this.state = {body: ''};
+    this.state = {body: '', text_channel_id: this.props.channel.id};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentWillReceiveProps(newProps){
+    if(newProps.channel.id !== this.props.channel.id){
+      this.setState({text_channel_id: newProps.channel.id});
+    }
+  }
+
   handleSubmit(e){
     e.preventDefault();
-    this.props.createMessage(this.state);
+    this.props.createMessage(this.state).then(
+      ()=>{
+        this.setState({body: '', text_channel_id: this.props.channel.id});
+      }
+    );
   }
 
   handleChange(type){
