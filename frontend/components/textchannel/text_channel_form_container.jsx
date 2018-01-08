@@ -1,4 +1,4 @@
-import { createMessage } from '../../actions/message_actions';
+import { receiveMessage } from '../../actions/message_actions';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import TextChannelForm from './text_channel_form';
@@ -10,14 +10,15 @@ const mapStateToProps = (state, ownProps) => {
   }
   return{
     channel,
-    users: state.entities.users
+    users: state.entities.users,
+    currentUser: state.session.currentUser
   };
 };
 
 
 const mapDispatchToProps = dispatch => {
   return{
-    createMessage: message => dispatch(createMessage(message))
+    receiveMessage: message => dispatch(receiveMessage(message))
   };
 };
 

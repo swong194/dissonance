@@ -3,7 +3,7 @@ import React from 'react';
 class TextChannelForm extends React.Component{
   constructor(props){
     super(props);
-    this.state = {body: '', text_channel_id: this.props.channel.id};
+    this.state = {body: '', text_channel_id: this.props.channel.id, currentUserId: this.props.currentUser.id};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
@@ -19,11 +19,8 @@ class TextChannelForm extends React.Component{
     if(this.state.body.length === 0){
       return;
     }
-    this.props.createMessage(this.state).then(
-      ()=>{
-        this.setState({body: '', text_channel_id: this.props.channel.id});
-      }
-    );
+    this.chats.create(this.state);
+    this.setState({body: '', text_channel_id: this.props.channel.id});
   }
 
   handleChange(type){
@@ -31,6 +28,27 @@ class TextChannelForm extends React.Component{
       e.preventDefault();
       this.setState({[type]: e.target.value});
     };
+  }
+
+  createSocket() {
+    let cable = ActionCable.createConsumer('ws://localhost:3000/cable');
+    this.chats = cable.subscriptions.create({
+      channel: 'ChatChannel'
+    }, {
+      connected: () => {},
+      received: (message) => {
+        this.props.receiveMessage(message);
+      },
+      create: function(chatContent) {
+        this.perform('create', {
+          content: chatContent
+        });
+      }
+    });
+  }
+
+  componentWillMount(){
+    this.createSocket();
   }
 
   render(){
