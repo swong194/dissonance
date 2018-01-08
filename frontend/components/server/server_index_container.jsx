@@ -14,7 +14,7 @@ const mapStateToProps = (state, ownProps) => {
     currentUser: state.session.currentUser,
     servers: serverArray(state),
     serverFormModalOpen: state.ui.serverFormModalOpen,
-    errors: state.session.errors
+    errors: state.session.errors,
   };
 };
 

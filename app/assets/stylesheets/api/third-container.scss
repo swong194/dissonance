@@ -28,8 +28,11 @@
   height:100%;
   width: 100%;
   min-width: 1px;
-  background-color: #36393e;
+  background-color: #37393e;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 .textchannel-form-container{

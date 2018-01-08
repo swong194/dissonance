@@ -1,0 +1,42 @@
+.textchannel-form-container{
+  width: 100%;
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  color: #cccdcb;
+  flex-direction: column;
+}
+
+.textchannel-form-inner-container{
+  width: 100%;
+  form{
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+  }
+  textarea{
+    font-family: sans-serif;
+    font-size: 14px;
+    background-color: #484b51;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    resize: none;
+    overflow: hidden;
+  }
+}
+
+.hidden-message-button{
+  display:none;
+}
+
+.textchannel-break{
+  width: 97%;
+  margin: 20px auto;
+  height: 1px;
+  background-color: #424549;
+}

@@ -1,12 +1,36 @@
 import React from 'react';
 
 class TextChannelForm extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {body: ''};
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleSubmit(e){
+    e.preventDefault();
+    this.props.createMessage(this.state);
+  }
+
+  handleChange(type){
+    return e => {
+      e.preventDefault();
+      this.setState({[type]: e.target.value});
+    };
+  }
+
   render(){
     return(
       <div className='textchannel-form-container'>
-        <form>
-          <input type='text' placeholder='Message'></input>
-        </form>
+        <div className='textchannel-break'></div>
+        <div className='textchannel-form-inner-container'>
+          <form onSubmit={this.handleSubmit}>
+            <textarea type='textarea' onChange={this.handleChange('body')}
+              value={this.state.body} placeholder={`Message # ${this.props.channel.name}`}></textarea>
+            <button className='hidden-message-button'>Button-kun</button>
+          </form>
+        </div>
       </div>
     );
   }
