@@ -16,7 +16,7 @@
     display: flex;
     align-items: center;
   }
-  textarea{
+  input{
     font-family: sans-serif;
     font-size: 14px;
     background-color: #484b51;
@@ -25,8 +25,6 @@
     border-radius: 5px;
     display: flex;
     align-items: center;
-    resize: none;
-    overflow: hidden;
   }
 }
 

@@ -1,0 +1,18 @@
+.nav-bar{
+  background-color: #37393f;
+  height: 78px;
+  box-shadow: 0 1px 0 rgba(0,0,0,.2), 0 2px 0 rgba(0,0,0,.06);
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-family: arial;
+  position: relative;
+  padding: 0 10px;
+  p{
+    margin-left: 3px;
+  }
+  i{
+    font-size: 16px;
+    color: #898e93;
+  }
+}

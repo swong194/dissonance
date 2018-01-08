@@ -10,7 +10,8 @@ import TextChannelListContainer from '../textchannel/text_channel_list_container
 import FriendIndexContainer from './friends_index_container';
 import DirectMessageIndexContainer from './direct_message_index_container';
 import DirectMessageShowContainer from './direct_message_show_container';
-import SearchUsersContainer from './search_users_container.jsx';
+import SearchUsersContainer from './search_users_container';
+import ServerNavContainer from './server_nav_container';
 
 
 class ServerIndex extends React.Component {
@@ -99,7 +100,9 @@ class ServerIndex extends React.Component {
 
         <div className='third-container'>
           <div className='third-nav'>
-            I am the nav
+            <Switch>
+              <Route path='/servers/:serverId/textChannel/:textChannelId' component={ServerNavContainer} />
+            </Switch>
           </div>
           <Switch>
             <Route exact path='/servers/@me' component={FriendIndexContainer} />

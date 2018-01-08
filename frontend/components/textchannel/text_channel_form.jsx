@@ -26,8 +26,8 @@ class TextChannelForm extends React.Component{
         <div className='textchannel-break'></div>
         <div className='textchannel-form-inner-container'>
           <form onSubmit={this.handleSubmit}>
-            <textarea type='textarea' onChange={this.handleChange('body')}
-              value={this.state.body} placeholder={`Message # ${this.props.channel.name}`}></textarea>
+            <input type='textarea' onChange={this.handleChange('body')}
+              value={this.state.body} placeholder={`Message # ${this.props.channel.name}`} />
             <button className='hidden-message-button'>Button-kun</button>
           </form>
         </div>

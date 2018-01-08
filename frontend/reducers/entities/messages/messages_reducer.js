@@ -12,3 +12,5 @@ const MessagesReducer = (state = oldState, action) => {
       return state;
   }
 };
+
+export default MessagesReducer;

@@ -6,7 +6,7 @@ import { fetchServerUsers } from '../../actions/server_actions';
 const mapStateToProps = (state, ownProps) => {
   return {
     serverId: ownProps.match.params.serverId,
-    users: state.entities.users
+    users: Object.values(state.entities.users)
   };
 };
 

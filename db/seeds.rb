@@ -29,3 +29,5 @@ t3 = TextChannel.create!(server_id: s1.id, name: 'demo_text_channel_3')
 t4 = TextChannel.create!(server_id: s2.id, name: 'demo_text_channel_4')
 
 m1 = Message.create!(author_id: a.id, text_channel_id: t1.id, body:'hello everybody')
+m2 = Message.create!(author_id: a.id, text_channel_id: t1.id, body:'sup everybody')
+m3 = Message.create!(author_id: a.id, text_channel_id: t1.id, body:'moshi moshi everybody')

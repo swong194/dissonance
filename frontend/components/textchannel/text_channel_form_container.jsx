@@ -9,7 +9,8 @@ const mapStateToProps = (state, ownProps) => {
     channel = state.entities.textChannels[ownProps.match.params.textChannelId];
   }
   return{
-    channel
+    channel,
+    users: state.entities.users
   };
 };
 
