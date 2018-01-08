@@ -76,6 +76,9 @@
     cursor: pointer;
     padding: 5px 16px 5px 30px;
     width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     &:hover{
       background: linear-gradient(to right, #282b30 75%, transparent);
       color: #f8f5f9;

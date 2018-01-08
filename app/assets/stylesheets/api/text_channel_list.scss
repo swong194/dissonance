@@ -41,6 +41,9 @@
   justify-content: space-between;
   color: #6c757c;
   background-color: transparent;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   cursor: pointer;
   &:hover{
     background-color: #42464d;
@@ -56,18 +59,25 @@
   &:hover a {
     color: #dcddde;
   }
-  i{
+  .fa-cog{
+    cursor: pointer;
+    padding: 0 5px;
+    display: none;
+    &:hover{
+      color: #dcddde;
+    }
+  }
+  &:hover .fa-cog{
     display: flex;
     align-items: center;
     font-size: 14px;
     height: 100%;
   }
-  .fa-cog{
-    cursor: pointer;
-    padding: 0 5px;
-    &:hover{
-      color: #dcddde;
-    }
+  i{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    height: 100%;
   }
 }
 
