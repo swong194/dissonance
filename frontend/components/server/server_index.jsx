@@ -90,7 +90,7 @@ class ServerIndex extends React.Component {
             <div className='text-channel-list'>
               <Switch>
                 <Route path='/servers/@me' component={DirectMessageIndexContainer} />
-                <Route path='/servers/:serverId/textChannel/' component={TextChannelListContainer} />
+                <Route path='/servers/:serverId/textChannel/:textChannelId' component={TextChannelListContainer} />
               </Switch>
             </div>
             <Route path ='/servers' component={SessionDetailContainer}/>
