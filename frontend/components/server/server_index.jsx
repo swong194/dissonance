@@ -50,7 +50,7 @@ class ServerIndex extends React.Component {
 
   render(){
     const servers = this.props.servers.map(server => (
-      <ServerIndexItem key={server.id} server={server} activeServer={this.props.activeServer}/>
+      <ServerIndexItem key={server.id} server={server}/>
     ));
 
     const errorClass = this.props.errors.length ? 'main-server-errors' : 'non-active-error';
@@ -90,7 +90,7 @@ class ServerIndex extends React.Component {
             <div className='text-channel-list'>
               <Switch>
                 <Route path='/servers/@me' component={DirectMessageIndexContainer} />
-                <Route path='/servers/:serverId/textChannel' component={TextChannelListContainer} />
+                <Route path='/servers/:serverId/textChannel/' component={TextChannelListContainer} />
               </Switch>
             </div>
             <Route path ='/servers' component={SessionDetailContainer}/>
