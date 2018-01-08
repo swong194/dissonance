@@ -33,8 +33,6 @@ class Api::TextChannelsController < ApplicationController
     @text_channel = TextChannel.new(text_channel_params)
     if @text_channel.save
       render :show
-    else
-      render json: @text_channel.errors.full_messages, status: 422
     end
   end
 

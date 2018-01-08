@@ -16,6 +16,9 @@ class TextChannelForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
+    if(this.state.body.length === 0){
+      return;
+    }
     this.props.createMessage(this.state).then(
       ()=>{
         this.setState({body: '', text_channel_id: this.props.channel.id});
