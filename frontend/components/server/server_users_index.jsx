@@ -3,20 +3,20 @@ import TextChannelContainer from '../textchannel/text_channel_container';
 import { Route } from 'react-router-dom';
 
 class ServerUsersIndex extends React.Component{
-  componentDidMount(){
-    this.props.fetchServerUsers(this.props.serverId);
-  }
-
   componentWillReceiveProps(newProps){
     if(newProps.serverId !== this.props.serverId){
-      this.props.fetchServerUsers(newProps.serverId);
+      this.props.fetchUsers();
     }
   }
 
   render(){
-    const users = this.props.users.map((user, i) => (
-      <div key={i} className='server-user-item'><p>{user.username}</p></div>
-    ));
+    let users;
+    if(this.props.users.length){
+      users = this.props.users.map((user, i) => (
+        <div key={i} className='server-user-item'><p>{user.username}</p></div>
+      ));
+    }
+    
     return(
       <div className='channel-components'>
         <Route path='/servers/:serverId/textChannel/:textChannelId' component={TextChannelContainer}/>

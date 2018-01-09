@@ -4,7 +4,6 @@ export const RECEIVE_SERVERS = 'RECEIVE_SERVERS';
 export const RECEIVE_SERVER = 'RECIEVE_SERVER';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const REMOVE_SERVER = 'REMOVE_SERVER';
-export const RECEIVE_USERS = 'RECEIVE_USERS';
 
 export const receiveServers = servers => {
   return {
@@ -34,13 +33,6 @@ export const receiveErrors = errors => {
   };
 };
 
-export const receiveUsers = users => {
-  return {
-    type: RECEIVE_USERS,
-    users
-  };
-};
-
 export const fetchServers = () => dispatch => {
   return ServerAPIUtil.fetchServers().then(
     servers => (dispatch(receiveServers(servers))),
@@ -52,6 +44,13 @@ export const createServer = server => dispatch => {
   return ServerAPIUtil.createServer(server).then(
     server => (dispatch(receiveServer(server))),
     errors => (dispatch(receiveErrors(errors.responseJSON)))
+  );
+};
+
+export const fetchServer = id => dispatch => {
+  return ServerAPIUtil.fetchServer(id).then(
+    server => dispatch(receiveServer(server)),
+    errors => dispatch(receiveErrors(errors.responseJSON))
   );
 };
 
@@ -73,14 +72,6 @@ export const updateServer = (name, id) => dispatch => {
 export const joinServer = name => dispatch => {
   return ServerAPIUtil.joinServer(name).then(
     server => (dispatch(receiveServer(server))),
-    errors => (dispatch(receiveErrors(errors.responseJSON)))
-  );
-};
-
-
-export const fetchServerUsers = id => dispatch => {
-  return ServerAPIUtil.fetchServerUsers(id).then(
-    users => (dispatch(receiveUsers(users))),
     errors => (dispatch(receiveErrors(errors.responseJSON)))
   );
 };

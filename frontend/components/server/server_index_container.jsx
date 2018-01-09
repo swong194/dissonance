@@ -8,6 +8,7 @@ import {
   } from '../../actions/server_actions';
 import { serverArray } from '../../util/selectors_util';
 import { dispatchModal } from '../../actions/ui_actions';
+import { fetchUsers } from '../../actions/user_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -25,6 +26,7 @@ const mapDispatchToProps = dispatch => {
     joinServer: name => dispatch(joinServer(name)),
     createServer: server => dispatch(createServer(server)),
     dispatchModal: modalType => dispatch(dispatchModal(modalType)),
+    fetchUsers: () => dispatch(fetchUsers())
   };
 };
 

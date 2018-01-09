@@ -42,11 +42,3 @@ export const joinServer = name => {
     data: { name }
   });
 };
-
-
-export const fetchServerUsers = id =>{
-  return $.ajax({
-    method: 'get',
-    url: `api/servers/${id}/users`
-  });
-};

@@ -34,6 +34,7 @@ class ServerIndex extends React.Component {
 
   componentDidMount(){
     this.props.fetchServers();
+    this.props.fetchUsers();
   }
 
   handleCreateServer(e){

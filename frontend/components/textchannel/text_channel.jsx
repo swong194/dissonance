@@ -1,5 +1,6 @@
 import React from 'react';
 import TextChannelFormContainer from './text_channel_form_container';
+import MessageItemContainer from '../message/message_item_container';
 
 class TextChannel extends React.Component {
   componentWillReceiveProps(newProps){
@@ -16,17 +17,7 @@ class TextChannel extends React.Component {
     let messages;
     if(this.props.messages.length){
       messages = this.props.messages.reverse().map((message, i) => (
-        <div key={message.id} className='message-container'>
-          <div className='message-inner-container'>
-            <div className='message-header'>
-              <p>{this.props.users[message.author_id].username}</p>
-              <div className='message-creation'>{message.created_at}</div>
-            </div>
-            <div className='message-body'>
-              <p>{message.body}</p>
-            </div>
-          </div>
-        </div>
+        <MessageItemContainer key={i} message={message} users={this.props.users} usersIds={Object.keys(this.props.users)}/>
       ));
     }
 

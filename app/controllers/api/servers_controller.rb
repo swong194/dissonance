@@ -10,7 +10,7 @@ class Api::ServersController < ApplicationController
     @server = Server.new(name: params[:name], owner_id: current_user.id)
     if @server.save
       @text_channel = TextChannel.create(name:'general', server_id: @server.id)
-      join_server(current_user, @server)
+      join_created_server(current_user, @server)
       render :show
     else
       render json: @server.errors.full_messages, status: 422
@@ -48,21 +48,11 @@ class Api::ServersController < ApplicationController
   end
 
   def show
-    @server = Server.find(name: params[:id])
+    @server = Server.find(params[:id])
     if @server
       render :show
     else
       render json: ['Could not find server'], status: 404
-    end
-  end
-
-  def users
-    @server = Server.find(params[:id])
-    if @server
-      @users = @server.users
-      render 'api/users/index'
-    else
-      render json: ['Error in obtaining server users'], status: 422
     end
   end
 
@@ -73,5 +63,11 @@ class Api::ServersController < ApplicationController
 
   def join_server(user, server)
     ServerMembership.create(user_id: user.id, server_id: server.id)
+  end
+
+  def join_created_server(user, server)
+    if(user.id == server.owner.id)
+      ServerMembership.create(user_id: user.id, server_id: server.id)
+    end
   end
 end
