@@ -31,7 +31,7 @@ class TextChannelForm extends React.Component{
   }
 
   createSocket() {
-    let cable = ActionCable.createConsumer('ws://localhost:3000/cable');
+    let cable = ActionCable.createConsumer();
     this.chats = cable.subscriptions.create({
       channel: 'ChatChannel'
     }, {
