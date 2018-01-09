@@ -25,7 +25,7 @@ class Api::TextChannelsController < ApplicationController
     if @text_channel && @text_channel.owner.id === current_user.id && @text_channel.update(name: params[:name])
       render :show
     else
-      render json: ["Could not update Text Channel"], status: 422
+      render json: @text_channel.errors.full_messages, status: 422
     end
   end
 

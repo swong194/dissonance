@@ -64,7 +64,7 @@ export const deleteTextChannel = id => dispatch => {
 
 export const updateTextChannel = (name, id) => dispatch => {
   return TextChannelApi.updateTextChannel(name, id).then(
-    channels => dispatch(receiveTextChannel(channel)),
+    channel => dispatch(receiveTextChannel(channel)),
     errors => dispatch(receiveErrors(errors.responseJSON))
   );
 };
