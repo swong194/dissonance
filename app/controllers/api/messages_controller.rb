@@ -1,7 +1,7 @@
 class Api::MessagesController < ApplicationController
   def index
     @text_channel = TextChannel.find(params[:id])
-    @messages = @text_channel.messages.order(created_at: :desc)
+    @messages = @text_channel.messages
     render :index
   end
 

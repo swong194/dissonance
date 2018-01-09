@@ -51,7 +51,7 @@ class ServerIndex extends React.Component {
 
   render(){
     const servers = this.props.servers.map(server => (
-      <ServerIndexItem key={server.id} server={server}/>
+      <ServerIndexItem dispatchActiveChannel={this.props.dispatchActiveChannel} key={server.id} server={server}/>
     ));
 
     const errorClass = this.props.errors.length ? 'main-server-errors' : 'non-active-error';

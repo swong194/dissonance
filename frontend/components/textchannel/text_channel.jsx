@@ -15,7 +15,7 @@ class TextChannel extends React.Component {
   render(){
     let messages;
     if(this.props.messages.length){
-      messages = this.props.messages.map((message, i) => (
+      messages = this.props.messages.reverse().map((message, i) => (
         <div className='message-container'>
           <div className='message-inner-container'>
             <div className='message-header'>
