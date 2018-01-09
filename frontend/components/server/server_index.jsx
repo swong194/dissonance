@@ -20,7 +20,8 @@ class ServerIndex extends React.Component {
     this.state = {update:'', createServerName: '', joinServerName: ''};
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
-    this.handleServerFormSubmit = this.handleServerFormSubmit.bind(this);
+    this.handleJoinServer = this.handleJoinServer.bind(this);
+    this.handleCreateServer = this.handleCreateServer.bind(this);
   }
 
   openModal(){
@@ -35,12 +36,14 @@ class ServerIndex extends React.Component {
     this.props.fetchServers();
   }
 
-  handleServerFormSubmit(type){
-    if(type === 'join'){
-      this.props.joinServer(this.state.joinServerName);
-    } else {
-      this.props.createServer(this.state.createServerName);
-    }
+  handleCreateServer(e){
+    e.preventDefault();
+    this.props.createServer(this.state.createServerName);
+  }
+
+  handleJoinServer(e){
+    e.preventDefault();
+    this.props.joinServer(this.state.joinServerName);
   }
 
   handleChange(type){
@@ -119,7 +122,7 @@ class ServerIndex extends React.Component {
             <h1>OH, ANOTHER SERVER HUH?</h1>
 
             <div className='serverForm-container'>
-              <form className='createForm' onSubmit={()=>this.handleServerFormSubmit('create')}>
+              <form className='createForm' onSubmit={this.handleCreateServer}>
                 <h1>Create</h1>
                 <p>{`Create a new server and invite your friends. It's free`}</p>
                 <label htmlFor='createServer'>SERVER NAME</label>
@@ -132,7 +135,7 @@ class ServerIndex extends React.Component {
 
               <div className='serverFormModal-or'><p>or</p></div>
 
-              <form className='joinForm' onSubmit={()=>this.handleServerFormSubmit('join')}>
+              <form className='joinForm' onSubmit={this.handleJoinServer}>
                 <h1>Join</h1>
                 <p>Enter the Server you want to join.</p>
                 <label htmlFor='joinServer'>SERVER NAME</label>
