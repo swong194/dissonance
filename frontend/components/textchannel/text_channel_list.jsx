@@ -7,7 +7,9 @@ class TextChannelList extends React.Component{
     super(props);
     this.openChannelModal = this.openChannelModal.bind(this);
     this.closeChannelModal = this.closeChannelModal.bind(this);
-    this.state = { modalId : null };
+    this.state = { modalId : null, modalName: null };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
   }
 
   componentWillReceiveProps(newProps){
@@ -16,8 +18,8 @@ class TextChannelList extends React.Component{
     }
   }
 
-  openChannelModal(id){
-    this.setState({modalId: id});
+  openChannelModal(id, name){
+    this.setState({modalId: id, modalName: name});
     this.props.dispatchModal('openChannelModal');
   }
 
@@ -27,6 +29,18 @@ class TextChannelList extends React.Component{
 
   componentDidMount(){
     this.props.fetchTextChannels(this.props.serverId);
+  }
+
+  handleChange(type){
+    return e => {
+      e.preventDefault();
+      this.setState({[type]: e.target.value});
+    };
+  }
+
+  handleUpdate(e){
+    e.preventDefault();
+    this.props.updateTextChannel(this.state.modalName, this.state.modalId);
   }
 
   render(){
@@ -41,7 +55,7 @@ class TextChannelList extends React.Component{
             <i className="fa fa-hashtag" aria-hidden="true"></i>
             <span>{textchannel.name}</span>
           </NavLink>
-          <i onClick={() => this.openChannelModal(textchannel.id)}
+          <i onClick={() => this.openChannelModal(textchannel.id, textchannel.name)}
             className="fa fa-cog channel-settings" aria-hidden="true"></i>
         </div>
       ));
@@ -52,20 +66,44 @@ class TextChannelList extends React.Component{
         {textChannels}
 
         <Modal style={{overlay:{ backgroundColor: 'rgba(0,0,0,.8)'} } }
-          ariaHideApp={false} className={ { base:'serverFormModal' } }
+          ariaHideApp={false} className={ { base:'channel-form-modal' } }
           isOpen={this.props.openChannelModal}>
-          Hi from Modal
           <div className='text-channel-form-container'>
-            <div className='text-channel-form-side-bar'>
+            <div className='text-channel-form-inner-container'>
+
+              <div className='text-channel-form-side-bar-container'>
+                <div className='text-channel-form-side-bar-inner-container'>
+
+                  <div className='text-channel-form-side-bar-details'>
+                    <i className="fa fa-hashtag" aria-hidden="true"></i>
+                    <p>{this.state.modalName}</p>
+                    <span>TEXT CHANNELS</span>
+                  </div>
+                  <div className='text-channel-form-side-bar-options'>
+                    <div className='selected'><p>Overview</p></div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div className='text-channel-form-main-container'>
+                <div className='text-channel-form-main-inner-container'>
+                  <h1>OVERVIEW</h1>
+                  <form onSubmit={this.handleUpdate}>
+                    <label htmlFor='channel-name'>CHANNEL NAME</label>
+                    <input id='channel-name' onChange={this.handleChange('modalName')} value={this.state.modalName}/>
+                    <button className='text-channel-edit-button'></button>
+                  </form>
+                </div>
+                <div className='text-channel-form-exit'>
+                  <button onClick={this.closeChannelModal}><p>X</p></button>
+                  <p>ESC</p>
+                </div>
+              </div>
+
             </div>
-            <div className='text-channel-form-main'>
-              <form>
-                <input/>
-                <button></button>
-              </form>
-            </div>
+
           </div>
-          <button onClick={this.closeChannelModal}></button>
         </Modal>
       </div>
     );
