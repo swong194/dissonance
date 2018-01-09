@@ -16,7 +16,7 @@ class TextChannel extends React.Component {
     let messages;
     if(this.props.messages.length){
       messages = this.props.messages.reverse().map((message, i) => (
-        <div className='message-container'>
+        <div key={message.id} className='message-container'>
           <div className='message-inner-container'>
             <div className='message-header'>
               <p>{this.props.users[message.author_id].username}</p>
