@@ -6,6 +6,21 @@ class Api::ServersController < ApplicationController
     render :index
   end
 
+  def create_direct
+    if current_user.servers.where(direct_message: true).any? { |server| server.users.ids.include?(params[:id]) }
+      @server = Server.where(direct_message: true).select { |server| server.users.ids.include?(params[:id])}
+      render :show
+    else
+      @server = Server.new(name: "direct_message #{current_user.username} #{params[:id]}", owner_id: current_user.id, direct_message: true)
+      if @server.save
+        @text_channel = TextChannel.create(name:'general' , server_id: @server.id)
+        join_created_server(current_user, @server)
+        join_server(User.find(params[:id]), @server)
+        render :show
+      end
+    end
+  end
+
   def create
     @server = Server.new(name: params[:name], owner_id: current_user.id)
     if @server.save
@@ -28,7 +43,7 @@ class Api::ServersController < ApplicationController
 
   def join
     @server = Server.find_by(name: params[:name])
-    if !current_user.servers.include?(@server) && @server
+    if !current_user.servers.include?(@server) && @server && @server.direct_message == false
       join_server(current_user, @server)
       render :show
     elsif !@server
