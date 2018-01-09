@@ -59,7 +59,7 @@ class SessionForm extends React.Component {
     return (
       <div id='session-form' className={`background-${this.props.number}`}>
         <div className='logo-responsive'>
-          <img src='/assets/for_black_logo' alt='dissonance logo'/>
+          <img src={window.staticImages.for_black_logo} alt='dissonance logo'/>
         </div>
         <main>
         <div id='brand'>
