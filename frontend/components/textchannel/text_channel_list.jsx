@@ -66,7 +66,9 @@ class TextChannelList extends React.Component{
         {textChannels}
 
         <Modal style={{overlay:{ backgroundColor: 'rgba(0,0,0,.8)'} } }
-          ariaHideApp={false} className={ { base:'channel-form-modal' } }
+          ariaHideApp={false} className={ { base:'channel-form-modal',
+            afterOpen: 'myClass_after-open',
+            beforeClose: 'myClass_before-close' } }
           isOpen={this.props.openChannelModal}>
           <div className='text-channel-form-container'>
             <div className='text-channel-form-inner-container'>

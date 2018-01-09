@@ -114,7 +114,11 @@ class ServerIndex extends React.Component {
           </Switch>
         </div>
 
-        <Modal style={{overlay:{ backgroundColor: 'rgba(0,0,0,.8)'} } } ariaHideApp={false} className={ { base:'serverFormModal' } } isOpen={this.props.serverFormModalOpen}>
+        <Modal style={{overlay:{ backgroundColor: 'rgba(0,0,0,.8)'} } }
+          ariaHideApp={false}
+          className={ { base:'serverFormModal',
+            afterOpen: '',
+            beforeClose: '' } } isOpen={this.props.serverFormModalOpen}>
 
           <button onClick={this.closeModal}>X</button>
 

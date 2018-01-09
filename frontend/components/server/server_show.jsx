@@ -77,7 +77,10 @@ class ServerShow extends React.Component {
         </div>
 
 
-        <Modal className={{base:'serverUpdateModal'}} style={{overlay:{ backgroundColor: 'rgba(0,0,0,.8)'} } } ariaHideApp={false} isOpen={this.props.updateServerModalOpen}>
+        <Modal className={{base:'serverUpdateModal',
+          afterOpen: '',
+          beforeClose: ''}}
+          style={{overlay:{ backgroundColor: 'rgba(0,0,0,.8)'} } } ariaHideApp={false} isOpen={this.props.updateServerModalOpen}>
 
           <div className='update-server-modal-container'>
             <div className='update-server-modal-inner-container'>
@@ -86,7 +89,7 @@ class ServerShow extends React.Component {
                 <label htmlFor='server-name'>SERVER NAME</label>
                   <input value={this.state.updateName} onChange={this.handleUpdateChange} id='server-name' type='text' placeholder={this.props.server.name}/>
                   <div onClick={this.clearInput} className='clear-button'>Reset Nickname</div>
-                  <div class='update-server-buttons'>
+                  <div className='update-server-buttons'>
                   <button className='cancel-button' onClick={() => this.closeModal()}>Cancel</button>
                   <button className='blue-button'>Save</button>
                 </div>
@@ -96,7 +99,9 @@ class ServerShow extends React.Component {
 
         </Modal>
 
-        <Modal className={{base:'serverDeleteModal'}} style={{overlay:{ backgroundColor: 'rgba(0,0,0,.8)'} } } ariaHideApp={false} isOpen={this.props.deleteServerModalOpen}>
+        <Modal className={{base:'serverDeleteModal',
+          afterOpen: '',
+          beforeClose: ''}} style={{overlay:{ backgroundColor: 'rgba(0,0,0,.8)'} } } ariaHideApp={false} isOpen={this.props.deleteServerModalOpen}>
           <div className='delete-server-modal-container'>
             <div className='delete-server-modal-inner-container'>
               <h1>DELETE {`'${this.props.server.name}'`}.</h1>
