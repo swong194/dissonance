@@ -20,7 +20,7 @@ const mapDispatchToProps = dispatch => {
     createTextChannel: (textChannel) => dispatch(createTextChannel(textChannel)),
     deleteTextChannel: id => dispatch(deleteTextChannel(id)),
     updateTextChannel: (name, id) => dispatch(updateTextChannel(name, id)),
-    dispatchModal: (modalType) => dispatch(dispatchModal(modalType))
+    dispatchModal: (modalType) => dispatch(dispatchModal(modalType)),
   };
 };
 

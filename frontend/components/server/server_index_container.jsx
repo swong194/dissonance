@@ -25,7 +25,6 @@ const mapDispatchToProps = dispatch => {
     joinServer: name => dispatch(joinServer(name)),
     createServer: server => dispatch(createServer(server)),
     dispatchModal: modalType => dispatch(dispatchModal(modalType)),
-    dispatchActiveChannel: id => dispatch(dispatchActiveChannel(id))
   };
 };
 

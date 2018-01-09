@@ -50,11 +50,21 @@ class TextChannelList extends React.Component{
     return (
       <div className='text-channel-list-container'>
         {textChannels}
-        
+
         <Modal style={{overlay:{ backgroundColor: 'rgba(0,0,0,.8)'} } }
           ariaHideApp={false} className={ { base:'serverFormModal' } }
           isOpen={this.props.openChannelModal}>
           Hi from Modal
+          <div className='text-channel-form-container'>
+            <div className='text-channel-form-side-bar'>
+            </div>
+            <div className='text-channel-form-main'>
+              <form>
+                <input/>
+                <button></button>
+              </form>
+            </div>
+          </div>
           <button onClick={this.closeChannelModal}></button>
         </Modal>
       </div>

@@ -1,8 +1,7 @@
-export const fetchMessages = id =>{
+export const fetchMessages = () =>{
   return $.ajax({
     method: 'get',
-    url: 'api/messages',
-    data: { id }
+    url: 'api/messages'
   });
 };
 

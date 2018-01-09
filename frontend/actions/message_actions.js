@@ -25,8 +25,8 @@ export const receiveErrors = errors => {
   };
 };
 
-export const fetchMessages = id => dispatch => {
-  return MessageAPIUtil.fetchMessages(id).then(
+export const fetchMessages = () => dispatch => {
+  return MessageAPIUtil.fetchMessages().then(
     messages => dispatch(receiveMessages(messages)),
     errors => dispatch(receiveErrors(errors.responseJSON))
   );

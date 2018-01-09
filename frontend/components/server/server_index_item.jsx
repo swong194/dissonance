@@ -5,7 +5,6 @@ class ServerIndexItem extends React.Component{
   constructor(props){
     super(props);
     this.determineActive = this.determineActive.bind(this);
-    this.handleActiveChannel = this.handleActiveChannel.bind(this);
   }
 
   determineActive(match, location){
@@ -16,16 +15,9 @@ class ServerIndexItem extends React.Component{
     }
   }
 
-  handleActiveChannel(){
-    const activeChannel = this.props.location.pathname.slice(this.props.location.pathname.indexOf('l/')).slice(2);
-    this.props.dispatchActiveChannel(activeChannel);
-  }
-
-
   render(){
     return (
       <NavLink
-        onClick={this.handleActiveChannel}
         isActive={this.determineActive}
         activeClassName='active-server'
         className='server-item'
