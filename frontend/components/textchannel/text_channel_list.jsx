@@ -107,6 +107,7 @@ class TextChannelList extends React.Component{
 
           </div>
         </Modal>
+        
       </div>
     );
   }
