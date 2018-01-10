@@ -54,3 +54,6 @@ m6 = Message.create!(author_id: b.id, text_channel_id: t5.id, body: 'hello demo!
 m7 = Message.create!(author_id: a.id, text_channel_id: t6.id, body: 'hello world!')
 m8 = Message.create!(author_id: c.id, text_channel_id: t6.id, body: 'WHOA~!')
 m9 = Message.create!(author_id: b.id, text_channel_id: t7.id, body: 'HEHEHE')
+
+
+##Friendship Seeding##

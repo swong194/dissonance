@@ -22,14 +22,16 @@ class DirectMessageIndex extends React.Component{
     }
   }
 
-
-
   render(){
-    const directMessages = this.props.directMessages.map(directMessage => (
-      <NavLink activeClassName='active-direct-message' className='direct-message-item' onClick={this.getChannel(directMessage.textChannelId)} key={directMessage.id} to={`/servers/@me/${directMessage.textChannelId}`}>
-        <p>{this.props.users[directMessage.user].username}</p>
-      </NavLink>
-    ));
+    let directMessages;
+
+    if(this.props.directMessages.length){
+      directMessages = this.props.directMessages.map(directMessage => (
+        <NavLink activeClassName='active-direct-message' className='direct-message-item' onClick={this.getChannel(directMessage.textChannelId)} key={directMessage.id} to={`/servers/@me/${directMessage.textChannelId}`}>
+          <p>{this.props.users[directMessage.user].username}</p>
+        </NavLink>
+      ));
+    }
 
     return (
       <div className='direct-message-container'>
