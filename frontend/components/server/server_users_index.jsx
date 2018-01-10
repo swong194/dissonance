@@ -3,6 +3,15 @@ import TextChannelContainer from '../textchannel/text_channel_container';
 import { Route } from 'react-router-dom';
 
 class ServerUsersIndex extends React.Component{
+  constructor(props){
+    super(props);
+    this.handleMessageModal = this.handleMessageModal.bind(this);
+  }
+
+  directMessage(id){
+
+  }
+
   componentWillReceiveProps(newProps){
     if(newProps.serverId !== this.props.serverId){
       this.props.fetchUsers();
@@ -13,10 +22,10 @@ class ServerUsersIndex extends React.Component{
     let users;
     if(this.props.users.length){
       users = this.props.users.map((user, i) => (
-        <div key={i} className='server-user-item'><p>{user.username}</p></div>
+        <div onClick={this.handleMessageModal} key={i} className='server-user-item'><p>{user.username}</p></div>
       ));
     }
-    
+
     return(
       <div className='channel-components'>
         <Route path='/servers/:serverId/textChannel/:textChannelId' component={TextChannelContainer}/>

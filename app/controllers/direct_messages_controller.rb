@@ -1,6 +1,8 @@
 class Api::DirectMessagesController < ApplicationController
   def index
+    debugger
     @servers = current_user.servers.where(direct_message: true)
+    debugger
   end
 
   def create
@@ -20,7 +22,7 @@ class Api::DirectMessagesController < ApplicationController
 
   def show
     @server = Server.find(params[:id])
-    render : show
+    render :show
   end
 
 end

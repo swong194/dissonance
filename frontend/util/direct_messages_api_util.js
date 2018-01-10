@@ -1,21 +1,21 @@
 export const fetchDirectMessages = () =>{
-  return {
+  return $.ajax({
     method: 'get',
     url: 'api/direct_messages'
-  };
+  });
 };
 
 export const createDirectMessage = id => {
-  return {
+  return $.ajax({
     method: 'post',
     url: 'api/direct_messages',
     data: { id }
-  };
+  });
 };
 
 export const fetchDirectMessage = id => {
-  return{
+  return $.ajax({
     method: 'get',
     url: `api/direct_messages/${id}`
-  };
+  });
 };

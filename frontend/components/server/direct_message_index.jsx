@@ -4,7 +4,7 @@ class DirectMessageIndex extends React.Component{
   componentDidMount(){
     this.props.fetchDirectMessages();
   }
-  
+
   render(){
     return (
       <div className='direct_message_index_container'>

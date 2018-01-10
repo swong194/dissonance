@@ -14,4 +14,4 @@ const DirectMessagesReducer = (state = oldState, action)=>{
   }
 };
 
-export default DirectMessageReducer;
+export default DirectMessagesReducer;
