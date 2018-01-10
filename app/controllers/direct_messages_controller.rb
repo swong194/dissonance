@@ -18,4 +18,9 @@ class Api::DirectMessagesController < ApplicationController
     end
   end
 
+  def show
+    @server = Server.find(params[:id])
+    render : show
+  end
+
 end
