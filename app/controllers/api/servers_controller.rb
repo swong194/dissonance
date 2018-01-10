@@ -2,7 +2,7 @@ class Api::ServersController < ApplicationController
   before_action :ensure_login
 
   def index
-    @servers = current_user.servers
+    @servers = current_user.servers.where(direct_message: false)
     render :index
   end
 
