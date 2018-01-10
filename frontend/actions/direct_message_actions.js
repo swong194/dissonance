@@ -41,7 +41,10 @@ export const fetchDirectMessage = id => dispatch => {
 
 export const createDirectMessage = id => dispatch => {
   return DirectMessageAPIUtil.createDirectMessage(id).then(
-    message => dispatch(receiveDirectMessage(message)),
+    message => {
+      dispatch(receiveDirectMessage(message));
+      return message;
+    },
     errors => dispatch(receiveErrors(errors.responseJSON))
   );
 };

@@ -160,8 +160,67 @@
 }
 
 .message-modal-inner-container{
-  width: 300px;
-  height: 400px;
+  width: 200px;
+  height: 300px;
   background-color: #303136;
   border-radius: 5px;
+  display: flex;
+  color: white;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: sans-serif;
+  i{
+    font-size: 30px;
+    transition: color .25s;
+    &:hover{
+      color: #f04747;
+    }
+  }
+  button{
+    cursor: pointer;
+    &:hover{
+      transition: background-color .25s;
+    }
+  }
+}
+
+.message-modal-top{
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  height: 150px;
+  background-color: #212226;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  p{
+    font-size: 16px;
+    text-transform: uppercase;
+    height: auto;
+  }
+  button{
+    background-color: transparent;
+    height: auto;
+    width: auto;
+  }
+}
+
+.message-modal-bottom{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &>button{
+    background-color: #7189da;
+    border-radius: 5px;
+    width: 175px;
+    color: white;
+    height: 50px;
+    display: flex;
+    font-size: 16px;
+    justify-content: center;
+    align-items: center;
+    &:hover{
+      background-color: #556596;
+    }
+  }
 }

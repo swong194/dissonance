@@ -7,11 +7,14 @@ class ServerUsersIndex extends React.Component{
   constructor(props){
     super(props);
     this.handleMessageModal = this.handleMessageModal.bind(this);
+    this.createMessage = this.createMessage.bind(this);
     this.state = { user: 'demo' };
   }
 
-  directMessage(id){
-
+  createMessage(){
+    this.props.createDirectMessage(this.state.user.id).then(
+      (server) => this.props.history.push(`/servers/@me/${server.textChannelId}`)
+    );
   }
 
   componentWillReceiveProps(newProps){
@@ -31,7 +34,7 @@ class ServerUsersIndex extends React.Component{
     let users;
     if(this.props.users.length){
       users = this.props.users.map((user, i) => (
-        <div onClick={this.handleMessageModal(user)} key={i} className='server-user-item'><p>{user.username}</p></div>
+        <div onClick={this.handleMessageModal(user)} key={user.id} className='server-user-item'><p>{user.username}</p></div>
       ));
     }
 
@@ -45,9 +48,6 @@ class ServerUsersIndex extends React.Component{
         </div>
       </div>
 
-
-
-
       <Modal isOpen={this.props.openMessageModal}
         style={{overlay:{ backgroundColor: 'rgba(0,0,0,.8)'} } }
         ariaHideApp={false}
@@ -55,12 +55,16 @@ class ServerUsersIndex extends React.Component{
 
         <div className='message-modal-container'>
           <div className='message-modal-inner-container'>
-            <button onClick={this.props.dispatchModal}>CLOSE ME</button>
-            HELLO FROM MESSAGE MODAL
-            <p>{this.state.user.username}</p>
+            <div className='message-modal-top'>
+              <p>{this.state.user.username}</p>
+              <button onClick={this.props.dispatchModal}><i className="fa fa-times-circle-o" aria-hidden="true"></i></button>
+            </div>
+            <div className='message-modal-bottom'>
+              <button onClick={this.createMessage}>Message {this.state.user.username}?</button>
+            </div>
           </div>
         </div>
-        
+
       </Modal>
 
     </div>
