@@ -48,7 +48,11 @@ class ServerIndex extends React.Component {
 
   handleJoinServer(e){
     e.preventDefault();
-    this.props.joinServer(this.state.joinServerName);
+    this.props.joinServer(this.state.joinServerName).then(
+      server => {
+        this.props.history.push(`/servers/${server.id}/textChannel/${server.text_channels[0]}`)
+      }
+    );
   }
 
   handleChange(type){

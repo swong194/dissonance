@@ -10,6 +10,7 @@ import {
 import { serverArray } from '../../util/selectors_util';
 import { dispatchModal } from '../../actions/ui_actions';
 import { fetchUsers } from '../../actions/user_actions';
+import { fetchTextChannels } from '../../actions/text_channel_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -29,7 +30,8 @@ const mapDispatchToProps = dispatch => {
     createServer: server => dispatch(createServer(server)),
     dispatchModal: modalType => dispatch(dispatchModal(modalType)),
     fetchUsers: () => dispatch(fetchUsers()),
-    removeServer: id => dispatch(removeServer(id))
+    removeServer: id => dispatch(removeServer(id)),
+    fetchTextChannels: id => dispatch(fetchTextChannels(id))
   };
 };
 

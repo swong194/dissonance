@@ -77,7 +77,10 @@ export const updateServer = (name, id) => dispatch => {
 
 export const joinServer = name => dispatch => {
   return ServerAPIUtil.joinServer(name).then(
-    server => (dispatch(receiveServer(server))),
+    server => {
+      (dispatch(receiveServer(server)));
+      return server;
+    },
     errors => (dispatch(receiveErrors(errors.responseJSON)))
   );
 };
