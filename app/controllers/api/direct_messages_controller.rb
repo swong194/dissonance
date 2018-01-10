@@ -6,8 +6,8 @@ class Api::DirectMessagesController < ApplicationController
   def create
     if current_user.id.to_s == params[:id]
       render json: ['cannot message yourself'], status: 422
-    elsif current_user.servers.where(direct_message: true).any? { |server| server.users.ids.include?(params[:id]) }
-      @server = Server.where(direct_message: true).find { |server| server.users.ids.include?(params[:id]) && server.users.ids.include?(current_user.id.to_s)}
+    elsif current_user.servers.where(direct_message: true).any? { |server| server.users.ids.include?(params[:id].to_i) }
+      @server = Server.where(direct_message: true).find { |server| server.users.ids.include?(params[:id].to_i) && server.users.ids.include?(current_user.id)}
       render 'api/direct_messages/show.json.jbuilder'
     else
       @server = Server.new(name: "direct_message #{current_user.username} #{params[:id]}", owner_id: current_user.id, direct_message: true)
