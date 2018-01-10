@@ -5,6 +5,7 @@ import TextChannelForm from './text_channel_form';
 
 const mapStateToProps = (state, ownProps) => {
   let channel = {};
+  
   if(state.entities.textChannels[ownProps.match.params.textChannelId]){
     channel = state.entities.textChannels[ownProps.match.params.textChannelId];
   }

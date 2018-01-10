@@ -2,6 +2,8 @@ import { connect } from 'react-redux';
 import ServerUsersIndex from './server_users_index';
 import { withRouter } from 'react-router-dom';
 import { fetchUsers } from '../../actions/user_actions';
+import { dispatchModal } from '../../actions/ui_actions';
+import { createDirectMessage } from '../../actions/direct_message_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let users = [];
@@ -13,14 +15,17 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     serverId: ownProps.match.params.serverId,
-    users
+    users,
+    openMessageModal: state.ui.openMessageModal
   };
 };
 
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchUsers: () => dispatch(fetchUsers())
+    fetchUsers: () => dispatch(fetchUsers()),
+    dispatchModal: (modalType) => dispatch(dispatchModal(modalType)),
+    createDirectMessage: id => dispatch(createDirectMessage(id))
   };
 };
 

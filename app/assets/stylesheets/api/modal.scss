@@ -149,3 +149,19 @@
     transform: scale(1);
   }
 }
+
+
+.message-modal-container{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.message-modal-inner-container{
+  width: 300px;
+  height: 400px;
+  background-color: #303136;
+  border-radius: 5px;
+}

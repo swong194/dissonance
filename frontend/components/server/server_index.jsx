@@ -72,13 +72,11 @@ class ServerIndex extends React.Component {
     }, {
       connected: () => {},
       received: (serverId) => {
-        debugger
         if(this.props.serverIds.includes(String(serverId.serverId)) &&
           String(serverId.serverId) === this.props.location.pathname.slice(9, this.props.location.pathname.indexOf('/textChannel'))){
           this.props.history.push('/servers/@me');
           this.props.removeServer(serverId.serverId);
         } else if (this.props.serverIds.includes(String(serverId.serverId))){
-          debugger
           this.props.removeServer(serverId.serverId);
         } else {
           return;
@@ -144,7 +142,7 @@ class ServerIndex extends React.Component {
           </div>
           <Switch>
             <Route exact path='/servers/@me' component={FriendIndexContainer} />
-            <Route exact path='/servers/@me/:textChannelId' component={DirectMessageShowContainer} />
+            <Route exact path='/servers/@me/:textChannelId' component={TextChannelContainer} />
             <Route path='/servers/:serverId' component={ServerUsersIndexContainer}/>
           </Switch>
         </div>

@@ -3,7 +3,8 @@ import { RECEIVE_MODAL, REMOVE_MODAL } from '../actions/ui_actions';
 const oldState = { serverFormModalOpen: false,
   updateServerModal: false,
   deleteServerModal: false,
-  openChannelModal: false
+  openChannelModal: false,
+  openMessageModal: false
 };
 
 const UiReducer = (state = oldState, action) => {

@@ -85,6 +85,12 @@
 .active-text-channel{
   background-color: #42464d;
   border-radius: 3px;
+  .fa-cog{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    height: 100%;
+  }
 }
 
 .text-channel-form-container{
