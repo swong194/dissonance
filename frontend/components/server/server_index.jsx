@@ -39,7 +39,11 @@ class ServerIndex extends React.Component {
 
   handleCreateServer(e){
     e.preventDefault();
-    this.props.createServer(this.state.createServerName);
+    this.props.createServer(this.state.createServerName).then(
+      server => {
+        this.props.history.push(`/servers/${server.id}/textChannel/${server.text_channels[0]}`)
+      }
+    );
   }
 
   handleJoinServer(e){
@@ -51,6 +55,32 @@ class ServerIndex extends React.Component {
     return (e) => {
       this.setState({[type]: e.target.value});
     };
+  }
+
+  componentWillMount(){
+    this.createSocket();
+  }
+
+  createSocket() {
+    let cable = ActionCable.createConsumer();
+    this.servers = cable.subscriptions.create({
+      channel: 'ServerChannel'
+    }, {
+      connected: () => {},
+      received: (serverId) => {
+        debugger
+        if(this.props.serverIds.includes(String(serverId.serverId)) &&
+          String(serverId.serverId) === this.props.location.pathname.slice(9, this.props.location.pathname.indexOf('/textChannel'))){
+          this.props.history.push('/servers/@me');
+          this.props.removeServer(serverId.serverId);
+        } else if (this.props.serverIds.includes(String(serverId.serverId))){
+          debugger
+          this.props.removeServer(serverId.serverId);
+        } else {
+          return;
+        }
+      }
+    });
   }
 
   render(){

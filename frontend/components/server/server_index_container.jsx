@@ -4,7 +4,8 @@ import { logoutUser } from '../../actions/session_actions';
 import {
   fetchServers,
   joinServer,
-  createServer
+  createServer,
+  removeServer
   } from '../../actions/server_actions';
 import { serverArray } from '../../util/selectors_util';
 import { dispatchModal } from '../../actions/ui_actions';
@@ -16,6 +17,7 @@ const mapStateToProps = (state, ownProps) => {
     servers: serverArray(state),
     serverFormModalOpen: state.ui.serverFormModalOpen,
     errors: state.session.errors,
+    serverIds: Object.keys(state.entities.servers)
   };
 };
 
@@ -26,7 +28,8 @@ const mapDispatchToProps = dispatch => {
     joinServer: name => dispatch(joinServer(name)),
     createServer: server => dispatch(createServer(server)),
     dispatchModal: modalType => dispatch(dispatchModal(modalType)),
-    fetchUsers: () => dispatch(fetchUsers())
+    fetchUsers: () => dispatch(fetchUsers()),
+    removeServer: id => dispatch(removeServer(id))
   };
 };
 

@@ -5,7 +5,7 @@ import { Route } from 'react-router-dom';
 class ServerUsersIndex extends React.Component{
   constructor(props){
     super(props);
-    this.handleMessageModal = this.handleMessageModal.bind(this);
+    // this.handleMessageModal = this.handleMessageModal.bind(this);
   }
 
   directMessage(id){

@@ -42,7 +42,10 @@ export const fetchServers = () => dispatch => {
 
 export const createServer = server => dispatch => {
   return ServerAPIUtil.createServer(server).then(
-    server => (dispatch(receiveServer(server))),
+    server => {
+      (dispatch(receiveServer(server)));
+      return server;
+    },
     errors => (dispatch(receiveErrors(errors.responseJSON)))
   );
 };
@@ -57,7 +60,10 @@ export const fetchServer = id => dispatch => {
 
 export const deleteServer = id => dispatch => {
   return ServerAPIUtil.deleteServer(id).then(
-    () => (dispatch(removeServer(id))),
+    (server) => {
+      dispatch(removeServer(id))
+      return server;
+    },
     errors => (dispatch(receiveErrors(errors.responseJSON)))
   );
 };

@@ -40,7 +40,6 @@ class ServerShow extends React.Component {
 
   handleDelete(id){
     this.props.deleteServer(id);
-    this.props.history.push('/servers/@me');
   }
 
   closeModal(){
