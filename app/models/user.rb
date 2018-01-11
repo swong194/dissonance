@@ -25,6 +25,14 @@ class User < ApplicationRecord
   class_name: 'Message',
   foreign_key: :author_id
 
+  has_many :friendships,
+  class_name: 'Friend',
+  foreign_key: :user_one
+
+  has_many :friends,
+  through: :friendships,
+  source: :second_user
+
   attr_reader :password
 
   def self.find_by_credentials(username, password)

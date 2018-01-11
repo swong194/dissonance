@@ -9,6 +9,8 @@ User.destroy_all
 Server.destroy_all
 ServerMembership.destroy_all
 TextChannel.destroy_all
+Message.destroy_all
+Friend.destroy_all
 
 a = User.create!(username: 'demo', password: 'password')
 b = User.create!(username: 'demo2', password: 'password')
@@ -55,5 +57,11 @@ m7 = Message.create!(author_id: a.id, text_channel_id: t6.id, body: 'hello world
 m8 = Message.create!(author_id: c.id, text_channel_id: t6.id, body: 'WHOA~!')
 m9 = Message.create!(author_id: b.id, text_channel_id: t7.id, body: 'HEHEHE')
 
+##Friend Seeding##
 
-##Friendship Seeding##
+f1 = Friend.create!(user_one: a.id, user_two: b.id)
+f2 = Friend.create!(user_one: b.id, user_two: a.id)
+f3 = Friend.create!(user_one: a.id, user_two: c.id)
+f4 = Friend.create!(user_one: c.id, user_two: a.id)
+f5 = Friend.create!(user_one: b.id, user_two: c.id)
+f6 = Friend.create!(user_one: c.id, user_two: b.id)
