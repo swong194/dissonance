@@ -105,13 +105,13 @@ class ServerShow extends React.Component {
           style={{overlay:{ backgroundColor: 'rgba(0,0,0,.8)'} } } ariaHideApp={false} isOpen={this.props.openTextchannelModal}>
           <div className='create-channel-container'>
             <div className='create-channel-inner-container'>
+              <button onClick={this.closeModal}>X</button>
               <form onSubmit={this.createChannel}>
-                <input onChange={this.handleNewChannelName} value={this.state.newChannelName} placeholder='Channel Name'/>
+                <input onChange={this.handleNewChannelName} value={this.state.newChannelName} placeholder='#general'/>
                 <button>Create Channel</button>
               </form>
             </div>
           </div>
-          <button onClick={this.closeModal}>X</button>
         </Modal>
 
         <Modal className={{base:'serverUpdateModal',
