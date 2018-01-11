@@ -3,6 +3,7 @@ import ServerShow from './server_show';
 
 import { updateServer, deleteServer } from '../../actions/server_actions';
 import { RECEIVE_MODAL, receiveModal, removeModal } from '../../actions/ui_actions';
+import { createTextChannel } from '../../actions/text_channel_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const server = state.entities.servers[ownProps.match.params.serverId] || {name: ''};
@@ -20,7 +21,8 @@ const mapDispatchToProps = dispatch => {
     closeModal: () => dispatch(removeModal()),
     deleteServer: id => dispatch(deleteServer(id)),
     deleteServerModal: type => dispatch(receiveModal(type)),
-    updateServerModal: type => dispatch(receiveModal(type))
+    updateServerModal: type => dispatch(receiveModal(type)),
+    createTextChannel: text_channel => dispatch(createTextChannel(text_channel))
   };
 };
 

@@ -9,7 +9,7 @@
   overflow-y: scroll;
   flex-direction: column-reverse;
   &::-webkit-scrollbar{
-    background-color: transparent;
+    display: none;
   }
   p{
     margin: 5px 0;

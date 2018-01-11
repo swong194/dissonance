@@ -66,9 +66,13 @@ class ServerShow extends React.Component {
       <div className='server-show-container'>
         <div className='server-show-inner-container'>
           <h1>{this.props.server.name}</h1>
+          <button onClick={this.openCreateChannelModal}>
+            <i className="fa fa-plus" aria-hidden="true"></i>
+          </button>
           <button onClick={this.handleToggle}><p>
           <i className={this.state.toggleIcon} aria-hidden="true">
-          </i></p></button>
+          </i></p>
+          </button>
           <div className={this.state.toggleClass}>
             <button onClick={this.handleUpdateModal} className='grey'><i className="fa fa-pencil" aria-hidden="true"></i> <p>Update Server</p></button>
             <button onClick={this.handleDeleteModal} className='red'><i className="fa fa-trash-o" aria-hidden="true"></i> <p>Delete Server</p></button>

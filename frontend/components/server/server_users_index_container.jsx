@@ -7,7 +7,7 @@ import { createDirectMessage } from '../../actions/direct_message_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let users = [];
-  if(Object.values(state.entities.servers).length){
+  if(Object.values(state.entities.servers).length && Object.values(state.entities.users).length){
     state.entities.servers[ownProps.match.params.serverId].users.forEach(userId =>
       (users.push(state.entities.users[userId]))
     );

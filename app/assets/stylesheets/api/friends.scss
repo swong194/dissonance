@@ -21,7 +21,7 @@
   width: 100%;
   color: #afb0b2;
   font-family: sans-serif;
-  margin: 5px 10px;
+  margin-left: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -57,7 +57,9 @@
 }
 
 .friend-item-message{
-  width: 300px;
+  width: 100%;
+  max-width: 1000px;
+  min-width:  300px;
   p{
     text-align: left;
   }
