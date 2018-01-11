@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import FriendsIndex from './friends_index';
-import { fetchFriends, removeFriend, createFriend } from '../../actions/friend_actions';
+import { fetchFriends, deleteFriend, createFriend } from '../../actions/friend_actions';
  import { createDirectMessage } from '../../actions/direct_message_actions';
+import { fetchUser } from '../../actions/user_actions';
 
 export const mapStateToProps = state => {
   return{
@@ -13,9 +14,10 @@ export const mapStateToProps = state => {
 export const mapDispatchToProps = dispatch => {
   return{
     fetchFriends: () => dispatch(fetchFriends()),
-    removeFriend: id => dispatch(removeFriend(id)),
-    addFriend: id => dispatch(createFriend(id)),
-    createDirectMessage: id => dispatch(createDirectMessage(id))
+    removeFriend: id => dispatch(deleteFriend(id)),
+    addFriend: name => dispatch(createFriend(name)),
+    createDirectMessage: id => dispatch(createDirectMessage(id)),
+    fetchUser: id => dispatch(fetchUser(id))
   };
 };
 

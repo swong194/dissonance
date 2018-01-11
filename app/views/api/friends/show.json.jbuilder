@@ -1,1 +1,1 @@
-json.friendId @friend.id
+json.friendId @friend.user_two

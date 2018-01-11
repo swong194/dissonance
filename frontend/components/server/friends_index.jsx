@@ -5,6 +5,11 @@ class FriendsIndex extends React.Component{
   constructor(props){
     super(props);
     this.removeFriend = this.removeFriend.bind(this);
+    this.state = { allClass:'friend-all active-all', addClass:'friend-add', addFriend: false, friendName:''};
+    this.activeAdd = this.activeAdd.bind(this);
+    this.activeAll = this.activeAll.bind(this);
+    this.addFriendForm = this.addFriendForm.bind(this);
+    this.handleAddFriend = this.handleAddFriend.bind(this);
   }
 
   componentDidMount(){
@@ -14,15 +19,53 @@ class FriendsIndex extends React.Component{
   createDirectMessage(friendId){
     return e => {
       this.props.createDirectMessage(friendId).then(
-        (server) => this.props.history.push(`/servers/@me/${server.textChannelId}`)
+        (server) =>
+          this.props.history.push(`/servers/@me/${server.textChannelId}`)
       );
     };
   }
 
+  activeAdd(e){
+    e.preventDefault();
+    this.setState({addFriend: true, allClass: 'friend-all', addClass:'friend-add active-add'});
+  }
+
+  activeAll(e){
+    e.preventDefault();
+    this.setState({addFriend: false, allClass: 'friend-all active-all', addClass:'friend-add', friendName: ''});
+  }
+
+
   removeFriend(friendId){
     return e => {
+      e.preventDefault();
       this.props.removeFriend(friendId);
     };
+  }
+
+  handleChange(type){
+    return e => {
+      e.preventDefault();
+      this.setState({[type]: e.target.value});
+    };
+  }
+
+  handleAddFriend(e){
+    e.preventDefault();
+    this.props.addFriend(this.state.friendName).then(
+      friendId => this.props.fetchUser(friendId)
+    );
+  }
+
+  addFriendForm(){
+    return(
+      <div className='add-friend-form'>
+        <form onSubmit={this.handleAddFriend}>
+          <input placeholder="Your friend's Username" onChange={this.handleChange('friendName')} value={this.state.friendName}></input>
+          <button>Add Friend</button>
+        </form>
+      </div>
+    );
   }
 
   render(){
@@ -34,13 +77,21 @@ class FriendsIndex extends React.Component{
           key={friendId}
           friendId={friendId}
           user={this.props.users[friendId]}
-          createMessage={this.createDirectMessage(friendId)}/>
+          createDirectMessage={this.createDirectMessage(friendId)}/>
       ));
     }
     return(
       <div className='friend-index-container'>
         <div className='friend-index-inner-container'>
-          { friends }
+          <div className='friend-bar'>
+            <button onClick={this.activeAdd} className={this.state.addClass}>Add Friend</button>
+            <div className='friend-seperator'></div>
+            <button onClick={this.activeAll} className={this.state.allClass}>All</button>
+          </div>
+          <div className='friend-content'>
+            { this.state.addFriend ? null : <div className='friend-label'>Friends-{this.props.friends.length}</div>  }
+            { this.state.addFriend ? this.addFriendForm() : friends  }
+          </div>
         </div>
       </div>
     );

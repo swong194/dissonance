@@ -1,11 +1,12 @@
 import React from 'react';
 import Modal from 'react-modal';
+import { NavLink } from 'react-router-dom';
 
 class SearchUsers extends React.Component{
   render(){
     return(
-      <div>
-        Hello from search users
+      <div className='friend-button'>
+        <NavLink to='/servers/@me'>Friends</NavLink>
       </div>
     );
   }

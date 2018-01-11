@@ -45,7 +45,10 @@ export const fetchTextChannels = id => dispatch => {
 
 export const fetchTextChannel = id => dispatch => {
   return TextChannelApi.fetchTextChannel(id).then(
-    channel => dispatch(receiveTextChannel(channel)),
+    channel => {
+      dispatch(receiveTextChannel(channel));
+      return channel;
+    },
     errors => dispatch(receiveErrors(errors.responseJSON))
   );
 };

@@ -9,13 +9,13 @@ const FriendsReducer = (state = oldState, action) => {
     case RECEIVE_FRIENDS:
       return action.friends.friends;
     case RECEIVE_FRIEND:
-      newState = oldState.slice();
-      if(!newState.includes(action.friendId)){
-        newState.push(action.friendId);
+      newState = state.slice();
+      if(!newState.includes(action.friendId.friendId)){
+        newState.push(action.friendId.friendId);
       }
       return newState;
     case REMOVE_FRIEND:
-      oldState.forEach(friendId => {
+      state.forEach(friendId => {
         if(friendId !== action.friendId){
           newState.push(friendId);
         }

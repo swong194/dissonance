@@ -47,9 +47,12 @@ export const fetchFriend = id => dispatch => {
   );
 };
 
-export const createFriend = id => dispatch => {
-  return FriendsAPIUtil.createFriend(id).then(
-    friend => dispatch(receiveFriend(friend)),
+export const createFriend = name => dispatch => {
+  return FriendsAPIUtil.createFriend(name).then(
+    friend => {
+      dispatch(receiveFriend(friend));
+      return friend.friendId;
+    },
     errors => dispatch(receiveErrors(errors.responseJSON))
   );
 };

@@ -4,11 +4,11 @@ class FriendIndexItem extends React.Component{
   render(){
     return(
       <div className='friend-index-item'>
-        <button onClick={this.props.createDirectMessage}>
-          <p>this.props.user.username</p>
+        <button className='friend-item-message' onClick={this.props.createDirectMessage}>
+          <p>{this.props.user.username}</p>
         </button>
-        <button onClick={this.props.removeFriend}>
-          Delete Friend
+        <button className='friend-item-remove' onClick={this.props.removeFriend}>
+          <i className="fa fa-minus-square" aria-hidden="true"></i>
         </button>
       </div>
     );

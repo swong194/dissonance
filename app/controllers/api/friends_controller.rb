@@ -6,13 +6,16 @@ class Api::FriendsController < ApplicationController
   end
 
   def create
-    if(current_user.id == params[:id].to_i)
-      render json: ['Cannot add yourself']
-    elsif(current_user.friends.any? {|friend| friend.id == params[:id].to_i })
-      render json: ['Already a friend']
+    @user = User.find_by(username: params[:name])
+    if !@user
+      render json: ['This user does not exist'], status: 422
+    elsif(current_user.id == @user.id)
+      render json: ['Cannot add yourself'], status: 422
+    elsif(current_user.friends.ids.any? {|friend_id| friend_id == @user.id })
+      render json: ['Already a friend'], status: 422
     else
-      @friend = Friend.new(user_one: current_user.id, user_two: params[:id])
-      @friend2 = Friend.new(user_one: params[:id], user_two: params[:id])
+      @friend = Friend.new(user_one: current_user.id, user_two: @user.id)
+      @friend2 = Friend.new(user_one: @user.id, user_two: current_user.id)
       if @friend.save && @friend2.save
         render :show
       else

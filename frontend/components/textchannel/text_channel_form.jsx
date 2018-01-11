@@ -14,6 +14,10 @@ class TextChannelForm extends React.Component{
     }
   }
 
+  componentDidMount(){
+    this.props.fetchTextChannel(this.props.channelId);
+  }
+
   handleSubmit(e){
     e.preventDefault();
     if(this.state.body.length === 0){

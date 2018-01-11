@@ -12,17 +12,17 @@ export const fetchFriend = id => {
   });
 };
 
-export const createFriend = id => {
+export const createFriend = name => {
   return $.ajax({
     method: 'post',
     url: `/api/friends`,
-    data: { id }
+    data: { name }
   });
 };
 
 export const deleteFriend = id => {
   return $.ajax({
     method: 'delete',
-    url: `/api/friends${id}`
+    url: `/api/friends/${id}`
   });
 };
