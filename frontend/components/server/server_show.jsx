@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 class ServerShow extends React.Component {
   constructor(props){
     super(props);
-    this.state = {toggle: false, toggleClass:'no-server-show-options', toggleIcon:'fa fa-chevron-down', updateName: ''};
+    this.state = {toggle: false, toggleClass:'no-server-show-options', toggleIcon:'fa fa-chevron-down', updateName: '', newChannelName: ''};
     this.handleUpdateModal = this.handleUpdateModal.bind(this);
     this.handleDeleteModal = this.handleDeleteModal.bind(this);
     this.handleToggle = this.handleToggle.bind(this);
@@ -14,6 +14,7 @@ class ServerShow extends React.Component {
     this.handleUpdateChange = this.handleUpdateChange.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
     this.clearInput = this.clearInput.bind(this);
+    this.handleCreateChannelModal = this.handleCreateChannelModal.bind(this);
   }
 
   componentWillReceiveProps(newProps){
@@ -21,7 +22,7 @@ class ServerShow extends React.Component {
   }
 
   resetState(){
-    this.setState({toggle: false, toggleClass:'no-server-show-options', toggleIcon:'fa fa-chevron-down', updateName: ''});
+    this.setState({toggle: false, toggleClass:'no-server-show-options', toggleIcon:'fa fa-chevron-down', updateName: '', newChannelName: ''});
   }
 
   handleUpdateChange(e){
@@ -47,6 +48,11 @@ class ServerShow extends React.Component {
     this.resetState();
   }
 
+  handleCreateChannelModal(){
+    this.props.updateServerModal('openTextchannelModal');
+    this.resetState();
+  }
+
   handleUpdate(){
     this.props.updateServer(this.state.updateName, this.props.server.id);
   }
@@ -61,12 +67,22 @@ class ServerShow extends React.Component {
     this.setState({toggle: !this.state.toggle, toggleClass: className, toggleIcon: toggleName});
   }
 
+  handleNewChannelName(e){
+    e.preventDefault();
+    this.setState({newChannelName: e.target.value});
+  }
+
+  createChannel(e){
+    e.preventDefault();
+    this.props.createTextChannel({name: this.state.newChannelName, server_id: this.props.server.id});
+  }
+
   render(){
     return (
       <div className='server-show-container'>
         <div className='server-show-inner-container'>
           <h1>{this.props.server.name}</h1>
-          <button onClick={this.openCreateChannelModal}>
+          <button onClick={this.handleCreateChannelModal}>
             <i className="fa fa-plus" aria-hidden="true"></i>
           </button>
           <button onClick={this.handleToggle}><p>
@@ -79,6 +95,20 @@ class ServerShow extends React.Component {
           </div>
         </div>
 
+        <Modal className={{base:'text-channel-modal',
+          afterOpen: '',
+          beforeClose: ''}}
+          style={{overlay:{ backgroundColor: 'rgba(0,0,0,.8)'} } } ariaHideApp={false} isOpen={this.props.openTextchannelModal}>
+          <div className='create-channel-container'>
+            <div className='create-channel-inner-container'>
+              <form onSubmit={this.createChannel}>
+                <input onChange={this.handleNewChannelName} value={this.state.newChannelName} placeholder='Channel Name'/>
+                <button>Create Channel</button>
+              </form>
+            </div>
+          </div>
+          <button onClick={this.closeModal}>X</button>
+        </Modal>
 
         <Modal className={{base:'serverUpdateModal',
           afterOpen: '',

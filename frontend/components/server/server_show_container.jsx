@@ -11,7 +11,8 @@ const mapStateToProps = (state, ownProps) => {
   return{
     server,
     updateServerModalOpen: state.ui.updateServerModal,
-    deleteServerModalOpen: state.ui.deleteServerModal
+    deleteServerModalOpen: state.ui.deleteServerModal,
+    openTextchannelModal: state.ui.openTextchannelModal
   };
 };
 
