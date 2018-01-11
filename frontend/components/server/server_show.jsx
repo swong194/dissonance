@@ -89,14 +89,14 @@ class ServerShow extends React.Component {
           <button onClick={this.handleCreateChannelModal}>
             <i className="fa fa-plus" aria-hidden="true"></i>
           </button>
-          <button onClick={this.handleToggle}><p>
-          <i className={this.state.toggleIcon} aria-hidden="true">
-          </i></p>
-          </button>
-          <div className={this.state.toggleClass}>
-            <button onClick={this.handleUpdateModal} className='grey'><i className="fa fa-pencil" aria-hidden="true"></i> <p>Update Server</p></button>
-            <button onClick={this.handleDeleteModal} className='red'><i className="fa fa-trash-o" aria-hidden="true"></i> <p>Delete Server</p></button>
-          </div>
+            <button onClick={this.handleToggle}><p>
+              <i className={this.state.toggleIcon} aria-hidden="true">
+              </i></p>
+            </button>
+            <div className={this.state.toggleClass}>
+              <button onClick={this.handleUpdateModal} className='grey'><i className="fa fa-pencil" aria-hidden="true"></i> <p>Update Server</p></button>
+              <button onClick={this.handleDeleteModal} className='red'><i className="fa fa-trash-o" aria-hidden="true"></i> <p>Delete Server</p></button>
+            </div>
         </div>
 
         <Modal className={{base:'text-channel-modal',

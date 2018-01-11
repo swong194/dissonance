@@ -42,7 +42,7 @@ class ServerUsersIndex extends React.Component{
       <div className='channel-components'>
         <Route path='/servers/:serverId/textChannel/:textChannelId' component={TextChannelContainer}/>
       <div className='server-user-index-container'>
-        <div className='server-user-heading'>USERS-{this.props.users.length}</div>
+        <div className='server-user-heading'>MEMBERS-{this.props.users.length}</div>
         <div className='server-user-index-inner-container'>
         {users}
         </div>

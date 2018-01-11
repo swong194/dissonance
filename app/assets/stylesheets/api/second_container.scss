@@ -27,24 +27,38 @@
   overflow: hidden;
   text-overflow: ellipsis;
   &>button{
-    box-sizing: border-box;
-    width: 100px;
-    font-size: 16px;
+    width: 105px;
+    font-size: 12px;
     cursor: pointer;
+    color: #f04747;
+    border: 2px solid #f04747;
+    border-radius: 20px;
     background: transparent;
     height: 60%;
-    padding: 0px 20px;
-    transition: border-radius .5s, background-color .5s;
+    padding: 0px 25px;
+    padding-left: 25px;
+    display: flex;
+    align-items: center;
+    transition: border-radius .5s, background-color .5s, padding .5s, font-weight .5s;
+    font-family: sans-serif;
     &:hover{
       border-radius: 20px;
-      background-color: #c00a0a;
+      background-color: #f04747;
+      padding-left: 30px;
+      color:white;
+      font-weight: bold;
     }
     &:hover i{
       color: white;
-      font-size: 22px;
+      margin-left: -20px;
+      opacity: 1;
     }
     i{
-      transition: color 1s, font-size .5s;
+      transition: color 1s, margin .5s, opacity .5s;
+      margin-left: -40px;
+      position: absolute;
+      opacity: 0;
+      font-size: 18px;
     }
   }
 }
@@ -78,6 +92,7 @@
     color: #acadaf;
     cursor: pointer;
     box-sizing: border-box;
+    justify-content: flex-end;
   }
 }
 
