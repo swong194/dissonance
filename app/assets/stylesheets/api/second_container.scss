@@ -27,16 +27,24 @@
   overflow: hidden;
   text-overflow: ellipsis;
   &>button{
+    box-sizing: border-box;
+    width: 100px;
     font-size: 16px;
     cursor: pointer;
     background: transparent;
-    height: 100%;
-    padding: 0 20px;
+    height: 60%;
+    padding: 0px 20px;
+    transition: border-radius .5s, background-color .5s;
+    &:hover{
+      border-radius: 20px;
+      background-color: #c00a0a;
+    }
     &:hover i{
-      color: rgb(230,20,20);
+      color: white;
+      font-size: 22px;
     }
     i{
-      transition: color 1s;
+      transition: color 1s, font-size .5s;
     }
   }
 }
