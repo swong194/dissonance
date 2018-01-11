@@ -15,6 +15,8 @@ class ServerShow extends React.Component {
     this.handleUpdate = this.handleUpdate.bind(this);
     this.clearInput = this.clearInput.bind(this);
     this.handleCreateChannelModal = this.handleCreateChannelModal.bind(this);
+    this.handleNewChannelName = this.handleNewChannelName.bind(this);
+    this.createChannel = this.createChannel.bind(this);
   }
 
   componentWillReceiveProps(newProps){
@@ -74,7 +76,9 @@ class ServerShow extends React.Component {
 
   createChannel(e){
     e.preventDefault();
-    this.props.createTextChannel({name: this.state.newChannelName, server_id: this.props.server.id});
+    this.props.createTextChannel({name: this.state.newChannelName, server_id: this.props.server.id})
+    .then(channel => this.props.history.push(`/servers/${channel.server_id}/textChannel/${channel.id}`)
+    );
   }
 
   render(){
