@@ -33,28 +33,28 @@ export const removeFriend = friendId => {
   };
 };
 
-export const fetchFriends = () => {
+export const fetchFriends = () => dispatch => {
   return FriendsAPIUtil.fetchFriends().then(
     friends => dispatch(receiveFriends(friends)),
     errors => dispatch(receiveErrors(errors.responseJSON))
   );
 };
 
-export const fetchFriend = id => {
+export const fetchFriend = id => dispatch => {
   return FriendsAPIUtil.fetchFriend(id).then(
     friend => dispatch(receiveFriend(friend)),
     errors => dispatch(receiveErrors(errors.responseJSON))
   );
 };
 
-export const createFriend = id => {
+export const createFriend = id => dispatch => {
   return FriendsAPIUtil.createFriend(id).then(
     friend => dispatch(receiveFriend(friend)),
     errors => dispatch(receiveErrors(errors.responseJSON))
   );
 };
 
-export const deleteFriend = id => {
+export const deleteFriend = id => dispatch => {
   return FriendsAPIUtil.deleteFriend(id).then(
     () => dispatch(removeFriend(id)),
     errors => dispatch(receiveErrors(errors.responseJSON))

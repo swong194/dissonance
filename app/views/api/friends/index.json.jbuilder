@@ -1,1 +1,1 @@
-@friends.ids
+json.friends @friends

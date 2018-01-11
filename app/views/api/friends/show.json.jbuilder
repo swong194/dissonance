@@ -1,1 +1,1 @@
-json.array! @friend.id
+json.friendId @friend.id

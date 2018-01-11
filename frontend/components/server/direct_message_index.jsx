@@ -19,13 +19,13 @@ class DirectMessageIndex extends React.Component{
   getChannel(id){
     return e => {
       this.props.fetchTextChannel(id);
-    }
+    };
   }
 
   render(){
     let directMessages;
 
-    if(this.props.directMessages.length){
+    if(this.props.directMessages.length && Object.values(this.props.users).length){
       directMessages = this.props.directMessages.map(directMessage => (
         <NavLink activeClassName='active-direct-message' className='direct-message-item' onClick={this.getChannel(directMessage.textChannelId)} key={directMessage.id} to={`/servers/@me/${directMessage.textChannelId}`}>
           <p>{this.props.users[directMessage.user].username}</p>

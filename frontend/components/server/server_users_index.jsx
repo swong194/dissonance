@@ -27,7 +27,7 @@ class ServerUsersIndex extends React.Component{
     return e => {
       this.setState({ user: user });
       this.props.dispatchModal('openMessageModal');
-    }
+    };
   }
 
   render(){

@@ -1,4 +1,4 @@
-import { RECEIVE_FRIENDS, RECEIVE_FRIEND, REMOVE_FRIEND } from '../../../actions/friends_actions';
+import { RECEIVE_FRIENDS, RECEIVE_FRIEND, REMOVE_FRIEND } from '../../../actions/friend_actions';
 
 const oldState = [];
 
@@ -7,7 +7,7 @@ const FriendsReducer = (state = oldState, action) => {
   let newState = [];
   switch (action.type) {
     case RECEIVE_FRIENDS:
-      return action.friends;
+      return action.friends.friends;
     case RECEIVE_FRIEND:
       newState = oldState.slice();
       if(!newState.includes(action.friendId)){
@@ -25,3 +25,5 @@ const FriendsReducer = (state = oldState, action) => {
       return state;
   }
 };
+
+export default FriendsReducer;
