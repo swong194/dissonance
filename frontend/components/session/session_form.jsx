@@ -21,6 +21,8 @@ class SessionForm extends React.Component {
   handleGuest(e){
     e.preventDefault();
 
+    this.setState({username: '', password: ''});
+
     if(this.props.match.path === '/signup'){
       this.props.history.push('/login');
     }
