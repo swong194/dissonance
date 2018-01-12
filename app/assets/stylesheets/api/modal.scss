@@ -197,6 +197,10 @@
     font-size: 16px;
     text-transform: uppercase;
     height: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 140px;
   }
   button{
     background-color: transparent;
@@ -213,7 +217,7 @@
   &>button{
     background-color: #7189da;
     border-radius: 5px;
-    width: 175px;
+    max-width: 175px;
     color: white;
     height: 50px;
     display: flex;
@@ -222,6 +226,14 @@
     align-items: center;
     &:hover{
       background-color: #556596;
+    }
+    p{
+      margin: 0 10px;
+      max-width: 140px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
     }
   }
 }

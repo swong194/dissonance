@@ -2,6 +2,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 import { withRouter } from 'react-router-dom';
+import onClickOutside from "react-onclickoutside";
 
 class ServerShow extends React.Component {
   constructor(props){
@@ -64,7 +65,8 @@ class ServerShow extends React.Component {
     this.setState({updateName: ''});
   }
 
-  handleToggle(){
+  handleToggle(e){
+    e.stopPropagation();
     const className = this.state.toggleClass === 'server-show-options' ? 'no-server-show-options' : 'server-show-options';
     const toggleName = this.state.toggleIcon === 'fa fa-chevron-down' ? 'fa fa-times': 'fa fa-chevron-down';
     this.setState({toggle: !this.state.toggle, toggleClass: className, toggleIcon: toggleName});
@@ -143,7 +145,8 @@ class ServerShow extends React.Component {
           <div className='delete-server-modal-container'>
             <div className='delete-server-modal-inner-container'>
               <h1>DELETE {`'${this.props.server.name}'`}.</h1>
-              <p>Are you sure you want to delete {this.props.server.name}? This action cannot be undone.</p>
+              <p>Are you sure you want to delete {this.props.server.name}? </p>
+              <p>This action cannot be undone.</p>
 
               <div className='delete-server-buttons'>
                 <button className='cancel-button' onClick={()=> this.closeModal()}>Cancel</button>

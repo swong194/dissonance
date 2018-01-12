@@ -183,11 +183,19 @@
   &>h1{
     font-size: 18px;
     margin: 0 20px;
-    margin-top: 20px
+    margin-top: 20px;
+    max-width: 400px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   &>p{
     font-size: 14px;
     margin: 0 20px;
+    max-width: 400px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 

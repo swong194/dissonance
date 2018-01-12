@@ -60,7 +60,7 @@ class ServerUsersIndex extends React.Component{
               <button onClick={this.props.dispatchModal}><i className="fa fa-times-circle-o" aria-hidden="true"></i></button>
             </div>
             <div className='message-modal-bottom'>
-              <button onClick={this.createMessage}>Message {this.state.user.username}?</button>
+              <button onClick={this.createMessage}><p>Message {this.state.user.username}?</p></button>
             </div>
           </div>
         </div>

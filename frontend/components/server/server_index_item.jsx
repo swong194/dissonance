@@ -17,13 +17,14 @@ class ServerIndexItem extends React.Component{
 
   render(){
     return (
-      <NavLink
-        isActive={this.determineActive}
-        activeClassName='active-server'
-        className='server-item'
-        to={`/servers/${this.props.server.id}/textChannel/${this.props.server.text_channels[0]}`}>
-        <p>{this.props.server.name[0].toUpperCase()}</p>
-      </NavLink>
+      <div className='server-item'>
+        <NavLink
+          isActive={this.determineActive}
+          activeClassName='active-server'
+          to={`/servers/${this.props.server.id}/textChannel/${this.props.server.text_channels[0]}`}>
+          <p>{this.props.server.name[0].toUpperCase()}</p>
+        </NavLink>
+      </div>
     );
   }
 }

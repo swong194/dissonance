@@ -10,6 +10,9 @@
   padding: 0 10px;
   p{
     margin-left: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   i{
     font-size: 16px;

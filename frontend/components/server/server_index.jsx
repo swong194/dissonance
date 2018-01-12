@@ -41,7 +41,7 @@ class ServerIndex extends React.Component {
     e.preventDefault();
     this.props.createServer(this.state.createServerName).then(
       server => {
-        this.props.history.push(`/servers/${server.id}/textChannel/${server.text_channels[0]}`)
+        this.props.history.push(`/servers/${server.id}/textChannel/${server.text_channels[0]}`);
       }
     );
   }
@@ -50,7 +50,7 @@ class ServerIndex extends React.Component {
     e.preventDefault();
     this.props.joinServer(this.state.joinServerName).then(
       server => {
-        this.props.history.push(`/servers/${server.id}/textChannel/${server.text_channels[0]}`)
+        this.props.history.push(`/servers/${server.id}/textChannel/${server.text_channels[0]}`);
       }
     );
   }
@@ -151,7 +151,7 @@ class ServerIndex extends React.Component {
           ariaHideApp={false}
           className={ { base:'serverFormModal',
             afterOpen: '',
-            beforeClose: '' } } isOpen={this.props.serverFormModalOpen}>
+            beforeClose: '' } } isOpen={this.props.serverFormModalOpen} >
 
           <button onClick={this.closeModal}>X</button>
 
