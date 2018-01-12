@@ -1,5 +1,33 @@
 # README
 
-Dissonance a Discord Clone in progress
+Dissonance is a Discord clone built using serveral technologies.
+1. react-redux for rendering pages based on a local store.
+2. PostgerSQL as the database system.
+2. Jquery and Ruby on rails to manage ajax calls.
+
+In its core, Dissonance supports live messaging throught different servers and text channels. There is a demo login where users can explore the various features.
+
+
+# Main Features 
+
+1. Live Messaging/Direct Messaging
+
+Live messaging is implemented using Ruby on Rails ActionCable. Users are subscribed whenever they are presented a message input field.
+
+2. Servers
+
+Users can create servers and join existing servers. Users are subscribed to servers they are in. If a server is destroyed users on the server are redirected properly.
+
+3. Channels
+
+All users belonging to a server can create channels and edit the channel names
+
+4. Friends
+
+Users can be friended which allows for easier direct messaging
+
+
+
+
 
 -By Sunny Wong
