@@ -7,7 +7,8 @@ import { fetchUser } from '../../actions/user_actions';
 export const mapStateToProps = state => {
   return{
     users: state.entities.users,
-    friends: state.entities.friends
+    friends: state.entities.friends,
+    errors: state.session.errors
   };
 };
 

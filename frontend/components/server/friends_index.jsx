@@ -53,17 +53,26 @@ class FriendsIndex extends React.Component{
   handleAddFriend(e){
     e.preventDefault();
     this.props.addFriend(this.state.friendName).then(
-      friendId => this.props.fetchUser(friendId)
+      friendId => {
+        this.setState({friendName: ''});
+        this.props.fetchUser(friendId);
+      }
     );
   }
 
   addFriendForm(){
+    const errors = this.props.errors.map(error => (
+      <span>{error}</span>
+    ));
     return(
       <div className='add-friend-form'>
         <form onSubmit={this.handleAddFriend}>
           <input placeholder="Your friend's Username" onChange={this.handleChange('friendName')} value={this.state.friendName}></input>
           <button>Add Friend</button>
         </form>
+        <div className='add-friend-errors'>
+          {errors}
+        </div>
       </div>
     );
   }
