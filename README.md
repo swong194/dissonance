@@ -3,7 +3,8 @@
 Dissonance is a Discord clone built using several technologies.
 1. react-redux for rendering pages based on a local store.
 2. PostgerSQL as the database system.
-2. Jquery and Ruby on rails to manage ajax calls.
+3. Jquery and Ruby on rails to manage ajax calls.
+4. and... with a responsive design in mind ;]
 
 In its core, Dissonance supports live messaging through different servers and text channels. There is a demo login where users can explore the various features.
 
