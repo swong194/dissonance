@@ -1,6 +1,6 @@
 .third-container{
   display: flex;
-  width: 100%;
+  width: calc(100% - 306px);
   flex-direction: column;
   height: 100%;
   justify-content: space-between;
@@ -19,19 +19,9 @@
   height: 100%;
 }
 
-.server-user-index-container{
-  height: 100%;
-  background-color: #2f3136;
-}
-
-.server-user-index-inner-container{
-  overflow-y:scroll;
-  overflow-x:hidden;
-}
-
 .textchannel-container{
   height: 100%;
-  width: 100%;
+  width: calc(100% - 240px);
   min-width: 1px;
   background-color: #37393e;
   display: flex;
@@ -55,13 +45,6 @@
     font-family: sans-serif;
     color: #acadaf;
     font-size: 16px;
-    &::-webkit-scrollbar{
-      position:absolute;
-      display: hidden;
-    }
-    &:hover &::-webkit-scrollbar{
-      display: block;
-    }
   }
   &-heading{
     text-align: left;
@@ -79,10 +62,17 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    overflow-x:hidden;
-    overflow-y:scroll;
+    overflow:hidden;
+    margin-right: 5px;
     &::-webkit-scrollbar{
-      display:none;
+      background-color: #2f3136;
+      width: 6px;
+      &-thumb{
+        background-color: #202226;
+      }
+    }
+    &:hover{
+      overflow-y: scroll;
     }
   }
   &-item{
@@ -91,14 +81,14 @@
     cursor: pointer;
     padding: 5px 16px 5px 30px;
     min-width: 180px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     &:hover{
       background: linear-gradient(to right, #282b30 75%, transparent);
       color: #f8f5f9;
     }
     &>p{
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       text-align: left;
       font-size: 14px;
       margin: 0 20px;

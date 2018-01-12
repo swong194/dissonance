@@ -17,9 +17,11 @@ class SessionDetail extends React.Component{
   render(){
     return (
       <div className='session-detail'>
-        {this.props.user.username}
+        <p>{this.props.user.username}</p>
         <button onClick={this.handleLogout}>
-          <i className="fa fa-power-off" aria-hidden="true"></i>LOG OUT</button>
+          <i className="fa fa-power-off" aria-hidden="true"></i>
+          LOG OUT
+        </button>
       </div>
     );
   }

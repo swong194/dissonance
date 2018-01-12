@@ -5,15 +5,34 @@
 .text-channel-messages-container{
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
   display: flex;
   overflow-y: scroll;
+  overflow-x: hidden;
   flex-direction: column-reverse;
-  &::-webkit-scrollbar{
-    display: none;
-  }
   p{
     margin: 5px 0;
   }
+  margin-top: 5px;
+  margin-right: 8px;
+}
+
+.text-channel-messages-container::-webkit-scrollbar{
+  width: 6px;
+  background-color:#2f3136;
+  border-top: 3px solid #36393e;
+  border-bottom: 3px solid #36393e;
+}
+
+.text-channel-messages-container::-webkit-scrollbar-thumb{
+  background-color: #1e2125;
+  border-radius: 200px;
+  border-top: 3px solid #36393e;
+  border-bottom: 3px solid #36393e;
+}
+
+.text-channel-messages-container::-webkit-scrollbar-track{
+  border-radius: 200px;
 }
 
 .message-container{
@@ -23,7 +42,9 @@
   font-family: 'Ubuntu', sans-serif;
   border-bottom: 1px solid #3e4146;
   padding: 10px 0;
-  overflow-wrap: break-word;
+  p{
+    overflow-wrap: break-word;
+  }
 }
 
 .message-inner-container{

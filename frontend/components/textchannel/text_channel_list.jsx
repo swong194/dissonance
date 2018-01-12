@@ -78,8 +78,7 @@ class TextChannelList extends React.Component{
 
                   <div className='text-channel-form-side-bar-details'>
                     <i className="fa fa-hashtag" aria-hidden="true"></i>
-                    <p>{this.state.modalName}</p>
-                    <span>TEXT CHANNELS</span>
+                    <p>{this.state.modalName} <span>TEXT CHANNELS</span></p>
                   </div>
                   <div className='text-channel-form-side-bar-options'>
                     <div className='selected'><p>Overview</p></div>
@@ -107,7 +106,7 @@ class TextChannelList extends React.Component{
 
           </div>
         </Modal>
-        
+
       </div>
     );
   }

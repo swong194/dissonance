@@ -23,9 +23,11 @@
   width: 100%;
   margin: 0 auto;
   font-family: sans-serif;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  p{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   &>button{
     width: 105px;
     font-size: 12px;
@@ -55,7 +57,7 @@
     }
     i{
       transition: color 1s, margin .5s, opacity .5s;
-      margin-left: -40px;
+      margin-left: -30px;
       position: absolute;
       opacity: 0;
       font-size: 18px;
@@ -83,6 +85,9 @@
   &>h1{
     font-size: 14px;
     margin-left: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   &>button{
     padding: 15px;
