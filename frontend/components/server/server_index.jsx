@@ -7,10 +7,10 @@ import SessionDetailContainer from '../session/session_detail_container';
 import ServerUsersIndexContainer from './server_users_index_container';
 import TextChannelContainer from '../textchannel/text_channel_container';
 import TextChannelListContainer from '../textchannel/text_channel_list_container';
-import FriendIndexContainer from './friends_index_container';
-import DirectMessageIndexContainer from './direct_message_index_container';
-import DirectMessageShowContainer from './direct_message_show_container';
-import SearchUsersContainer from './search_users_container';
+import FriendIndexContainer from '../friends/friends_index_container';
+import DirectMessageIndexContainer from '../direct_message/direct_message_index_container';
+import DirectMessageShowContainer from '../direct_message/direct_message_show_container';
+import FriendLinkContainer from '../friends/friend_link_container';
 import ServerNavContainer from './server_nav_container';
 
 
@@ -121,7 +121,7 @@ class ServerIndex extends React.Component {
         <div className='secondary-container'>
           <div className='secondary-nav'>
             <Switch>
-              <Route path='/servers/@me' component={SearchUsersContainer} />
+              <Route path='/servers/@me' component={FriendLinkContainer} />
               <Route path='/servers/:serverId' component={ServerShowContainer} />
             </Switch>
             <div className='text-channel-list'>

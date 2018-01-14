@@ -9,9 +9,7 @@ class SessionDetail extends React.Component{
 
   handleLogout(e){
     e.preventDefault();
-    this.props.logoutUser().then(()=>(
-      this.props.history.push('/')
-    ));
+    this.props.logoutUser();
   }
 
   render(){

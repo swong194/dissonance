@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import SearchUsers from './search_users';
+import FriendLink from './friend_link';
 
 const mapStateToProps = state => {
   return{
@@ -13,4 +13,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchUsers);
+export default connect(mapStateToProps, mapDispatchToProps)(FriendLink);
