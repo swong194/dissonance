@@ -5,21 +5,47 @@ import Typed from 'typed.js';
 class SessionForm extends React.Component {
   constructor(props){
     super(props);
-    this.state = {username: '', password: ''};
+    this.state = {
+      username: '',
+      password: '',
+      userinput: null,
+      passinput: null,
+      demosubmit: null};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleGuest = this.handleGuest.bind(this);
     this.handleRedirect = this.handleRedirect.bind(this);
   }
 
+  componentWillReceiveProps(){
+    clearTimeout(this.state.userinput);
+    clearTimeout(this.state.passinput);
+    clearTimeout(this.state.demosubmit);
+
+    this.setState({username: '', password: ''});
+  }
+
+  componentWillUnmount(){
+    clearTimeout(this.state.userinput);
+    clearTimeout(this.state.passinput);
+    clearTimeout(this.state.demosubmit);
+
+    this.setState({username: '', password: ''});
+  }
+
   handleSubmit(e){
     e.preventDefault();
-    this.props.action(this.state).then(
-      ()=>(this.props.history.push('/servers/@me'))
+    this.props.action(
+      {username: this.state.username, password: this.state.password})
+      .then(()=>(this.props.history.push('/servers/@me'))
     );
   }
 
   handleGuest(e){
     e.preventDefault();
+
+    clearTimeout(this.state.userinput);
+    clearTimeout(this.state.passinput);
+    clearTimeout(this.state.demosubmit);
 
     this.setState({username: '', password: ''});
 
@@ -27,15 +53,19 @@ class SessionForm extends React.Component {
       this.props.history.push('/login');
     }
 
-    setTimeout(()=> {
+    const userinput = setTimeout(()=> {
       new Typed ('#username-input', { strings: ['demo'], typeSpeed: 125 });
     },0);
-    setTimeout(()=> {
+    const passinput = setTimeout(()=> {
       new Typed ('#password-input', { strings: ['password'], typeSpeed: 125 });
     },1200);
-    setTimeout(()=>{
+    const demosubmit = setTimeout(()=>{
       this.props.guestLogin({ username: 'demo', password: 'password' });
     },2600);
+
+    this.setState(
+      {userinput: userinput, passinput: passinput, demosubmit: demosubmit}
+    );
   }
 
   handleRedirect(){
@@ -55,8 +85,10 @@ class SessionForm extends React.Component {
 
     const text = this.props.formType === 'signup' ? 'Sign Up' : 'Login';
     const otherText = this.props.formType === 'signup' ? 'login' : 'signup';
-    const otherTextLink = this.props.formType === 'signup' ? 'Login' : 'Register';
-    const otherMessage = this.props.formType === 'signup' ? 'Already have an account?' : 'Need an account?';
+    const otherTextLink = this.props.formType ===
+      'signup' ? 'Login' : 'Register';
+    const otherMessage = this.props.formType ===
+      'signup' ? 'Already have an account?' : 'Need an account?';
 
     return (
       <div id='session-form' className={`background-${this.props.number}`}>
@@ -91,7 +123,9 @@ class SessionForm extends React.Component {
           </div>
           <div>
             <span>{otherMessage}</span> <Link onClick={this.handleRedirect}
-              to={otherText}>{otherTextLink}</Link><span> or login as </span> <button onClick={this.handleGuest}>Guest</button>
+              to={otherText}>{otherTextLink}</Link>
+              <span> or login as </span>
+              <button onClick={this.handleGuest}>Guest</button>
           </div>
         </form>
       </main>
