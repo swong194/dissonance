@@ -14,17 +14,18 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleGuest = this.handleGuest.bind(this);
     this.handleRedirect = this.handleRedirect.bind(this);
+    this.clearDemo = this.clearDemo.bind(this);
   }
 
   componentWillReceiveProps(){
-    clearTimeout(this.state.userinput);
-    clearTimeout(this.state.passinput);
-    clearTimeout(this.state.demosubmit);
-
-    this.setState({username: '', password: ''});
+    this.clearDemo();
   }
 
   componentWillUnmount(){
+    this.clearDemo();
+  }
+
+  clearDemo(){
     clearTimeout(this.state.userinput);
     clearTimeout(this.state.passinput);
     clearTimeout(this.state.demosubmit);
@@ -42,12 +43,7 @@ class SessionForm extends React.Component {
 
   handleGuest(e){
     e.preventDefault();
-
-    clearTimeout(this.state.userinput);
-    clearTimeout(this.state.passinput);
-    clearTimeout(this.state.demosubmit);
-
-    this.setState({username: '', password: ''});
+    this.clearDemo();
 
     if(this.props.match.path === '/signup'){
       this.props.history.push('/login');
