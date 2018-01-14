@@ -91,14 +91,14 @@
   height: 50px; width: 50px;
   display:flex;
   align-items: center;
-  margin: 10px auto;
+  margin: 10px 0;
   justify-content: center;
   min-height: 50px;
   cursor: pointer;
   p{
-    font-size: 30px;
-    width: 100%;
+    font-size: 35px;
     margin: 0;
+    margin-bottom: 5px;
     text-align: center;
   }
   &:hover{

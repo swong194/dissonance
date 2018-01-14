@@ -98,12 +98,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5px 40px;
+    padding: 5px 15px;
     border-radius: 5px;
-    background-color: #7188db;
+    background-color: #42464d;
     &:hover{
-      background-color: #6378c3;
+      background-color: #393d42;
     }
+  }
+  svg{
+    margin-right: 20px;
   }
 }
 
@@ -194,10 +197,10 @@
 .friend-label{
   font-size: 16px;
   color: #696a6d;
-  font-family: arial;
+  font-family: sans-serif;
   text-transform: uppercase;
   margin-left: 10px;
-  margin-top: 10px;
+  margin-top: 20px;
   width: 100%;
   text-align: left;
   border-bottom: 1px solid  #4a4c51;

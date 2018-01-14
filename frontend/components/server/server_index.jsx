@@ -92,9 +92,6 @@ class ServerIndex extends React.Component {
 
     const errorClass = this.props.errors.length ? 'main-server-errors' : 'non-active-error';
 
-    if(this.props.errors.length){
-
-    }
     const errors = this.props.errors.map(error => (
       <span>{error}</span>
     ));
@@ -107,7 +104,9 @@ class ServerIndex extends React.Component {
         <div className='nav'>
           <div className='server-list'>
             <div className='server-item'>
-              <NavLink className='me' activeClassName='active-server' to='/servers/@me'></NavLink>
+              <NavLink className='me'
+                activeClassName='active-server' to='/servers/@me'>
+                </NavLink>
             </div>
             <div className='server-line'></div>
             {servers}
@@ -127,7 +126,8 @@ class ServerIndex extends React.Component {
             <div className='text-channel-list'>
               <Switch>
                 <Route path='/servers/@me' component={DirectMessageIndexContainer} />
-                <Route path='/servers/:serverId/textChannel/:textChannelId' component={TextChannelListContainer} />
+                <Route path='/servers/:serverId/textChannel/:textChannelId'
+                      component={TextChannelListContainer} />
               </Switch>
             </div>
             <Route path ='/servers' component={SessionDetailContainer}/>
@@ -137,7 +137,8 @@ class ServerIndex extends React.Component {
         <div className='third-container'>
           <div className='third-nav'>
             <Switch>
-              <Route path='/servers/:serverId/textChannel/:textChannelId' component={ServerNavContainer} />
+              <Route path='/servers/:serverId/textChannel/:textChannelId'
+                      component={ServerNavContainer} />
             </Switch>
           </div>
           <Switch>
@@ -163,8 +164,9 @@ class ServerIndex extends React.Component {
                 <h1>Create</h1>
                 <p>{`Create a new server and invite your friends. It's free`}</p>
                 <label htmlFor='createServer'>SERVER NAME</label>
-                <input placeholder='Enter Server Name' id='createServer' onChange={this.handleChange('createServerName')}
-                  value={this.props.createServerName}></input>
+                <input placeholder='Enter Server Name' id='createServer'
+                      onChange={this.handleChange('createServerName')}
+                      value={this.props.createServerName}></input>
                 <button className='serverFormModal-button blue'>
                   Create Server
                 </button>
@@ -176,8 +178,9 @@ class ServerIndex extends React.Component {
                 <h1>Join</h1>
                 <p>Enter the Server you want to join.</p>
                 <label htmlFor='joinServer'>SERVER NAME</label>
-                <input placeholder='Enter Server Name' id='joinServer' onChange={this.handleChange('joinServerName')}
-                  value={this.props.joinServerName}></input>
+                <input placeholder='Enter Server Name' id='joinServer'
+                      onChange={this.handleChange('joinServerName')}
+                      value={this.props.joinServerName}></input>
                 <button className='serverFormModal-button green'>
                 Join Server
               </button>
