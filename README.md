@@ -13,6 +13,7 @@ In its core, Dissonance supports live messaging through different servers and te
 1. Live Messaging/Direct Messaging
 
 ![live-message](./screenshots/direct-message-demo.gif)
+![live-chat-demo](./screenshots/live-chat-demo.gif)
 
 Live messaging is implemented using Ruby on Rails ActionCable. Users are subscribed whenever they are presented a message input field.
 
@@ -40,7 +41,6 @@ Live messaging is implemented using Ruby on Rails ActionCable. Users are subscri
 2. Servers/channels
 
 ![server-demo](./screenshots/server-demo.gif)
-![live-chat-demo](./screenshots/live-chat-demo.gif)
 
 Users can create servers and join existing servers. Users are subscribed to servers they are in. If a server is destroyed users on the server are redirected properly. All users belonging to a server can create channels and edit the channel names
 
