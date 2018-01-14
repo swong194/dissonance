@@ -1,4 +1,5 @@
 import { RECEIVE_FRIENDS, RECEIVE_FRIEND, REMOVE_FRIEND } from '../../../actions/friend_actions';
+import { RECEIVE_USER } from '../../../actions/session_actions';
 
 const oldState = [];
 
@@ -21,6 +22,12 @@ const FriendsReducer = (state = oldState, action) => {
         }
       });
       return newState;
+    case RECEIVE_USER:
+      if(action.user === null){
+        return oldState;
+      } else {
+        return state;
+      }
     default:
       return state;
   }
