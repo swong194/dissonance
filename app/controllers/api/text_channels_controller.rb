@@ -22,7 +22,7 @@ class Api::TextChannelsController < ApplicationController
 
   def update
     @text_channel = TextChannel.find(params[:id])
-    if @text_channel && @text_channel.owner.id === current_user.id && @text_channel.update(name: params[:name])
+    if @text_channel && @text_channel.update(name: params[:name])
       render :show
     else
       render json: @text_channel.errors.full_messages, status: 422
