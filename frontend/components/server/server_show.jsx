@@ -19,6 +19,7 @@ class ServerShow extends React.Component {
     this.handleCreateChannelModal = this.handleCreateChannelModal.bind(this);
     this.handleNewChannelName = this.handleNewChannelName.bind(this);
     this.createChannel = this.createChannel.bind(this);
+    this.stopEvent = this.stopEvent.bind(this);
   }
 
   componentWillReceiveProps(newProps){
@@ -84,6 +85,10 @@ class ServerShow extends React.Component {
     );
   }
 
+  stopEvent(e){
+    e.stopPropagation();
+  }
+
   render(){
     return (
       <div className='server-show-container'>
@@ -106,12 +111,11 @@ class ServerShow extends React.Component {
           afterOpen: '',
           beforeClose: ''}}
           style={{overlay:{ backgroundColor: 'rgba(0,0,0,.8)'} } } ariaHideApp={false} isOpen={this.props.openTextchannelModal}>
-          <div className='create-channel-container'>
-            <div className='create-channel-inner-container'>
-              <button onClick={this.closeModal}>X</button>
+          <div onClick={this.closeModal} className='create-channel-container'>
+            <div onClick={this.stopEvent} className='create-channel-inner-container'>
               <form onSubmit={this.createChannel}>
                 <input onChange={this.handleNewChannelName} value={this.state.newChannelName} placeholder='#general'/>
-                <button>Create Channel</button>
+                <button>Create New Channel</button>
               </form>
             </div>
           </div>
@@ -122,15 +126,15 @@ class ServerShow extends React.Component {
           beforeClose: ''}}
           style={{overlay:{ backgroundColor: 'rgba(0,0,0,.8)'} } } ariaHideApp={false} isOpen={this.props.updateServerModalOpen}>
 
-          <div className='update-server-modal-container'>
-            <div className='update-server-modal-inner-container'>
+          <div onClick={this.closeModal} className='update-server-modal-container'>
+            <div onClick={this.stopEvent} className='update-server-modal-inner-container'>
               <h1>CHANGE SERVER NAME</h1>
               <form onSubmit={() => this.handleUpdate()}>
                 <label htmlFor='server-name'>SERVER NAME</label>
                   <input value={this.state.updateName} onChange={this.handleUpdateChange} id='server-name' type='text' placeholder={this.props.server.name}/>
                   <div onClick={this.clearInput} className='clear-button'>Reset Nickname</div>
                   <div className='update-server-buttons'>
-                  <button className='cancel-button' onClick={() => this.closeModal()}>Cancel</button>
+                  <button className='cancel-button' onClick={this.closeModal}>Cancel</button>
                   <button className='blue-button'>Save</button>
                 </div>
               </form>
@@ -142,14 +146,14 @@ class ServerShow extends React.Component {
         <Modal className={{base:'serverDeleteModal',
           afterOpen: '',
           beforeClose: ''}} style={{overlay:{ backgroundColor: 'rgba(0,0,0,.8)'} } } ariaHideApp={false} isOpen={this.props.deleteServerModalOpen}>
-          <div className='delete-server-modal-container'>
-            <div className='delete-server-modal-inner-container'>
+          <div onClick={this.closeModal} className='delete-server-modal-container'>
+            <div onClick={this.stopEvent} className='delete-server-modal-inner-container'>
               <h1>DELETE {`'${this.props.server.name}'`}.</h1>
               <p>Are you sure you want to delete {this.props.server.name}? </p>
               <p>This action cannot be undone.</p>
 
               <div className='delete-server-buttons'>
-                <button className='cancel-button' onClick={()=> this.closeModal()}>Cancel</button>
+                <button className='cancel-button' onClick={this.closeModal}>Cancel</button>
                 <button className='red-button' onClick={()=> this.handleDelete(this.props.server.id)}>
                   <p>Delete Server</p>
                 </button>

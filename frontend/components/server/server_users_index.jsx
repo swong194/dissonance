@@ -9,6 +9,7 @@ class ServerUsersIndex extends React.Component{
     this.handleMessageModal = this.handleMessageModal.bind(this);
     this.createMessage = this.createMessage.bind(this);
     this.state = { user: 'demo' };
+    this.stopEvent = this.stopEvent.bind(this);
   }
 
   createMessage(){
@@ -28,6 +29,10 @@ class ServerUsersIndex extends React.Component{
       this.setState({ user: user });
       this.props.dispatchModal('openMessageModal');
     };
+  }
+
+  stopEvent(e){
+    e.stopPropagation();
   }
 
   render(){
@@ -53,8 +58,8 @@ class ServerUsersIndex extends React.Component{
         ariaHideApp={false}
         className={ { base: 'message-modal', afterOpen: '', beforeClose: ''}  } >
 
-        <div className='message-modal-container'>
-          <div className='message-modal-inner-container'>
+        <div onClick={this.props.dispatchModal} className='message-modal-container'>
+          <div onClick={this.stopEvent} className='message-modal-inner-container'>
             <div className='message-modal-top'>
               <p>{this.state.user.username}</p>
               <button onClick={this.props.dispatchModal}><i className="fa fa-times-circle-o" aria-hidden="true"></i></button>

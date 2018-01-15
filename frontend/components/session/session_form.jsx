@@ -18,7 +18,11 @@ class SessionForm extends React.Component {
   }
 
   componentWillReceiveProps(){
-    this.clearDemo();
+    if(this.state.userinput){
+      this.clearDemo();
+      setTimeout(()=>{this.setState({username: '', password: ''});},50);
+      setTimeout(()=>{this.setState({username: '', password: ''});},600);
+    }
   }
 
   componentWillUnmount(){
@@ -30,7 +34,7 @@ class SessionForm extends React.Component {
     clearTimeout(this.state.passinput);
     clearTimeout(this.state.demosubmit);
 
-    this.setState({username: '', password: ''});
+    this.setState({username: '', password: '', userinput: null, passinput: null, demosubmit: null});
   }
 
   handleSubmit(e){
@@ -43,25 +47,26 @@ class SessionForm extends React.Component {
 
   handleGuest(e){
     e.preventDefault();
-    this.clearDemo();
 
     if(this.props.match.path === '/signup'){
       this.props.history.push('/login');
     }
 
-    const userinput = setTimeout(()=> {
-      new Typed ('#username-input', { strings: ['demo'], typeSpeed: 125 });
-    },0);
-    const passinput = setTimeout(()=> {
-      new Typed ('#password-input', { strings: ['password'], typeSpeed: 125 });
-    },1200);
-    const demosubmit = setTimeout(()=>{
-      this.props.guestLogin({ username: 'demo', password: 'password' });
-    },2600);
+    if(!this.state.userinput){
+      const userinput = setTimeout(()=> {
+        new Typed ('#username-input', { strings: ['demo'], typeSpeed: 100 });
+      },0);
+      const passinput = setTimeout(()=> {
+        new Typed ('#password-input', { strings: ['password'], typeSpeed: 100 });
+      },1000);
+      const demosubmit = setTimeout(()=>{
+        this.props.guestLogin({ username: 'demo', password: 'password' });
+      },2600);
 
-    this.setState(
-      {userinput: userinput, passinput: passinput, demosubmit: demosubmit}
-    );
+      this.setState(
+        {userinput: userinput, passinput: passinput, demosubmit: demosubmit}
+      );
+    }
   }
 
   handleRedirect(){
