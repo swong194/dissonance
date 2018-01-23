@@ -103,7 +103,7 @@ class SessionForm extends React.Component {
           <div className='logo-line'></div>
         </div>
         <form onSubmit={this.handleSubmit}>
-          <h1>WELCOME BACK!</h1>
+          <h1>{this.props.formType === 'signup' ? 'SIGN UP!' : 'WELCOME BACK!'}</h1>
           <label htmlFor='username-input'>USERNAME</label>
           <input
             id='username-input'
