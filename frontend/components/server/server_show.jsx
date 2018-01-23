@@ -134,7 +134,7 @@ class ServerShow extends React.Component {
                   <input value={this.state.updateName} onChange={this.handleUpdateChange} id='server-name' type='text' placeholder={this.props.server.name}/>
                   <div onClick={this.clearInput} className='clear-button'>Reset Nickname</div>
                   <div className='update-server-buttons'>
-                  <button className='cancel-button' onClick={this.closeModal}>Cancel</button>
+                  <div className='cancel-button' onClick={this.closeModal}>Cancel</div>
                   <button className='blue-button'>Save</button>
                 </div>
               </form>
@@ -153,7 +153,7 @@ class ServerShow extends React.Component {
               <p>This action cannot be undone.</p>
 
               <div className='delete-server-buttons'>
-                <button className='cancel-button' onClick={this.closeModal}>Cancel</button>
+                <div className='cancel-button' onClick={this.closeModal}>Cancel</div>
                 <button className='red-button' onClick={()=> this.handleDelete(this.props.server.id)}>
                   <p>Delete Server</p>
                 </button>
