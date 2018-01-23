@@ -25,6 +25,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     logoutUser: () => dispatch(logoutUser()),
+    clearErrors: () => dispatch({type: 'CLEAR_ERRORS'}),
     fetchServers: () => dispatch(fetchServers()),
     joinServer: name => dispatch(joinServer(name)),
     createServer: server => dispatch(createServer(server)),

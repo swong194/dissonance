@@ -40,6 +40,7 @@ class TextChannelList extends React.Component{
 
   handleUpdate(e){
     e.preventDefault();
+    this.props.clearErrors();
     this.props.updateTextChannel(this.state.modalName, this.state.modalId);
   }
 

@@ -59,6 +59,7 @@ class ServerShow extends React.Component {
   }
 
   handleUpdate(){
+    this.props.clearErrors();
     this.props.updateServer(this.state.updateName, this.props.server.id);
   }
 
@@ -80,6 +81,7 @@ class ServerShow extends React.Component {
 
   createChannel(e){
     e.preventDefault();
+    this.props.clearErrors();
     this.props.createTextChannel({name: this.state.newChannelName, server_id: this.props.server.id})
     .then(channel => this.props.history.push(`/servers/${channel.server_id}/textChannel/${channel.id}`)
     );
@@ -129,7 +131,7 @@ class ServerShow extends React.Component {
           <div onClick={this.closeModal} className='update-server-modal-container'>
             <div onClick={this.stopEvent} className='update-server-modal-inner-container'>
               <h1>CHANGE SERVER NAME</h1>
-              <form onSubmit={() => this.handleUpdate()}>
+              <form onSubmit={this.handleUpdate}>
                 <label htmlFor='server-name'>SERVER NAME</label>
                   <input value={this.state.updateName} onChange={this.handleUpdateChange} id='server-name' type='text' placeholder={this.props.server.name}/>
                   <div onClick={this.clearInput} className='clear-button'>Reset Nickname</div>

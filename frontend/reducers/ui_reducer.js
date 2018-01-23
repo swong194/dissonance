@@ -14,6 +14,8 @@ const UiReducer = (state = oldState, action) => {
   switch (action.type) {
     case RECEIVE_MODAL:
       return Object.assign({}, oldState, {[action.modalType]: true});
+    case 'CLEAR_ERRORS':
+      return state;
     case RECEIVE_ERRORS:
       return state;
     case RECEIVE_MESSAGE:

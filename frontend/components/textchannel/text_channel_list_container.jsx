@@ -17,6 +17,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchTextChannels: id => dispatch(fetchTextChannels(id)),
+    clearErrors: () => dispatch({type: 'CLEAR_ERRORS'}),
     createTextChannel: (textChannel) => dispatch(createTextChannel(textChannel)),
     deleteTextChannel: id => dispatch(deleteTextChannel(id)),
     updateTextChannel: (name, id) => dispatch(updateTextChannel(name, id)),

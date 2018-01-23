@@ -20,6 +20,7 @@ const mapDispatchToProps = dispatch => {
   return{
     updateServer: (name, id) => dispatch(updateServer(name, id)),
     closeModal: () => dispatch(removeModal()),
+    clearErrors: () => dispatch({type: 'CLEAR_ERRORS'}),
     deleteServer: id => dispatch(deleteServer(id)),
     deleteServerModal: type => dispatch(receiveModal(type)),
     updateServerModal: type => dispatch(receiveModal(type)),
