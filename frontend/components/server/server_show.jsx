@@ -5,12 +5,11 @@ import { withRouter } from 'react-router-dom';
 class ServerShow extends React.Component {
   constructor(props){
     super(props);
-    this.state = {
-      toggle: false, toggleClass:'no-server-show-options',
+    this.state = {toggleClass:'no-server-show-options',
       toggleIcon:'fa fa-chevron-down', updateName: '', newChannelName: ''};
     this.handleUpdateModal = this.handleUpdateModal.bind(this);
     this.handleDeleteModal = this.handleDeleteModal.bind(this);
-    this.handleToggle = this.handleToggle.bind(this);
+    this.openUpdateAndDeleteModal = this.openUpdateAndDeleteModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleUpdateChange = this.handleUpdateChange.bind(this);
@@ -23,11 +22,12 @@ class ServerShow extends React.Component {
   }
 
   componentWillReceiveProps(newProps){
-    this.resetState();
+
   }
 
   resetState(){
-    this.setState({toggle: false, toggleClass:'no-server-show-options', toggleIcon:'fa fa-chevron-down', updateName: '', newChannelName: ''});
+    this.props.removeModal('updateAndDeleteModal');
+    this.setState({toggleClass:'no-server-show-options', toggleIcon:'fa fa-chevron-down', updateName: '', newChannelName: ''});
   }
 
   handleUpdateChange(e){
@@ -35,12 +35,12 @@ class ServerShow extends React.Component {
   }
 
   handleUpdateModal(){
-    this.props.updateServerModal('updateServerModal');
+    this.props.receiveModal('updateServerModal');
     this.resetState();
   }
 
   handleDeleteModal(){
-    this.props.deleteServerModal('deleteServerModal');
+    this.props.receiveModal('deleteServerModal');
     this.resetState();
   }
 
@@ -51,13 +51,13 @@ class ServerShow extends React.Component {
   closeModal(type){
     return e => {
       e.preventDefault();
-      this.props.closeModal(type);
+      this.props.removeModal(type);
       this.resetState();
     };
   }
 
   handleCreateChannelModal(){
-    this.props.updateServerModal('openTextchannelModal');
+    this.props.receiveModal('openTextchannelModal');
     this.resetState();
   }
 
@@ -70,7 +70,7 @@ class ServerShow extends React.Component {
     this.setState({updateName: ''});
   }
 
-  handleToggle(e){
+  openUpdateAndDeleteModal(e){
     e.stopPropagation();
     const className = this.state.toggleClass === 'server-show-options' ? 'no-server-show-options' : 'server-show-options';
     const toggleName = this.state.toggleIcon === 'fa fa-chevron-down' ? 'fa fa-times': 'fa fa-chevron-down';
@@ -102,7 +102,7 @@ class ServerShow extends React.Component {
           <button onClick={this.handleCreateChannelModal}>
             <i className="fa fa-plus" aria-hidden="true"></i>
           </button>
-            <button onClick={this.handleToggle}><p>
+            <button onClick={this.openUpdateAndDeleteModal}><p>
               <i className={this.state.toggleIcon} aria-hidden="true">
               </i></p>
             </button>

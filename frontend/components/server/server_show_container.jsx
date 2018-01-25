@@ -13,7 +13,8 @@ const mapStateToProps = (state, ownProps) => {
     server,
     updateServerModalOpen: state.ui.updateServerModal,
     deleteServerModalOpen: state.ui.deleteServerModal,
-    openTextchannelModal: state.ui.openTextchannelModal
+    openTextchannelModal: state.ui.openTextchannelModal,
+    updateAndDeleteModal: state.ui.updateAndDeleteModal
   };
 };
 
@@ -22,9 +23,8 @@ const mapDispatchToProps = dispatch => {
     removeErrors: () => dispatch(removeErrors()),
     updateServer: (name, id) => dispatch(updateServer(name, id)),
     deleteServer: id => dispatch(deleteServer(id)),
-    deleteServerModal: type => dispatch(receiveModal(type)),
-    updateServerModal: type => dispatch(receiveModal(type)),
-    closeModal: (type) => dispatch(removeModal(type)),
+    receiveModal: type => dispatch(receiveModal(type)),
+    removeModal: type => dispatch(removeModal(type)),
     createTextChannel: textChannel => dispatch(createTextChannel(textChannel))
   };
 };

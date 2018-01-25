@@ -7,9 +7,9 @@ const oldState = {};
 const UiReducer = (state = oldState, action) => {
   switch (action.type) {
     case RECEIVE_MODAL:
-      return Object.assign({}, oldState, {[action.modalType]: true});
+      return Object.assign({}, state, {[action.modalType]: true});
     case REMOVE_MODAL:
-      return Object.assign({}, oldState, {[action.modalType]: false});
+      return Object.assign({}, state, {[action.modalType]: false});
     case REMOVE_ERRORS:
       return state;
     case RECEIVE_ERRORS:
