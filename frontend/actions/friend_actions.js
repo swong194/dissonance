@@ -1,21 +1,13 @@
 import * as FriendsAPIUtil from '../util/friends_api_util';
-
+import { receiveErrors } from './error_actions';
 export const RECEIVE_FRIENDS = 'RECEIVE_FRIENDS';
 export const RECEIVE_FRIEND = 'RECEIVE_FRIEND';
 export const REMOVE_FRIEND = 'REMOVE_FRIEND';
-export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 
 export const receiveFriends = friends => {
   return {
     type: RECEIVE_FRIENDS,
     friends
-  };
-};
-
-export const receiveErrors = errors => {
-  return {
-    type: RECEIVE_ERRORS,
-    errors
   };
 };
 

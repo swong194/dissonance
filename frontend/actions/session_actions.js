@@ -1,18 +1,11 @@
 import * as SessionAPIUtil from '../util/session_api_util';
+import { receiveErrors } from './error_actions';
 export const RECEIVE_USER = 'RECEIVE_USER';
-export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 
 export const receiveUser = user => {
   return {
     type: RECEIVE_USER,
     user
-  };
-};
-
-export const receiveErrors = errors => {
-  return {
-    type: RECEIVE_ERRORS,
-    errors
   };
 };
 

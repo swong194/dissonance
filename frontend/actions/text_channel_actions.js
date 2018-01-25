@@ -1,9 +1,9 @@
 import * as TextChannelApi from '../util/text_channel_api_util';
+import { receiveErrors } from './error_actions';
 
 export const RECEIVE_TEXT_CHANNELS = 'RECEIVE_TEXT_CHANNELS';
 export const RECEIVE_TEXT_CHANNEL = 'RECEIVE_TEXT_CHANNEL';
 export const REMOVE_TEXT_CHANNEL = 'REMOVE_TEXT_CHANNEL';
-export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 
 export const receiveTextChannels = channels => {
   return{
@@ -23,13 +23,6 @@ export const removeTextChannel = id => {
   return{
     type: REMOVE_TEXT_CHANNEL,
     textChannelId: id
-  };
-};
-
-export const receiveErrors = errors => {
-  return{
-    type: RECEIVE_ERRORS,
-    errors
   };
 };
 

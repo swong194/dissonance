@@ -1,6 +1,7 @@
 export const RECEIVE_MESSAGES = 'RECEIVE_MESSAGES';
 export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE';
-export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
+
+import { receiveErrors } from './error_actions';
 
 import * as MessageAPIUtil from '../util/message_api_util';
 
@@ -18,13 +19,6 @@ export const receiveMessage = message => {
   };
 };
 
-export const receiveErrors = errors => {
-  return{
-    type: RECEIVE_ERRORS,
-    errors
-  };
-};
-
 export const fetchMessages = () => dispatch => {
   return MessageAPIUtil.fetchMessages().then(
     messages => dispatch(receiveMessages(messages)),
@@ -34,7 +28,7 @@ export const fetchMessages = () => dispatch => {
 
 export const createMessage = message => dispatch => {
   return MessageAPIUtil.createMessage(message).then(
-    message => dispatch(receiveMessage(message)),
+    resMessage => dispatch(receiveMessage(resMessage)),
     errors => dispatch(receiveErrors(errors.responseJSON))
   );
 };
