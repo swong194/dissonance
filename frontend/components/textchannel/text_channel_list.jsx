@@ -20,11 +20,11 @@ class TextChannelList extends React.Component{
 
   openChannelModal(id, name){
     this.setState({modalId: id, modalName: name});
-    this.props.dispatchModal('openChannelModal');
+    this.props.receiveModal('openChannelModal');
   }
 
   closeChannelModal(){
-    this.props.dispatchModal(null);
+    this.props.removeModal('openChannelModal');
   }
 
   componentDidMount(){
