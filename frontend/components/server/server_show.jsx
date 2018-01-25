@@ -1,13 +1,13 @@
-
 import React from 'react';
 import Modal from 'react-modal';
 import { withRouter } from 'react-router-dom';
-import onClickOutside from "react-onclickoutside";
 
 class ServerShow extends React.Component {
   constructor(props){
     super(props);
-    this.state = {toggle: false, toggleClass:'no-server-show-options', toggleIcon:'fa fa-chevron-down', updateName: '', newChannelName: ''};
+    this.state = {
+      toggle: false, toggleClass:'no-server-show-options',
+      toggleIcon:'fa fa-chevron-down', updateName: '', newChannelName: ''};
     this.handleUpdateModal = this.handleUpdateModal.bind(this);
     this.handleDeleteModal = this.handleDeleteModal.bind(this);
     this.handleToggle = this.handleToggle.bind(this);
@@ -48,9 +48,12 @@ class ServerShow extends React.Component {
     this.props.deleteServer(id);
   }
 
-  closeModal(){
-    this.props.closeModal();
-    this.resetState();
+  closeModal(type){
+    return e => {
+      e.preventDefault();
+      this.props.closeModal(type);
+      this.resetState();
+    };
   }
 
   handleCreateChannelModal(){
@@ -113,7 +116,7 @@ class ServerShow extends React.Component {
           afterOpen: '',
           beforeClose: ''}}
           style={{overlay:{ backgroundColor: 'rgba(0,0,0,.8)'} } } ariaHideApp={false} isOpen={this.props.openTextchannelModal}>
-          <div onClick={this.closeModal} className='create-channel-container'>
+          <div onClick={this.closeModal('openTextchannelModal')} className='create-channel-container'>
             <div onClick={this.stopEvent} className='create-channel-inner-container'>
               <form onSubmit={this.createChannel}>
                 <input onChange={this.handleNewChannelName} value={this.state.newChannelName} placeholder='#general'/>
@@ -128,7 +131,7 @@ class ServerShow extends React.Component {
           beforeClose: ''}}
           style={{overlay:{ backgroundColor: 'rgba(0,0,0,.8)'} } } ariaHideApp={false} isOpen={this.props.updateServerModalOpen}>
 
-          <div onClick={this.closeModal} className='update-server-modal-container'>
+          <div onClick={this.closeModal('updateServerModal')} className='update-server-modal-container'>
             <div onClick={this.stopEvent} className='update-server-modal-inner-container'>
               <h1>CHANGE SERVER NAME</h1>
               <form onSubmit={this.handleUpdate}>
@@ -136,7 +139,7 @@ class ServerShow extends React.Component {
                   <input value={this.state.updateName} onChange={this.handleUpdateChange} id='server-name' type='text' placeholder={this.props.server.name}/>
                   <div onClick={this.clearInput} className='clear-button'>Reset Nickname</div>
                   <div className='update-server-buttons'>
-                  <div className='cancel-button' onClick={this.closeModal}>Cancel</div>
+                  <div className='cancel-button' onClick={this.closeModal('updateServerModal')}>Cancel</div>
                   <button className='blue-button'>Save</button>
                 </div>
               </form>
@@ -148,14 +151,14 @@ class ServerShow extends React.Component {
         <Modal className={{base:'serverDeleteModal',
           afterOpen: '',
           beforeClose: ''}} style={{overlay:{ backgroundColor: 'rgba(0,0,0,.8)'} } } ariaHideApp={false} isOpen={this.props.deleteServerModalOpen}>
-          <div onClick={this.closeModal} className='delete-server-modal-container'>
+          <div onClick={this.closeModal('deleteServerModal')} className='delete-server-modal-container'>
             <div onClick={this.stopEvent} className='delete-server-modal-inner-container'>
               <h1>DELETE {`'${this.props.server.name}'`}.</h1>
               <p>Are you sure you want to delete {this.props.server.name}? </p>
               <p>This action cannot be undone.</p>
 
               <div className='delete-server-buttons'>
-                <div className='cancel-button' onClick={this.closeModal}>Cancel</div>
+                <div className='cancel-button' onClick={this.closeModal('deleteServerModal')}>Cancel</div>
                 <button className='red-button' onClick={()=> this.handleDelete(this.props.server.id)}>
                   <p>Delete Server</p>
                 </button>

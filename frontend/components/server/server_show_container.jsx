@@ -2,7 +2,8 @@ import { connect } from 'react-redux';
 import ServerShow from './server_show';
 
 import { updateServer, deleteServer } from '../../actions/server_actions';
-import { RECEIVE_MODAL, receiveModal, removeModal } from '../../actions/ui_actions';
+import { receiveModal, removeModal } from '../../actions/ui_actions';
+import { removeErrors } from '../../actions/error_actions';
 import { createTextChannel } from '../../actions/text_channel_actions';
 
 const mapStateToProps = (state, ownProps) => {
@@ -18,13 +19,13 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return{
+    removeErrors: () => dispatch(removeErrors()),
     updateServer: (name, id) => dispatch(updateServer(name, id)),
-    closeModal: () => dispatch(removeModal()),
-    clearErrors: () => dispatch({type: 'CLEAR_ERRORS'}),
     deleteServer: id => dispatch(deleteServer(id)),
     deleteServerModal: type => dispatch(receiveModal(type)),
     updateServerModal: type => dispatch(receiveModal(type)),
-    createTextChannel: text_channel => dispatch(createTextChannel(text_channel))
+    closeModal: (type) => dispatch(removeModal(type)),
+    createTextChannel: textChannel => dispatch(createTextChannel(textChannel))
   };
 };
 
