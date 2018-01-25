@@ -52,7 +52,6 @@ class ServerShow extends React.Component {
     return e => {
       e.preventDefault();
       this.props.removeModal(type);
-      this.resetState();
     };
   }
 
@@ -62,7 +61,7 @@ class ServerShow extends React.Component {
   }
 
   handleUpdate(){
-    this.props.clearErrors();
+    this.props.removeErrors();
     this.props.updateServer(this.state.updateName, this.props.server.id);
   }
 
@@ -74,7 +73,7 @@ class ServerShow extends React.Component {
     e.stopPropagation();
     const className = this.state.toggleClass === 'server-show-options' ? 'no-server-show-options' : 'server-show-options';
     const toggleName = this.state.toggleIcon === 'fa fa-chevron-down' ? 'fa fa-times': 'fa fa-chevron-down';
-    this.setState({toggle: !this.state.toggle, toggleClass: className, toggleIcon: toggleName});
+    this.setState({toggleClass: className, toggleIcon: toggleName});
   }
 
   handleNewChannelName(e){
@@ -84,7 +83,7 @@ class ServerShow extends React.Component {
 
   createChannel(e){
     e.preventDefault();
-    this.props.clearErrors();
+    this.props.removeErrors();
     this.props.createTextChannel({name: this.state.newChannelName, server_id: this.props.server.id})
     .then(channel => this.props.history.push(`/servers/${channel.server_id}/textChannel/${channel.id}`)
     );
