@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { fetchUsers } from '../../actions/user_actions';
 import { receiveModal, removeModal } from '../../actions/ui_actions';
 import { createDirectMessage } from '../../actions/direct_message_actions';
+import { removeErrors } from '../../actions/error_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let users = [];
@@ -26,7 +27,8 @@ const mapDispatchToProps = dispatch => {
     fetchUsers: () => dispatch(fetchUsers()),
     removeModal: modalType => dispatch(removeModal(modalType)),
     receiveModal: modalType => dispatch(receiveModal(modalType)),
-    createDirectMessage: id => dispatch(createDirectMessage(id))
+    createDirectMessage: id => dispatch(createDirectMessage(id)),
+    removeErrors: () => dispatch(removeErrors())
   };
 };
 

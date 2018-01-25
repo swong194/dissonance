@@ -9,7 +9,7 @@ class ServerShow extends React.Component {
       toggleIcon:'fa fa-chevron-down', updateName: '', newChannelName: ''};
     this.handleUpdateModal = this.handleUpdateModal.bind(this);
     this.handleDeleteModal = this.handleDeleteModal.bind(this);
-    this.openUpdateAndDeleteModal = this.openUpdateAndDeleteModal.bind(this);
+    this.toggleUpdateAndDeleteModal = this.toggleUpdateAndDeleteModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleUpdateChange = this.handleUpdateChange.bind(this);
@@ -22,7 +22,10 @@ class ServerShow extends React.Component {
   }
 
   componentWillReceiveProps(newProps){
-
+    const className = newProps.updateAndDeleteModal ? 'server-show-options' : 'no-server-show-options';
+    const toggleName = newProps.updateAndDeleteModal ? 'fa fa-times': 'fa fa-chevron-down';
+    this.setState({toggleClass: className, toggleIcon: toggleName});
+    const stop = 1;
   }
 
   resetState(){
@@ -69,11 +72,14 @@ class ServerShow extends React.Component {
     this.setState({updateName: ''});
   }
 
-  openUpdateAndDeleteModal(e){
+  toggleUpdateAndDeleteModal(e){
     e.stopPropagation();
-    const className = this.state.toggleClass === 'server-show-options' ? 'no-server-show-options' : 'server-show-options';
-    const toggleName = this.state.toggleIcon === 'fa fa-chevron-down' ? 'fa fa-times': 'fa fa-chevron-down';
-    this.setState({toggleClass: className, toggleIcon: toggleName});
+    e.preventDefault();
+    if(this.props.updateAndDeleteModal){
+      this.props.removeModal('updateAndDeleteModal');
+    } else {
+      this.props.receiveModal('updateAndDeleteModal');
+    }
   }
 
   handleNewChannelName(e){
@@ -101,7 +107,7 @@ class ServerShow extends React.Component {
           <button onClick={this.handleCreateChannelModal}>
             <i className="fa fa-plus" aria-hidden="true"></i>
           </button>
-            <button onClick={this.openUpdateAndDeleteModal}><p>
+            <button onClick={this.toggleUpdateAndDeleteModal}><p>
               <i className={this.state.toggleIcon} aria-hidden="true">
               </i></p>
             </button>

@@ -14,6 +14,7 @@ class ServerUsersIndex extends React.Component{
   }
 
   createMessage(){
+    this.props.removeErrors();
     this.props.createDirectMessage(this.state.user.id).then(
       (server) => this.props.history.push(`/servers/@me/${server.textChannelId}`)
     );

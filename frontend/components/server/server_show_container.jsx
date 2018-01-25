@@ -8,7 +8,6 @@ import { createTextChannel } from '../../actions/text_channel_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const server = state.entities.servers[ownProps.match.params.serverId] || {name: ''};
-
   return{
     server,
     updateServerModalOpen: state.ui.updateServerModal,

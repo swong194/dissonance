@@ -99,8 +99,8 @@ class ServerIndex extends React.Component {
 
     const errorClass = this.props.errors.length ? 'main-server-errors' : 'non-active-error';
 
-    const errors = this.props.errors.map(error => (
-      <span>{error}</span>
+    const errors = this.props.errors.map((error,i) => (
+      <span key={i}>{error}</span>
     ));
 
     return (

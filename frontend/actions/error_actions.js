@@ -8,7 +8,7 @@ export const receiveErrors = errors => {
   };
 };
 
-export const removeErrors = errors => {
+export const removeErrors = () => {
   return{
     type: REMOVE_ERRORS
   };
