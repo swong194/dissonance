@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import SessionForm from './session_form';
 import { createUser, loginUser } from '../../actions/session_actions';
+import { removeErrors } from '../../actions/error_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const formType = ownProps.match.path === '/login' ? 'login' : 'signup';
@@ -20,7 +21,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     action: user => dispatch(action(user)),
     guestLogin: guest=> dispatch(loginUser(guest)),
-    removeErrors: () => dispatch({type: 'REMOVE_ERRORS'})
+    removeErrors: () => dispatch(removeErrors())
   };
 };
 

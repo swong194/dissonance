@@ -46,8 +46,8 @@ export const fetchTextChannel = id => dispatch => {
   );
 };
 
-export const createTextChannel = text_channel => dispatch => {
-  return TextChannelApi.createTextChannel(text_channel).then(
+export const createTextChannel = textChannel => dispatch => {
+  return TextChannelApi.createTextChannel(textChannel).then(
     channel => {
       dispatch(receiveTextChannel(channel));
       return channel;

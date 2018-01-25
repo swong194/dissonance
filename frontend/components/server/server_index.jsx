@@ -40,7 +40,7 @@ class ServerIndex extends React.Component {
 
   handleCreateServer(e){
     e.preventDefault();
-    this.props.clearErrors();
+    this.props.removeErrors();
     this.props.createServer(this.state.createServerName).then(
       server => {
         this.props.history.push(`/servers/${server.id}/textChannel/${server.text_channels[0]}`);
@@ -50,7 +50,7 @@ class ServerIndex extends React.Component {
 
   handleJoinServer(e){
     e.preventDefault();
-    this.props.clearErrors();
+    this.props.removeErrors();
     this.props.joinServer(this.state.joinServerName).then(
       server => {
         this.props.history.push(`/servers/${server.id}/textChannel/${server.text_channels[0]}`);
