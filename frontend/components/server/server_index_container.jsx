@@ -8,7 +8,7 @@ import {
   removeServer
   } from '../../actions/server_actions';
 import { serverArray } from '../../util/selectors_util';
-import { dispatchModal } from '../../actions/ui_actions';
+import { receiveModal, removeModal } from '../../actions/ui_actions';
 import { fetchUsers } from '../../actions/user_actions';
 import { fetchTextChannels } from '../../actions/text_channel_actions';
 import { removeErrors } from '../../actions/error_actions';
@@ -30,7 +30,8 @@ const mapDispatchToProps = dispatch => {
     fetchServers: () => dispatch(fetchServers()),
     joinServer: name => dispatch(joinServer(name)),
     createServer: server => dispatch(createServer(server)),
-    dispatchModal: modalType => dispatch(dispatchModal(modalType)),
+    removeModal: modalType => dispatch(removeModal(modalType)),
+    receiveModal: modalType => dispatch(receiveModal(modalType)),
     fetchUsers: () => dispatch(fetchUsers()),
     removeServer: id => dispatch(removeServer(id)),
     fetchTextChannels: id => dispatch(fetchTextChannels(id))

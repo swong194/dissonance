@@ -25,14 +25,6 @@ class ServerIndex extends React.Component {
     this.stopEvent = this.stopEvent.bind(this);
   }
 
-  openModal(){
-    this.props.dispatchModal('serverFormModalOpen');
-  }
-
-  closeModal(){
-    this.props.dispatchModal(null);
-  }
-
   componentDidMount(){
     this.props.fetchServers();
     this.props.fetchUsers();
@@ -90,6 +82,14 @@ class ServerIndex extends React.Component {
         }
       }
     });
+  }
+
+  openModal(){
+    this.props.receiveModal('serverFormModalOpen');
+  }
+
+  closeModal(){
+    this.props.removeModal('serverFormModalOpen');
   }
 
   render(){

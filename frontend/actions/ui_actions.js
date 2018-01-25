@@ -8,16 +8,9 @@ export const receiveModal = (modalType) => {
   };
 };
 
-export const removeModal = () => {
+export const removeModal = (modalType) => {
   return {
     type: REMOVE_MODAL,
+    modalType
   };
-};
-
-export const dispatchModal = (modalType) => dispatch => {
-  if(modalType !== null){
-    return dispatch(receiveModal(modalType));
-  } else {
-    return dispatch(removeModal());
-  }
 };
