@@ -10,6 +10,7 @@ class ServerUsersIndex extends React.Component{
     this.createMessage = this.createMessage.bind(this);
     this.state = { user: 'demo' };
     this.stopEvent = this.stopEvent.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   createMessage(){
@@ -26,9 +27,14 @@ class ServerUsersIndex extends React.Component{
 
   handleMessageModal(user){
     return e => {
+      e.preventDefault();
       this.setState({ user: user });
-      this.props.dispatchModal('openMessageModal');
+      this.props.receiveModal('openMessageModal');
     };
+  }
+
+  closeModal(){
+    this.props.removeModal('openMessageModal');
   }
 
   stopEvent(e){
@@ -58,11 +64,11 @@ class ServerUsersIndex extends React.Component{
         ariaHideApp={false}
         className={ { base: 'message-modal', afterOpen: '', beforeClose: ''}  } >
 
-        <div onClick={this.props.dispatchModal} className='message-modal-container'>
+        <div onClick={this.closeModal} className='message-modal-container'>
           <div onClick={this.stopEvent} className='message-modal-inner-container'>
             <div className='message-modal-top'>
               <p>{this.state.user.username}</p>
-              <button onClick={this.props.dispatchModal}><i className="fa fa-times-circle-o" aria-hidden="true"></i></button>
+              <button onClick={this.closeModal}><i className="fa fa-times-circle-o" aria-hidden="true"></i></button>
             </div>
             <div className='message-modal-bottom'>
               <button onClick={this.createMessage}><p>Message {this.state.user.username}?</p></button>

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import ServerUsersIndex from './server_users_index';
 import { withRouter } from 'react-router-dom';
 import { fetchUsers } from '../../actions/user_actions';
-import { dispatchModal } from '../../actions/ui_actions';
+import { receiveModal, removeModal } from '../../actions/ui_actions';
 import { createDirectMessage } from '../../actions/direct_message_actions';
 
 const mapStateToProps = (state, ownProps) => {
@@ -24,7 +24,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchUsers: () => dispatch(fetchUsers()),
-    dispatchModal: (modalType) => dispatch(dispatchModal(modalType)),
+    removeModal: modalType => dispatch(removeModal(modalType)),
+    receiveModal: modalType => dispatch(receiveModal(modalType)),
     createDirectMessage: id => dispatch(createDirectMessage(id))
   };
 };
