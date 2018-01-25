@@ -52,6 +52,7 @@ class FriendsIndex extends React.Component{
 
   handleAddFriend(e){
     e.preventDefault();
+    this.props.removeErrors();
     this.props.addFriend(this.state.friendName).then(
       friendId => {
         this.setState({friendName: ''});
