@@ -88,8 +88,11 @@ class ServerIndex extends React.Component {
     this.props.receiveModal('serverFormModalOpen');
   }
 
-  closeModal(){
-    this.props.removeModal('serverFormModalOpen');
+  closeModal(type){
+    return e => {
+      e.stopPropagation();
+      this.props.removeModal(type);
+    }
   }
 
   render(){
@@ -104,7 +107,7 @@ class ServerIndex extends React.Component {
     ));
 
     return (
-      <main id='main-container'>
+      <main id='main-container' onClick={this.closeModal('updateAndDeleteModal')}>
         <div className={errorClass}>
           {errors}
         </div>
@@ -161,7 +164,7 @@ class ServerIndex extends React.Component {
             afterOpen: '',
             beforeClose: '' } } isOpen={this.props.serverFormModalOpen} >
 
-          <div onClick={this.closeModal} className='serverFormModal'>
+          <div onClick={this.closeModal('serverFormModalOpen')} className='serverFormModal'>
             <main onClick={this.stopEvent} className='serverFormModal-container'>
               <h1>OH, ANOTHER SERVER HUH?</h1>
 
