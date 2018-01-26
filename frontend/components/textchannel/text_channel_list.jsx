@@ -18,6 +18,14 @@ class TextChannelList extends React.Component{
     }
   }
 
+  componentWillMount(){
+    this.createSocket();
+  }
+
+  componentDidMount(){
+    this.props.fetchTextChannels(this.props.serverId);
+  }
+
   openChannelModal(id, name){
     this.setState({modalId: id, modalName: name});
     this.props.receiveModal('openChannelModal');
@@ -25,10 +33,6 @@ class TextChannelList extends React.Component{
 
   closeChannelModal(){
     this.props.removeModal('openChannelModal');
-  }
-
-  componentDidMount(){
-    this.props.fetchTextChannels(this.props.serverId);
   }
 
   handleChange(type){
@@ -42,6 +46,28 @@ class TextChannelList extends React.Component{
     e.preventDefault();
     this.props.clearErrors();
     this.props.updateTextChannel(this.state.modalName, this.state.modalId);
+  }
+
+  createSocket() {
+    let cable = ActionCable.createConsumer();
+    this.textchannel = cable.subscriptions.create({
+      channel: 'TextChannelChannel'
+    }, {
+      connected: () => {},
+      received: (message) => {
+        this.props.receiveMessage(message);
+      },
+      delete: function(id){
+        this.perform('delete', {
+          id: id
+        });
+      },
+      update: function(textChannel) {
+        this.perform('update', {
+          text_channel: textChannel
+        });
+      }
+    });
   }
 
   render(){

@@ -33,6 +33,10 @@ class TextChannelForm extends React.Component{
       this.setState({[type]: e.target.value});
     };
   }
+  
+  componentWillMount(){
+    this.createSocket();
+  }
 
   createSocket() {
     let cable = ActionCable.createConsumer();
@@ -51,9 +55,6 @@ class TextChannelForm extends React.Component{
     });
   }
 
-  componentWillMount(){
-    this.createSocket();
-  }
 
   render(){
     return(
