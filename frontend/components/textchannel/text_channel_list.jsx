@@ -44,7 +44,7 @@ class TextChannelList extends React.Component{
 
   handleUpdate(e){
     e.preventDefault();
-    this.props.clearErrors();
+    this.props.removeErrors();
     this.props.updateTextChannel(this.state.modalName, this.state.modalId);
   }
 
@@ -54,8 +54,12 @@ class TextChannelList extends React.Component{
       channel: 'TextChannelChannel'
     }, {
       connected: () => {},
-      received: (message) => {
-        this.props.receiveMessage(message);
+      received: (channel) => {
+        if(channel.name){
+          this.props.receiveChannel(channel);
+        } else {
+          this.props.removeChannel(channel.id);
+        }
       },
       delete: function(id){
         this.perform('delete', {

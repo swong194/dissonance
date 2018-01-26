@@ -1,9 +1,11 @@
 import { connect } from 'react-redux';
 import TextChannelList from './text_channel_list';
 import {
-  fetchTextChannels, createTextChannel, deleteTextChannel, updateTextChannel
+  fetchTextChannels, createTextChannel, deleteTextChannel, updateTextChannel,
+  receiveTextChannel
 } from '../../actions/text_channel_actions';
 import { receiveModal, removeModal } from '../../actions/ui_actions';
+import { removeErrors } from '../../actions/error_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -17,10 +19,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchTextChannels: id => dispatch(fetchTextChannels(id)),
-    clearErrors: () => dispatch({type: 'CLEAR_ERRORS'}),
-    createTextChannel: textChannel => dispatch(createTextChannel(textChannel)),
-    deleteTextChannel: id => dispatch(deleteTextChannel(id)),
-    updateTextChannel: (name, id) => dispatch(updateTextChannel(name, id)),
+    removeErrors: () => dispatch(removeErrors()),
+    removeTextChannel: id => dispatch(removeTextChannel(id)),
+    receiveTextChannel: channel => dispatch(receiveTextChannel(channel)),
     receiveModal: modalType => dispatch(receiveModal(modalType)),
     removeModal: modalType => dispatch(removeModal(modalType))
   };
