@@ -20,7 +20,7 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchTextChannels: id => dispatch(fetchTextChannels(id)),
     removeErrors: () => dispatch(removeErrors()),
-    removeTextChannel: id => dispatch(removeTextChannel(id)),
+    deleteTextChannel: id => dispatch(deleteTextChannel(id)),
     receiveTextChannel: channel => dispatch(receiveTextChannel(channel)),
     receiveModal: modalType => dispatch(receiveModal(modalType)),
     removeModal: modalType => dispatch(removeModal(modalType))
