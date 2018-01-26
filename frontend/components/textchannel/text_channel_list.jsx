@@ -55,8 +55,8 @@ class TextChannelList extends React.Component{
     }, {
       connected: () => {},
       received: (channel) => {
-        if(channel.name){
-          if(channel.server_id === this.props.serverId){
+        if(typeof channel.name === 'string'){
+          if(channel.server_id == this.props.serverId){
             this.props.receiveTextChannel(channel);
           }
         } else {
