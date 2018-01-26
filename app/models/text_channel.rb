@@ -14,4 +14,12 @@ class TextChannel < ApplicationRecord
   has_one :owner,
   through: :server,
   source: :owner
+
+  after_destroy do
+    TextChannelEventDeletionBroadcastJob.perform_later(self)
+  end
+
+  after_create_commit do
+    TextChannelEventCreationBroadcastJob.perform_later(self)
+  end
 end
