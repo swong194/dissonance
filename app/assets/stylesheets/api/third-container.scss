@@ -57,7 +57,7 @@
     color: #828384;
   }
   &-index-inner-container{
-    height: 100%;
+    height: calc(100% - 65px);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
