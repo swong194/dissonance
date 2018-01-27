@@ -45,7 +45,8 @@ class TextChannelList extends React.Component{
   handleUpdate(e){
     e.preventDefault();
     this.props.removeErrors();
-    this.props.updateTextChannel(this.state.modalName, this.state.modalId);
+    debugger
+    this.textchannel.update({name: this.state.modalName, id: this.state.modalId});
   }
 
   createSocket() {

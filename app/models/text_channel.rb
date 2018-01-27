@@ -22,4 +22,8 @@ class TextChannel < ApplicationRecord
   after_create_commit do
     TextChannelCreationEventBroadcastJob.perform_later(self)
   end
+
+  after_update_commit do
+    TextChannelCreationEventBroadcastJob.perform_later(self)
+  end
 end
