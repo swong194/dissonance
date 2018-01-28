@@ -163,6 +163,8 @@
 }
 
 .text-channel-form-side-bar-options{
+  padding: 0 10px;
+  border-bottom: 1px solid #43454b;
   p{
     color: #b8babd;
     padding: 10px 5px;
@@ -170,8 +172,23 @@
     margin: 10px;
     font-family: arial;
   }
-  padding: 0 10px;
-  border-bottom: 1px solid #43454b;
+}
+
+.delete-text-channel{
+  color: #f14646;
+  font-family: sans-serif;
+  border-radius: 5px;
+  margin: 10px 0;
+  padding: 10px 0;
+  padding-left: 10px;
+  cursor: pointer;
+  &:hover{
+    background-color: rgba(240,71,71,.1);
+  }
+  &:active{
+    background-color: #f04747;
+    color: white;
+  }
 }
 
 .selected{
