@@ -416,3 +416,13 @@
     text-overflow: ellipsis;
   }
 }
+
+.fa-sign-out{
+  transition: .7s;
+}
+
+.leave-server-icon:hover{
+  .fa-sign-out{
+    color:#f14646;
+  }
+}
