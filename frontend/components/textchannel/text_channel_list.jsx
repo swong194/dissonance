@@ -84,14 +84,16 @@ class TextChannelList extends React.Component{
           }
         } else if(channel.id){
           this.props.removeTextChannel(channel.id);
-          let tId = '0';
-          for (let i = 0; i < this.props.textChannelIds.length; i++) {
-            if(this.props.textChannelIds[i] !== channel.id.toString()){
-              tId = this.props.textChannelIds[i];
-              break;
+          if(this.props.match.params.textChannelId == channel.id){
+            let tId = '0';
+            for (let i = 0; i < this.props.textChannelIds.length; i++) {
+              if(this.props.textChannelIds[i] !== channel.id.toString()){
+                tId = this.props.textChannelIds[i];
+                break;
+              }
             }
+            this.props.history.push(`/servers/${this.props.serverId}/textChannel/${tId}`);
           }
-          this.props.history.push(`/servers/${this.props.serverId}/textChannel/${tId}`)
         } else {
           this.props.receiveErrors(channel.errors);
         }

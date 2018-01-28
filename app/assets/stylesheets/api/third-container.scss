@@ -30,6 +30,33 @@
   flex-direction: column;
 }
 
+.textchannel-empty{
+  font-family: sans-serif;
+  color: #ada9a7;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: asset-url('brick-wall.jpg');
+  background-position: center;
+  background-size: cover;
+  p{
+    width: 50%;
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+    background-color: rgba(0,0,0,0.6);
+    border-radius: 5px;
+  }
+}
+
+@media (max-width:675px) {
+  .textchannel-empty > p {
+    z-index: -1;
+  }
+}
+
 .textchannel-form-container{
   align-self: flex-end;
   min-height: 70px;

@@ -20,15 +20,25 @@ class TextChannel extends React.Component {
         <MessageItemContainer key={i} message={message} users={this.props.users} usersIds={Object.keys(this.props.users)}/>
       ));
     }
-
-    return(
-      <div className='textchannel-container'>
-        <div className='text-channel-messages-container'>
-          {messages}
+    if(this.props.channelId === '0'){
+      return (
+        <div className = 'textchannel-container'>
+          <div className = 'textchannel-empty'>
+            <p>Oh no... you seem to have hit a brick wall. There are no text channels for this server</p>
+          </div>
         </div>
-        <TextChannelFormContainer />
-      </div>
-    );
+      );
+    } else {
+      return(
+        <div className='textchannel-container'>
+          <div className='text-channel-messages-container'>
+            {messages}
+          </div>
+          <TextChannelFormContainer />
+        </div>
+      );
+    }
+
   }
 }
 
