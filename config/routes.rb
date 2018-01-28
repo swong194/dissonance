@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resource :session, only:[:create, :destroy]
     resources :servers, only: [:create, :index, :destroy, :update, :show]
     post 'servers/join', to: 'servers#join'
-    delete 'servers/leave', to: 'servers#leave'
+    delete 'servers', to: 'servers#leave'
     resources :text_channels, only: [:create, :index, :destroy, :update, :show]
     resources :messages, only: [:create, :index]
     resources :direct_messages, only: [:create, :index, :show]

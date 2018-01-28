@@ -60,6 +60,7 @@ class Api::ServersController < ApplicationController
   def leave
     @server_membership = ServerMembership.find_by(user_id: current_user.id, server_id: params[:id])
     @server_membership.destroy
+    @server = Server.find(params[:id])
   end
 
   private

@@ -10,11 +10,4 @@ const mapStateToProps = (state, ownProps) => {
     channel
   };
 };
-
-const mapDispatchToProps = dispatch => {
-  return{
-
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ServerNav);
+export default connect(mapStateToProps, null)(ServerNav);

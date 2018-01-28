@@ -79,6 +79,7 @@ export const joinServer = name => dispatch => {
 };
 
 export const leaveServer = id => dispatch => {
+  debugger
   return ServerAPIUtil.leaveServer(id).then(
     () => {
       dispatch(removeServer(id));

@@ -160,7 +160,6 @@
   }
 }
 
-
 .delete-server-modal-container{
   display: flex;
   height: 100vh;
@@ -402,5 +401,18 @@
       background-color: #f04746;
       border: 1px solid black;
     }
+  }
+}
+
+.leave-server-modal{
+  font-family: sans-serif;
+  h3{
+    margin: 15px auto;
+    font-size: 16px;
+    text-align: center;
+    max-width: 410px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
