@@ -63,7 +63,6 @@ class TextChannelList extends React.Component{
     e.preventDefault();
     this.closeDeleteChannelModal();
     this.props.removeErrors();
-    debugger
     this.textchannel.delete(this.state.modalId);
   }
 
