@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 import { withRouter } from 'react-router-dom';
+import ServerShowMemberContainer from './server_show_member_container';
 
 class ServerShow extends React.Component {
   constructor(props){
@@ -100,13 +101,18 @@ class ServerShow extends React.Component {
   }
 
   render(){
-    return (
-      <div className='server-show-container'>
-        <div className='server-show-inner-container'>
-          <h1>{this.props.server.name}</h1>
-          <button onClick={this.handleCreateChannelModal}>
-            <i className="fa fa-plus" aria-hidden="true"></i>
-          </button>
+    if(this.props.currentUserId !== this.props.server.owner_id){
+      return (
+        <ServerShowMemberContainer />
+      );
+    } else {
+      return (
+        <div className='server-show-container'>
+          <div className='server-show-inner-container'>
+            <h1>{this.props.server.name}</h1>
+            <button onClick={this.handleCreateChannelModal}>
+              <i className="fa fa-plus" aria-hidden="true"></i>
+            </button>
             <button onClick={this.toggleUpdateAndDeleteModal}><p>
               <i className={this.state.toggleIcon} aria-hidden="true">
               </i></p>
@@ -115,66 +121,67 @@ class ServerShow extends React.Component {
               <button onClick={this.handleUpdateModal} className='grey'><i className="fa fa-pencil" aria-hidden="true"></i> <p>Update Server</p></button>
               <button onClick={this.handleDeleteModal} className='red'><i className="fa fa-trash-o" aria-hidden="true"></i> <p>Delete Server</p></button>
             </div>
-        </div>
-
-        <Modal className={{base:'text-channel-modal',
-          afterOpen: '',
-          beforeClose: ''}}
-          style={{overlay:{ backgroundColor: 'rgba(0,0,0,.8)'} } } ariaHideApp={false} isOpen={this.props.openTextchannelModal}>
-          <div onClick={this.closeModal('openTextchannelModal')} className='create-channel-container'>
-            <div onClick={this.stopEvent} className='create-channel-inner-container'>
-              <form onSubmit={this.createChannel}>
-                <input onChange={this.handleNewChannelName} value={this.state.newChannelName} placeholder='#general'/>
-                <button>Create New Channel</button>
-              </form>
-            </div>
           </div>
-        </Modal>
 
-        <Modal className={{base:'serverUpdateModal',
-          afterOpen: '',
-          beforeClose: ''}}
-          style={{overlay:{ backgroundColor: 'rgba(0,0,0,.8)'} } } ariaHideApp={false} isOpen={this.props.updateServerModalOpen}>
+          <Modal className={{base:'text-channel-modal',
+            afterOpen: '',
+            beforeClose: ''}}
+            style={{overlay:{ backgroundColor: 'rgba(0,0,0,.8)'} } } ariaHideApp={false} isOpen={this.props.openTextchannelModal}>
+            <div onClick={this.closeModal('openTextchannelModal')} className='create-channel-container'>
+              <div onClick={this.stopEvent} className='create-channel-inner-container'>
+                <form onSubmit={this.createChannel}>
+                  <input onChange={this.handleNewChannelName} value={this.state.newChannelName} placeholder='#general'/>
+                  <button>Create New Channel</button>
+                </form>
+              </div>
+            </div>
+          </Modal>
 
-          <div onClick={this.closeModal('updateServerModal')} className='update-server-modal-container'>
-            <div onClick={this.stopEvent} className='update-server-modal-inner-container'>
-              <h1>CHANGE SERVER NAME</h1>
-              <form onSubmit={this.handleUpdate}>
-                <label htmlFor='server-name'>SERVER NAME</label>
+          <Modal className={{base:'serverUpdateModal',
+            afterOpen: '',
+            beforeClose: ''}}
+            style={{overlay:{ backgroundColor: 'rgba(0,0,0,.8)'} } } ariaHideApp={false} isOpen={this.props.updateServerModalOpen}>
+
+            <div onClick={this.closeModal('updateServerModal')} className='update-server-modal-container'>
+              <div onClick={this.stopEvent} className='update-server-modal-inner-container'>
+                <h1>CHANGE SERVER NAME</h1>
+                <form onSubmit={this.handleUpdate}>
+                  <label htmlFor='server-name'>SERVER NAME</label>
                   <input value={this.state.updateName} onChange={this.handleUpdateChange} id='server-name' type='text' placeholder={this.props.server.name}/>
                   <div onClick={this.clearInput} className='clear-button'>Reset Nickname</div>
                   <div className='update-server-buttons'>
-                  <div className='cancel-button' onClick={this.closeModal('updateServerModal')}>Cancel</div>
-                  <button className='blue-button'>Save</button>
-                </div>
-              </form>
-            </div>
-          </div>
-
-        </Modal>
-
-        <Modal className={{base:'serverDeleteModal',
-          afterOpen: '',
-          beforeClose: ''}} style={{overlay:{ backgroundColor: 'rgba(0,0,0,.8)'} } } ariaHideApp={false} isOpen={this.props.deleteServerModalOpen}>
-          <div onClick={this.closeModal('deleteServerModal')} className='delete-server-modal-container'>
-            <div onClick={this.stopEvent} className='delete-server-modal-inner-container'>
-              <h1>DELETE {`'${this.props.server.name}'`}.</h1>
-              <p>Are you sure you want to delete {this.props.server.name}? </p>
-              <p>This action cannot be undone.</p>
-
-              <div className='delete-server-buttons'>
-                <div className='cancel-button' onClick={this.closeModal('deleteServerModal')}>Cancel</div>
-                <button className='red-button' onClick={()=> this.handleDelete(this.props.server.id)}>
-                  <p>Delete Server</p>
-                </button>
+                    <div className='cancel-button' onClick={this.closeModal('updateServerModal')}>Cancel</div>
+                    <button className='blue-button'>Save</button>
+                  </div>
+                </form>
               </div>
             </div>
-          </div>
 
-        </Modal>
+          </Modal>
 
-      </div>
-    );
+          <Modal className={{base:'serverDeleteModal',
+            afterOpen: '',
+            beforeClose: ''}} style={{overlay:{ backgroundColor: 'rgba(0,0,0,.8)'} } } ariaHideApp={false} isOpen={this.props.deleteServerModalOpen}>
+            <div onClick={this.closeModal('deleteServerModal')} className='delete-server-modal-container'>
+              <div onClick={this.stopEvent} className='delete-server-modal-inner-container'>
+                <h1>DELETE {`'${this.props.server.name}'`}.</h1>
+                <p>Are you sure you want to delete {this.props.server.name}? </p>
+                <p>This action cannot be undone.</p>
+
+                <div className='delete-server-buttons'>
+                  <div className='cancel-button' onClick={this.closeModal('deleteServerModal')}>Cancel</div>
+                  <button className='red-button' onClick={()=> this.handleDelete(this.props.server.id)}>
+                    <p>Delete Server</p>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </Modal>
+
+        </div>
+      );
+    }
   }
 }
 

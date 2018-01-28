@@ -42,3 +42,11 @@ export const joinServer = name => {
     data: { name }
   });
 };
+
+export const leaveServer = id => {
+  return $.ajax({
+    method: 'delete',
+    url: 'api/servers/leave',
+    data: {id}
+  });
+};

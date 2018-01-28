@@ -13,7 +13,8 @@ const mapStateToProps = (state, ownProps) => {
     updateServerModalOpen: state.ui.updateServerModal,
     deleteServerModalOpen: state.ui.deleteServerModal,
     openTextchannelModal: state.ui.openTextchannelModal,
-    updateAndDeleteModal: state.ui.updateAndDeleteModal
+    updateAndDeleteModal: state.ui.updateAndDeleteModal,
+    currentUserId: state.session.currentUser.id
   };
 };
 

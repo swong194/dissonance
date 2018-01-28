@@ -77,3 +77,13 @@ export const joinServer = name => dispatch => {
     errors => (dispatch(receiveErrors(errors.responseJSON)))
   );
 };
+
+export const leaveServer = id => dispatch => {
+  return ServerAPIUtil.leaveServer(id).then(
+    () => {
+      dispatch(removeServer(id));
+      return id;
+    },
+    errors => dispatch(receiveErrors(errors.responseJSON))
+  );
+};
