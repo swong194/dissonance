@@ -9,8 +9,8 @@ class TextChannelChannel < ApplicationCable::Channel
     TextChannel.create(text_channel_params)
   end
 
-  def delete(id)
-    TextChannel.destroy(id)
+  def delete(text_channel)
+    TextChannel.destroy(text_channel['id'])
   end
 
   def update(text_channel_params)

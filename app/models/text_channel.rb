@@ -16,7 +16,7 @@ class TextChannel < ApplicationRecord
   source: :owner
 
   after_destroy do
-    TextChannelDeletionEventBroadcastJob.perform_later(self)
+    TextChannelDeletionEventBroadcastJob.perform_now(self)
   end
 
   after_create_commit do

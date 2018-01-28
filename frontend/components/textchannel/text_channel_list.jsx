@@ -7,9 +7,12 @@ class TextChannelList extends React.Component{
     super(props);
     this.openChannelModal = this.openChannelModal.bind(this);
     this.closeChannelModal = this.closeChannelModal.bind(this);
+    this.openDeleteChannelModal = this.openDeleteChannelModal.bind(this);
+    this.closeDeleteChannelModal = this.closeDeleteChannelModal.bind(this);
     this.state = { modalId : null, modalName: null };
     this.handleChange = this.handleChange.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentWillReceiveProps(newProps){
@@ -31,6 +34,14 @@ class TextChannelList extends React.Component{
     this.props.receiveModal('openChannelModal');
   }
 
+  openDeleteChannelModal(){
+    this.props.receiveModal('deleteChannelModalOpen');
+  }
+
+  closeDeleteChannelModal(){
+    this.props.removeModal('deleteChannelModalOpen');
+  }
+
   closeChannelModal(){
     this.props.removeModal('openChannelModal');
   }
@@ -45,8 +56,19 @@ class TextChannelList extends React.Component{
   handleUpdate(e){
     e.preventDefault();
     this.props.removeErrors();
-    debugger
     this.textchannel.update({name: this.state.modalName, id: this.state.modalId});
+  }
+
+  handleDelete(e){
+    e.preventDefault();
+    this.closeDeleteChannelModal();
+    this.props.removeErrors();
+    debugger
+    this.textchannel.delete(this.state.modalId);
+  }
+
+  stopEvent(e){
+    e.stopPropagation();
   }
 
   createSocket() {
@@ -60,8 +82,18 @@ class TextChannelList extends React.Component{
           if(channel.server_id == this.props.serverId){
             this.props.receiveTextChannel(channel);
           }
+        } else if(channel.id){
+          this.props.removeTextChannel(channel.id);
+          let tId = '0';
+          for (let i = 0; i < this.props.textChannelIds.length; i++) {
+            if(this.props.textChannelIds[i] !== channel.id.toString()){
+              tId = this.props.textChannelIds[i];
+              break;
+            }
+          }
+          this.props.history.push(`/servers/${this.props.serverId}/textChannel/${tId}`)
         } else {
-          this.props.deleteTextChannel(channel.id);
+          this.props.receiveErrors(channel.errors);
         }
       },
       delete: function(id){
@@ -116,6 +148,7 @@ class TextChannelList extends React.Component{
                   </div>
                   <div className='text-channel-form-side-bar-options'>
                     <div className='selected'><p>Overview</p></div>
+                    <div onClick={this.openDeleteChannelModal} className='delete-text-channel'>Delete</div>
                   </div>
 
                 </div>
@@ -139,6 +172,26 @@ class TextChannelList extends React.Component{
             </div>
 
           </div>
+        </Modal>
+
+        <Modal className={{base:'serverDeleteModal',
+          afterOpen: '',
+          beforeClose: ''}} style={{overlay:{ backgroundColor: 'rgba(0,0,0,.8)'} } } ariaHideApp={false} isOpen={this.props.deleteChannelModalOpen}>
+          <div onClick={this.closeDeleteChannelModal} className='delete-server-modal-container'>
+            <div onClick={this.stopEvent} className='delete-server-modal-inner-container'>
+              <h1>DELETE {`'${this.state.modalName}'`}.</h1>
+              <p>Are you sure you want to delete {this.state.modalName}? </p>
+              <p>This action cannot be undone.</p>
+
+              <div className='delete-server-buttons'>
+                <div className='cancel-button' onClick={this.closeDeleteChannelModal}>Cancel</div>
+                <button className='red-button' onClick={this.handleDelete}>
+                  <p>Delete Text Channel</p>
+                </button>
+              </div>
+            </div>
+          </div>
+
         </Modal>
 
       </div>
