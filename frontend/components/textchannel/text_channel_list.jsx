@@ -79,8 +79,11 @@ class TextChannelList extends React.Component{
       connected: () => {},
       received: (channel) => {
         if(typeof channel.name === 'string'){
-          if(channel.server_id == this.props.serverId){
+          if(channel.server_id == this.props.serverId || this.props.activeChannel == 0){
             this.props.receiveTextChannel(channel);
+            if(this.props.activeChannel === '0'){
+              this.props.history.push(`/servers/${this.props.serverId}/textChannel/${channel.id}`);
+            }
           }
         } else if(channel.id){
           this.props.removeTextChannel(channel.id);
