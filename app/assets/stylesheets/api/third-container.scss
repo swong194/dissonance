@@ -30,6 +30,12 @@
   flex-direction: column;
 }
 
+@media (max-width: 567px) {
+  .textchannel-container{
+    display: none;
+  }
+}
+
 .textchannel-empty{
   font-family: sans-serif;
   color: #ada9a7;
