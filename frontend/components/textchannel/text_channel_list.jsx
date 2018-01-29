@@ -126,7 +126,10 @@ class TextChannelList extends React.Component{
             <span>{textchannel.name}</span>
           </NavLink>
           <i onClick={() => this.openChannelModal(textchannel.id, textchannel.name)}
-            className="fa fa-cog channel-settings" aria-hidden="true"></i>
+            className="fa fa-cog channel-settings" aria-hidden="true">
+            <div className='server-item-name'><p>Channel Options</p></div>
+            <div className='triangle'></div>
+          </i>
         </div>
       ));
     }

@@ -99,6 +99,18 @@
   }
 }
 
+.channel-settings{
+  font-family: sans-serif;
+  &:hover .server-item-name{
+    display: block;
+    left: 300px;
+  }
+  &:hover .triangle{
+    display: block;
+    left: 290px;
+  }
+}
+
 .text-channel-form-container{
   animation: big-small .20s;
   width: 100vw;
