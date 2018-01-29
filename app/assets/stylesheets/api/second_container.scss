@@ -421,8 +421,31 @@
   transition: .7s;
 }
 
-.leave-server-icon:hover{
+.triangle-up{
+  position: absolute;
+  display: none;
+}
+
+.leave-server-button:hover{
+  position: relative;
   .fa-sign-out{
     color:#f14646;
+  }
+  .server-item-name{
+    display: block;
+    left: auto;
+    left: -25px;
+    top: 55px;
+    z-index: 1;
+  }
+  .triangle-up{
+    display: block;
+    left: auto;
+    bottom: 20px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 10px solid black;
+    width: 0;
+    height: 0;
   }
 }

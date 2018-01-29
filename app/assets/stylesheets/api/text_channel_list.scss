@@ -100,8 +100,9 @@
 }
 
 .channel-settings{
-  font-family: sans-serif;
   &:hover .server-item-name{
+    font-family: sans-serif;
+    font-size: 12px;
     display: block;
     left: 300px;
   }

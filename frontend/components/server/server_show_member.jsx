@@ -34,10 +34,12 @@ class ServerShowMember extends React.Component{
       <div className='server-show-container'>
         <div className='server-show-inner-container'>
           <h1>{this.props.server.name}</h1>
-          <button onClick={this.openModal} className=''>
+          <button onClick={this.openModal} className='leave-server-button'>
             <p className='leave-server-icon'>
               <i className="fa fa-sign-out" aria-hidden="true"></i>
             </p>
+            <div className='server-item-name'><p>Leave Server</p></div>
+            <div className='triangle-up'></div>
           </button>
         </div>
 
