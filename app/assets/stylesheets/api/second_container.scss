@@ -424,6 +424,11 @@
 .triangle-up{
   position: absolute;
   display: none;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 10px solid black;
+  width: 0;
+  height: 0;
 }
 
 .leave-server-button:hover{
@@ -437,15 +442,42 @@
     left: -25px;
     top: 55px;
     z-index: 1;
+    color: white;
   }
   .triangle-up{
     display: block;
     left: auto;
     bottom: 20px;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-bottom: 10px solid black;
-    width: 0;
-    height: 0;
+  }
+}
+
+.create-channel{
+  position: relative;
+  &:hover .triangle-up{
+    display: block;
+    right: 16px;
+  }
+  &:hover .server-item-name{
+    display: block;
+    left: auto;
+    top: 40px;
+    left: -25px;
+    z-index: 1;
+  }
+}
+
+.server-options{
+  position: relative;
+  &:hover .triangle-up{
+    display: block;
+    right: 16px;
+    top: 47px;
+  }
+  &:hover .server-item-name{
+    display: block;
+    left: auto;
+    z-index: 1;
+    top: 55px;
+    left: -25px;
   }
 }
