@@ -16,12 +16,13 @@ class ServerIndexItem extends React.Component{
   }
 
   render(){
+    let channel = this.props.server.text_channels.length ? this.props.server.text_channels[0] : '0';
     return (
       <div className='server-item'>
         <NavLink
           isActive={this.determineActive}
           activeClassName='active-server'
-          to={`/servers/${this.props.server.id}/textChannel/${this.props.server.text_channels[0]}`}>
+          to={`/servers/${this.props.server.id}/textChannel/${channel}`}>
           <p>{this.props.server.name[0].toUpperCase()}</p>
         </NavLink>
         <div className='server-item-name'>
