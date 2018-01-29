@@ -24,7 +24,7 @@ class TextChannel extends React.Component {
       return (
         <div className = 'textchannel-container'>
           <div className = 'textchannel-empty'>
-            <p>Oh no... you seem to have hit a brick wall. There are no text channels for this server</p>
+            <p>Oh no... there are no text channels for this server.</p>
           </div>
         </div>
       );
