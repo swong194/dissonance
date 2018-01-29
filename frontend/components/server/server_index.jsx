@@ -116,12 +116,18 @@ class ServerIndex extends React.Component {
             <div className='server-item'>
               <NavLink className='me'
                 activeClassName='active-server' to='/servers/@me'>
-                </NavLink>
+                <div className='server-item-name'><p>Friends</p></div>
+                <div className='triangle'></div>
+              </NavLink>
             </div>
             <div className='server-line'></div>
             {servers}
             <button className='server-form-button' onClick={this.openModal}>
               <p>+</p>
+              <div className='server-item-name'>
+                <p>Create or Join Server</p>
+              </div>
+              <div className='triangle'></div>
             </button>
             <div className='end-list-line'></div>
           </div>

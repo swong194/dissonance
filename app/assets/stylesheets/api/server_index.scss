@@ -141,6 +141,17 @@
     color: lightgrey;
     border: 1px dashed lightgrey;
   }
+  &:hover .server-item-name{
+    display: block;
+    width: 130px;
+    &>p{
+      font-size: 12px;
+      margin: 0;
+    }
+  }
+  &:hover .triangle{
+    display: block;
+  }
 }
 
 .end-list-line{
@@ -157,6 +168,15 @@
   background-size: 35px 35px;
   background-position: center;
   background-repeat: no-repeat;
+  p{
+    margin: 0;
+  }
+  &:hover .server-item-name{
+    display: block;
+  }
+  &:hover .triangle{
+    display: block;
+  }
 }
 
 @keyframes border-jiggle {
