@@ -42,6 +42,7 @@
   height: 100%;
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   p{
@@ -49,14 +50,30 @@
     margin: 0;
     padding: 10px;
     text-align: center;
-    background-color: rgba(0,0,0,0.6);
-    border-radius: 5px;
+    color: #72767d;
+    font-size: 16px;
   }
+}
+
+.bold{
+  font-weight: bolder;
+  text-transform: uppercase;
 }
 
 @media (max-width:675px) {
   .textchannel-empty > p {
     z-index: -1;
+  }
+}
+
+@media (max-width: 785px) {
+  .textchannel-empty {
+    svg{
+      display: none;
+    }
+    p{
+      width: 90%;
+    }
   }
 }
 
