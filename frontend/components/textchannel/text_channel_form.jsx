@@ -10,7 +10,7 @@ class TextChannelForm extends React.Component{
 
   componentWillReceiveProps(newProps){
     if(newProps.channel.id !== this.props.channel.id){
-      this.setState({text_channel_id: newProps.channel.id});
+      this.setState({body: '', text_channel_id: newProps.channel.id});
     }
   }
 
