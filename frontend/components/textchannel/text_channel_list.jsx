@@ -80,12 +80,14 @@ class TextChannelList extends React.Component{
         if(typeof channel.name === 'string'){
           if(channel.server_id == this.props.serverId){
             this.props.receiveTextChannel(channel);
+            this.props.fetchServer(this.props.match.params.serverId);
             if(this.props.activeChannel === '0'){
               this.props.history.push(`/servers/${this.props.serverId}/textChannel/${channel.id}`);
             }
           }
         } else if(channel.id){
           this.props.removeTextChannel(channel.id);
+          this.props.fetchServer(this.props.match.params.serverId);
           if(this.props.match.params.textChannelId == channel.id){
             let tId = '0';
             for (let i = 0; i < this.props.textChannelIds.length; i++) {

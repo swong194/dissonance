@@ -92,7 +92,7 @@ class ServerIndex extends React.Component {
     return e => {
       e.stopPropagation();
       this.props.removeModal(type);
-    }
+    };
   }
 
   render(){

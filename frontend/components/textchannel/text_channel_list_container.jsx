@@ -6,6 +6,7 @@ import {
 } from '../../actions/text_channel_actions';
 import { receiveModal, removeModal } from '../../actions/ui_actions';
 import { removeErrors, receiveErrors } from '../../actions/error_actions';
+import { fetchServer } from '../../actions/server_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -26,7 +27,8 @@ const mapDispatchToProps = dispatch => {
     receiveTextChannel: channel => dispatch(receiveTextChannel(channel)),
     receiveErrors: errors => dispatch(receiveErrors(errors)),
     receiveModal: modalType => dispatch(receiveModal(modalType)),
-    removeModal: modalType => dispatch(removeModal(modalType))
+    removeModal: modalType => dispatch(removeModal(modalType)),
+    fetchServer: id => dispatch(fetchServer(id))
   };
 };
 

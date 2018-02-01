@@ -1,6 +1,7 @@
 import { RECEIVE_SERVERS, RECEIVE_SERVER, REMOVE_SERVER } from '../../../actions/server_actions';
 import { merge } from 'lodash';
 import { RECEIVE_USER } from '../../../actions/session_actions';
+import { REMOVE_TEXT_CHANNEL } from '../../../actions/text_channel_actions';
 
 const oldState = {};
 
