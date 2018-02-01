@@ -33,7 +33,7 @@ class TextChannelForm extends React.Component{
       this.setState({[type]: e.target.value});
     };
   }
-  
+
   componentWillMount(){
     this.createSocket();
   }
@@ -54,7 +54,6 @@ class TextChannelForm extends React.Component{
       }
     });
   }
-
 
   render(){
     return(
