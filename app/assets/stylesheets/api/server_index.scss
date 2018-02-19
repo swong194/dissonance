@@ -21,6 +21,9 @@
   font-family: arial;
   height: 100%;
   overflow-x: hidden;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .server-list{
@@ -28,13 +31,10 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  overflow: scroll;
-  &::-webkit-scrollbar {
-    display: none;
-  }
 }
 
 .server-item{
+  position: relative;
   text-align: center;
   width: 50px;
   height: 50px;
@@ -116,6 +116,17 @@
 .active-server{
   background-color: #7188db;
   border-radius: 30%;
+  overflow-x: visible !important;
+}
+
+.active-server:before{
+  position: absolute;
+  content: '';
+  left: -57px;
+  border-radius: 5px;
+  width: 50px;
+  height: 43px;
+  background-color:white;
 }
 
 .server-form-button{
